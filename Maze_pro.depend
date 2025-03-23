@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1742697732 source:d:\0.game\maze_pro\main.cpp
+	"0_game.h"
+	"1_maze.h"
+	"1_player.h"
+
+1742704375 source:d:\0.game\maze_pro\0_game.cpp
+	"0_game.h"
+
+1742703344 d:\0.game\maze_pro\0_game.h
+	<bits/stdc++.h>
+	<SDL.h>
+	"1_maze.h"
+	"1_player.h"
+	"2_1_maze_dfs.h"
+	"2_2_maze_prim.h"
+
+1742730176 d:\0.game\maze_pro\1_maze.h
+	<bits/stdc++.h>
+	<SDL.h>
+	"SDL_Color.h"
+
+1742730176 d:\0.game\maze_pro\1_player.h
+	"1_maze.h"
+	<string>
+	"SDL_Color.h"
+
+1742534050 d:\0.game\maze_pro\2_1_maze_dfs.h
+	<SDL.h>
+	"1_maze.h"
+
+1742534051 d:\0.game\maze_pro\2_2_maze_prim.h
+	<SDL.h>
+	"1_maze.h"
+	"0_game.h"
+
+1742554499 source:d:\0.game\maze_pro\1_maze.cpp
+	"1_maze.h"
+
+1742704392 source:d:\0.game\maze_pro\1_player.cpp
+	"1_player.h"
+
+1742534353 source:d:\0.game\maze_pro\2_1_maze_dfs.cpp
+	"2_1_maze_dfs.h"
+
+1742544191 source:d:\0.game\maze_pro\2_2_maze_prim.cpp
+	"2_2_maze_prim.h"
+
+1742730193 d:\0.game\maze_pro\sdl_color.h
+	<SDL.h>
+

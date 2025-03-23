@@ -1,0 +1,10 @@
+#ifndef COLORS_H
+#define COLORS_H
+
+#include <SDL.h>
+
+const SDL_Color red = {255, 0, 0, 255};
+const SDL_Color black = {0, 0, 0, 255};
+const SDL_Color white = {255, 255, 255, 255};
+
+#endif // COLORS_H

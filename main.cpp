@@ -1,9 +1,12 @@
-#include <iostream>
+#include "0_game.h"
+#include "1_maze.h"
+#include "1_player.h"
 
-using namespace std;
-
-int main()
+int main(int argc, char* argv[])
 {
-    cout << "Hello world!" << endl;
-    return 0;
+    //cout << "a" << endl;
+    srand(time(0));
+    game Game;
+    Game.run();
+    //Game();
 }
