@@ -1,4 +1,4 @@
-#include "0_game.h"
+#include "0_0_game.h"
 
 game :: game()
 {
@@ -55,8 +55,8 @@ void game::handle_event(SDL_Event& event) {
                 break;
 
             case SDL_KEYDOWN:
-                Maze->handle_event(event);
-                Player->handle_event(event);
+                Menu->handle_event(event);
+                Play_game->handle_event(event);
                 break;
         }
     }
@@ -70,6 +70,13 @@ void game :: run(){
     while(running){
         handle_event(event);
     }
+}
+
+void game :: set_state(game_state* Game_state){
+    if (Game_state == nullptr){
+        delete Game_state;
+    }
+    this->Game_state = Game_state;
 }
 
 

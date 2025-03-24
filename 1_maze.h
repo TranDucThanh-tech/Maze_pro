@@ -6,9 +6,6 @@
 #include "2_2_maze_prim.h"
 #include "SDL_Color.h"
 
-using namespace std;
-
-
 class maze{
 public:
     int row_size, col_size, cell_size;

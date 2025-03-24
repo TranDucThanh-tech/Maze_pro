@@ -4,7 +4,7 @@
 #include "1_maze.h"
 #include <string>
 #include "SDL_Color.h"
-using namespace std;
+
 
 class player{
 private:

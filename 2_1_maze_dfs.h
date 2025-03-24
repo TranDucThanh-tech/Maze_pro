@@ -3,7 +3,6 @@
 
 #include "1_maze.h"
 
-using namespace std;
 
 class maze_dfs : public type_maze{
 public:

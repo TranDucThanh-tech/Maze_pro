@@ -3,7 +3,6 @@
 #include <SDL.h>
 #include "1_maze.h"
 
-using namespace std;
 
 struct section {
     int start_row, start_col, end_row, end_col;

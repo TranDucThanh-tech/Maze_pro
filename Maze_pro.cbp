@@ -32,8 +32,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="0_game.cpp" />
-		<Unit filename="0_game.h" />
+		<Unit filename="0_0_game.cpp" />
+		<Unit filename="0_0_game.h" />
+		<Unit filename="0_0_game_state.cpp" />
+		<Unit filename="0_0_game_state.h" />
+		<Unit filename="0_1_menu.cpp" />
+		<Unit filename="0_1_menu.h" />
+		<Unit filename="0_2_play_game.h" />
+		<Unit filename="1_2_type_maze.cpp" />
 		<Unit filename="1_2_type_maze.h" />
 		<Unit filename="1_maze.cpp" />
 		<Unit filename="1_maze.h" />
