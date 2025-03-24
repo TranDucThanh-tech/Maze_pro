@@ -1,4 +1,3 @@
-
 #include "1_player.h"
 
 player::player(int x, int y, maze* Maze, SDL_Renderer* renderer)
@@ -27,6 +26,11 @@ void player :: move_player(string direction){
     SDL_RenderPresent(renderer);
 }
 
+void player :: reset(){
+    x = 0;
+    y = 0;
+}
+
 void player::handle_event(SDL_Event& event) {
     if(event.key.repeat != 0) return;
     switch (event.key.keysym.sym) {
@@ -34,11 +38,14 @@ void player::handle_event(SDL_Event& event) {
         case SDLK_LEFT: move_player("left"); return;
         case SDLK_DOWN: move_player("down"); return;
         case SDLK_UP: move_player("up"); return;
+        case SDLK_1:
+        case SDLK_2:
+        case SDLK_HOME:
+            Maze -> draw_cell(renderer, x, y, black, Maze -> cell_size);
+            SDL_RenderPresent(renderer);
+            reset();
+            return;
+        default:
+            return;
     }
 }
-
-void player :: reset(){
-    x = 0;
-    y = 0;
-}
-

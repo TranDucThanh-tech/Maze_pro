@@ -6,7 +6,7 @@ void maze_dfs :: generate_maze(maze& Maze, int row, int col)
     Maze.way[row][col] = 1;
 
     Maze.draw_cell(Maze.renderer, row, col, black, Maze.cell_size);
-
+    SDL_RenderPresent( Maze.renderer);
     vector<int>delta_row = {0,0,-2,2};
     vector<int>delta_col = {-2,2,0,0};
     vector<int>random_index = {0,1,2,3};
@@ -22,8 +22,7 @@ void maze_dfs :: generate_maze(maze& Maze, int row, int col)
             Maze.draw_cell( Maze.renderer, new_row, new_col, red,  Maze.cell_size);
             SDL_RenderPresent( Maze.renderer);
             SDL_Delay(5);
-
-           generate_maze(Maze,new_row, new_col);
+            generate_maze(Maze,new_row, new_col);
         }
     }
 }

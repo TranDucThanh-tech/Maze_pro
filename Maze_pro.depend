@@ -4,48 +4,52 @@
 	"1_maze.h"
 	"1_player.h"
 
-1742704375 source:d:\0.game\maze_pro\0_game.cpp
+1742780853 source:d:\0.game\maze_pro\0_game.cpp
 	"0_game.h"
 
-1742703344 d:\0.game\maze_pro\0_game.h
-	<bits/stdc++.h>
-	<SDL.h>
+1742744921 d:\0.game\maze_pro\0_game.h
 	"1_maze.h"
 	"1_player.h"
 	"2_1_maze_dfs.h"
 	"2_2_maze_prim.h"
 
-1742730176 d:\0.game\maze_pro\1_maze.h
-	<bits/stdc++.h>
-	<SDL.h>
+1742781412 d:\0.game\maze_pro\1_maze.h
+	"1_2_type_maze.h"
+	"2_1_maze_dfs.h"
+	"2_2_maze_prim.h"
 	"SDL_Color.h"
 
-1742730176 d:\0.game\maze_pro\1_player.h
+1742746969 d:\0.game\maze_pro\1_player.h
 	"1_maze.h"
 	<string>
 	"SDL_Color.h"
 
-1742534050 d:\0.game\maze_pro\2_1_maze_dfs.h
+1742744787 d:\0.game\maze_pro\2_1_maze_dfs.h
+	"1_maze.h"
+
+1742744787 d:\0.game\maze_pro\2_2_maze_prim.h
 	<SDL.h>
 	"1_maze.h"
 
-1742534051 d:\0.game\maze_pro\2_2_maze_prim.h
-	<SDL.h>
-	"1_maze.h"
-	"0_game.h"
-
-1742554499 source:d:\0.game\maze_pro\1_maze.cpp
+1742746486 source:d:\0.game\maze_pro\1_maze.cpp
 	"1_maze.h"
 
-1742704392 source:d:\0.game\maze_pro\1_player.cpp
+1742748772 source:d:\0.game\maze_pro\1_player.cpp
 	"1_player.h"
 
-1742534353 source:d:\0.game\maze_pro\2_1_maze_dfs.cpp
+1742744891 source:d:\0.game\maze_pro\2_1_maze_dfs.cpp
 	"2_1_maze_dfs.h"
 
-1742544191 source:d:\0.game\maze_pro\2_2_maze_prim.cpp
+1742730176 source:d:\0.game\maze_pro\2_2_maze_prim.cpp
 	"2_2_maze_prim.h"
 
-1742730193 d:\0.game\maze_pro\sdl_color.h
+1742780936 d:\0.game\maze_pro\sdl_color.h
 	<SDL.h>
+
+1742744891 d:\0.game\maze_pro\1_2_type_maze.h
+	<iostream>
+	<vector>
+	<algorithm>
+	<SDL.h>
+	"SDL_Color.h"
 

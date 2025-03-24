@@ -1,6 +1,6 @@
 #ifndef MAZE_DFS_H
 #define MAZE_DFS_H
-#include <SDL.h>
+
 #include "1_maze.h"
 
 using namespace std;

@@ -2,39 +2,29 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="2_1_maze_dfs.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="1_player.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1076" topLine="7" />
+			<Cursor1 position="1243" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="1_player.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="0_game.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="355" topLine="0" />
+			<Cursor1 position="155" topLine="11" />
 		</Cursor>
 	</File>
-	<File name="2_1_maze_dfs.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="2_1_maze_dfs.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="27" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="2_2_maze_prim.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="1_maze.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="383" topLine="0" />
+			<Cursor1 position="343" topLine="29" />
 		</Cursor>
 	</File>
 	<File name="2_2_maze_prim.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="345" topLine="34" />
-		</Cursor>
-	</File>
-	<File name="1_player.cpp" open="1" top="1" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="566" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="0_game.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="308" topLine="3" />
+			<Cursor1 position="671" topLine="31" />
 		</Cursor>
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -42,22 +32,42 @@
 			<Cursor1 position="184" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="1_maze.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+	<File name="1_player.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1971" topLine="66" />
+			<Cursor1 position="312" topLine="7" />
 		</Cursor>
 	</File>
-	<File name="0_game.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="2_2_maze_prim.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2154" topLine="58" />
+			<Cursor1 position="448" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="1_maze.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+	<File name="1_2_type_maze.h" open="1" top="1" tabpos="13" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="728" topLine="12" />
+			<Cursor1 position="183" topLine="2" />
 		</Cursor>
 	</File>
-	<Target name="Debug" top="1_player.cpp">
+	<File name="1_maze.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3547" topLine="117" />
+		</Cursor>
+	</File>
+	<File name="SDL_Color.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="48" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="0_game.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1566" topLine="51" />
+		</Cursor>
+	</File>
+	<File name="2_1_maze_dfs.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="40" topLine="0" />
+		</Cursor>
+	</File>
+	<Target name="Debug" top="1_2_type_maze.h">
 		<File name="main.cpp" />
 		<File name="0_game.h" />
 		<File name="1_player.h" />
@@ -69,5 +79,7 @@
 		<File name="2_1_maze_dfs.cpp" />
 		<File name="2_2_maze_prim.cpp" />
 		<File name="1_maze.h" />
+		<File name="SDL_Color.h" />
+		<File name="1_2_type_maze.h" />
 	</Target>
 </CodeBlocks_layout_file>

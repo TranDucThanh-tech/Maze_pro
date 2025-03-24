@@ -2,7 +2,7 @@
 #define MAZE_PRIM_H
 #include <SDL.h>
 #include "1_maze.h"
-#include "0_game.h"
+
 using namespace std;
 
 struct section {

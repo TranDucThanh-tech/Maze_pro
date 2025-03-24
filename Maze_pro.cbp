@@ -34,6 +34,7 @@
 		</Compiler>
 		<Unit filename="0_game.cpp" />
 		<Unit filename="0_game.h" />
+		<Unit filename="1_2_type_maze.h" />
 		<Unit filename="1_maze.cpp" />
 		<Unit filename="1_maze.h" />
 		<Unit filename="1_player.cpp" />
@@ -42,6 +43,7 @@
 		<Unit filename="2_1_maze_dfs.h" />
 		<Unit filename="2_2_maze_prim.cpp" />
 		<Unit filename="2_2_maze_prim.h" />
+		<Unit filename="SDL_Color.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>

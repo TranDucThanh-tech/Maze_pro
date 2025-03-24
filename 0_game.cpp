@@ -40,6 +40,8 @@ void game :: reset(){
 }
 
 game:: ~game(){
+    delete Player;
+    delete Maze;
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
@@ -47,30 +49,19 @@ game:: ~game(){
 
 void game::handle_event(SDL_Event& event) {
     while (SDL_PollEvent(&event)) {
-        if (event.type == SDL_QUIT) {
-            running = false;
-        }
-        else if (event.type == SDL_KEYDOWN) {
-            if (event.key.repeat == 0) {
-                switch (event.key.keysym.sym) {
-                    case SDLK_1:
-                        reset();
-                        Maze -> set_generate(new maze_dfs());
-                        Maze -> generate_maze_();
-                        break;
+        switch (event.type) {
+            case SDL_QUIT:
+                running = false;
+                break;
 
-                    case SDLK_2:
-                        reset();
-                        Maze -> set_generate(new maze_prim());
-                        Maze -> generate_maze_();
-                        break;
-                    default:
-                        break;
-                }
-            }
+            case SDL_KEYDOWN:
+                Maze->handle_event(event);
+                Player->handle_event(event);
+                break;
         }
     }
 }
+
 
 
 

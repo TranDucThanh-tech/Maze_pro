@@ -1,17 +1,13 @@
 #ifndef MAZE_H
 #define MAZE_H
-#include <bits/stdc++.h>
-#include <SDL.h>
+
+#include "1_2_type_maze.h"
+#include "2_1_maze_dfs.h"
+#include "2_2_maze_prim.h"
 #include "SDL_Color.h"
+
 using namespace std;
 
-class maze;
-
-class type_maze{
-public:
-    virtual void generate_maze(maze& Maze, int row, int col) = 0;
-    virtual~type_maze() = default;
-};
 
 class maze{
 public:
@@ -30,17 +26,21 @@ public:
                     int new_row, int new_col);
     void draw_cell(SDL_Renderer* renderer, int row, int col,
                    const SDL_Color& color, int cell_size);
-    void set_generate(type_maze* type);
-
-    void generate_maze_();
 
     bool check_next_index(int next_row, int next_col);
 
     bool check_new_index(int new_row, int new_col);
 
+    void set_generate(type_maze* type);
+
+    void generate_maze_();
+
     bool solve_maze(int row, int col);
 
     void reset();
+
+    void handle_event(SDL_Event& event);
+
 };
 
 #endif // MAZE_H

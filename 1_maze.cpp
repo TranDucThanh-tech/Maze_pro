@@ -1,6 +1,6 @@
 #include "1_maze.h"
 
-//1//
+
 maze :: maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer){
     this->row_size = row_size;
     this->col_size = col_size;
@@ -14,13 +14,13 @@ maze :: maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer){
     cout << "maze" << endl;
 
 }
-//2//
+
 void maze :: draw_cell(SDL_Renderer* renderer, int row, int col, const SDL_Color& color, int cell_size){
     SDL_Rect cell = { col * cell_size, row * cell_size, cell_size, cell_size };
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b,color.a);
     SDL_RenderFillRect(renderer, &cell);
 }
-//3//
+
 void maze :: break_wall(int row, int col,
                 int new_row, int new_col)
 {
@@ -28,7 +28,24 @@ void maze :: break_wall(int row, int col,
     int break_col = (new_col + col) / 2;
     way[break_row][break_col] = 1;
 }
-//4//
+
+
+void maze :: generate_maze_(){
+    if (Type_maze){
+        Type_maze -> generate_maze(*this, 0, 0);
+    }
+}
+
+
+bool maze :: check_new_index(int new_row, int new_col){
+    if (new_row >= row_size || new_col >= col_size ||
+        new_row < 0 || new_col < 0 ||
+        visited[new_row][new_col]){
+        return false;
+    }
+    return true;
+}
+
 bool maze :: check_next_index(int next_row, int next_col){
     if (next_row >= row_size || next_col >= col_size || next_row < 0 || next_col < 0) return false;
     if (way[next_row][next_col] == 1){
@@ -36,16 +53,14 @@ bool maze :: check_next_index(int next_row, int next_col){
     }
     return false;
 }
-//5//
+
 bool maze :: solve_maze(int row, int col){
     way[row][col] = 2;
     if(row == row_size-1 && col == col_size-1){
-        SDL_Color yellow = { 255, 193, 7, 255 };
         draw_cell(renderer, row, col, yellow, cell_size);
         SDL_RenderPresent(renderer);
         return true;
     }
-    SDL_Color yellow = { 255, 193, 7, 255 };
     draw_cell(renderer, row, col, yellow, cell_size);
     SDL_RenderPresent(renderer);
     vector<int>delta_row = {0,1,0,-1};
@@ -58,7 +73,6 @@ bool maze :: solve_maze(int row, int col){
                 return true;
             }
             SDL_Color black = { 0, 0, 0, 255};
-            draw_cell(renderer, next_row, next_col, black, cell_size);
             SDL_RenderPresent(renderer);
             SDL_Delay(5);
             way[next_row][next_col] = 1;
@@ -66,8 +80,11 @@ bool maze :: solve_maze(int row, int col){
     }
     return false;
 }
-//6//
+
 void maze :: reset(){
+    SDL_SetRenderDrawColor(renderer,0, 128, 128, 255);
+    SDL_RenderClear(renderer);
+    SDL_RenderPresent(renderer);
     for (int i = 0; i < row_size; i++){
         for (int j = 0; j < col_size; j++){
             visited[i][j] = false;
@@ -79,7 +96,7 @@ void maze :: reset(){
         Type_maze = nullptr;
     }
 }
-//7//
+
 void maze :: set_generate(type_maze* type) {
     if (Type_maze != nullptr) {
         delete Type_maze;
@@ -88,27 +105,33 @@ void maze :: set_generate(type_maze* type) {
 }
 
 
-//8//
-void maze :: generate_maze_(){
-    if (Type_maze){
-        Type_maze -> generate_maze(*this, 0, 0);
-    }
-}
-
-//10//
-bool maze :: check_new_index(int new_row, int new_col){
-    if (new_row >= row_size || new_col >= col_size ||
-        new_row < 0 || new_col < 0 ||
-        visited[new_row][new_col]){
-        return false;
-    }
-    return true;
-}
-
 maze :: ~maze(){
     if (Type_maze != nullptr) {
         delete Type_maze;
     }
 }
 
+void maze :: handle_event(SDL_Event& event){
+    switch (event.key.keysym.sym){
+         case SDLK_1:
+            reset();
+            set_generate(new maze_dfs());
+            generate_maze_();
+            return;
+
+        case SDLK_2:
+            reset();
+            set_generate(new maze_prim());
+            generate_maze_();
+            return;
+
+        case SDLK_RETURN:
+            if (way[0][0] == 0) return;
+            solve_maze(0,0);
+            return;
+
+        default:
+            return;
+    }
+}
 

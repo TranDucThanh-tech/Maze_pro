@@ -1,14 +1,13 @@
-
 #ifndef GAME_H
 #define GAME_H
-#include <bits/stdc++.h>
-#include <SDL.h>
+
 #include "1_maze.h"
 #include "1_player.h"
 #include "2_1_maze_dfs.h"
 #include "2_2_maze_prim.h"
 
 using namespace std;
+
 
 class game{
 private:

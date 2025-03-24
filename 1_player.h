@@ -18,8 +18,9 @@ public:
 
     void move_player(string direction);
 
-    void handle_event(SDL_Event& event);
     void reset();
+
+    void handle_event(SDL_Event& event);
 };
 
 #endif
