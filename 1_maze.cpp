@@ -113,13 +113,13 @@ maze :: ~maze(){
 
 void maze :: handle_event(SDL_Event& event){
     switch (event.key.keysym.sym){
-         case SDLK_1:
+        case SDLK_1:
             reset();
             set_generate(new maze_dfs());
             generate_maze_();
             return;
 
-        case SDLK_2:
+       case SDLK_2:
             reset();
             set_generate(new maze_prim());
             generate_maze_();

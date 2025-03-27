@@ -1,6 +1,6 @@
 # depslib dependency file v1.0
-1742697732 source:d:\0.game\maze_pro\main.cpp
-	"0_game.h"
+1743038781 source:d:\0.game\maze_pro\main.cpp
+	"0_0_game.h"
 	"1_maze.h"
 	"1_player.h"
 
@@ -13,16 +13,18 @@
 	"2_1_maze_dfs.h"
 	"2_2_maze_prim.h"
 
-1742784345 d:\0.game\maze_pro\1_maze.h
+1743038769 d:\0.game\maze_pro\1_maze.h
 	"1_2_type_maze.h"
 	"2_1_maze_dfs.h"
 	"2_2_maze_prim.h"
 	"SDL_Color.h"
+	"Maze_size.h"
 
-1742784345 d:\0.game\maze_pro\1_player.h
+1743038769 d:\0.game\maze_pro\1_player.h
 	"1_maze.h"
 	<string>
 	"SDL_Color.h"
+	"Maze_size.h"
 
 1742784345 d:\0.game\maze_pro\2_1_maze_dfs.h
 	"1_maze.h"
@@ -31,7 +33,7 @@
 	<SDL.h>
 	"1_maze.h"
 
-1743006340 source:d:\0.game\maze_pro\1_maze.cpp
+1743036572 source:d:\0.game\maze_pro\1_maze.cpp
 	"1_maze.h"
 
 1742781412 source:d:\0.game\maze_pro\1_player.cpp
@@ -46,12 +48,13 @@
 1742780936 d:\0.game\maze_pro\sdl_color.h
 	<SDL.h>
 
-1742744891 d:\0.game\maze_pro\1_2_type_maze.h
+1743038769 d:\0.game\maze_pro\1_2_type_maze.h
 	<iostream>
 	<vector>
 	<algorithm>
 	<SDL.h>
 	"SDL_Color.h"
+	"Maze_size.h"
 
 1742743315 source:d:\0.game\maze_pro\1_2_type_maze.cpp
 
@@ -62,40 +65,46 @@
 	<iostream>
 	<SDL.h>
 
-1743007288 source:d:\0.game\maze_pro\0_1_menu.cpp
+1743038769 source:d:\0.game\maze_pro\0_1_menu.cpp
 	"0_1_menu.h"
 
-1743006766 d:\0.game\maze_pro\0_1_menu.h
+1743038769 d:\0.game\maze_pro\0_1_menu.h
 	<iostream>
 	<SDL.h>
 	<SDL_ttf.h>
 	"0_0_game_state.h"
 	"Button.h"
 	"SDL_Color.h"
+	"Maze_size.h"
 
-1743005416 source:d:\0.game\maze_pro\0_0_game.cpp
+1743038769 source:d:\0.game\maze_pro\0_0_game.cpp
 	"0_0_game.h"
 
-1743002689 d:\0.game\maze_pro\0_0_game.h
+1743038769 d:\0.game\maze_pro\0_0_game.h
 	"1_maze.h"
 	"1_player.h"
 	"0_0_game_state.h"
 	"0_1_menu.h"
 	"0_2_play_game.h"
+	"Maze_size.h"
 
-1743005294 source:d:\0.game\maze_pro\button.cpp
+1743038270 source:d:\0.game\maze_pro\button.cpp
 	"Button.h"
+	<iostream>
 
-1742962197 d:\0.game\maze_pro\button.h
+1743038217 d:\0.game\maze_pro\button.h
 	<SDL.h>
 	<SDL_ttf.h>
 	"SDL_Color.h"
 
-1743004493 d:\0.game\maze_pro\0_2_play_game.h
+1743038769 d:\0.game\maze_pro\0_2_play_game.h
 	"1_maze.h"
 	"1_player.h"
 	"0_0_game_state.h"
+	"Maze_size.h"
 
-1743004493 source:d:\0.game\maze_pro\0_2_play_game.cpp
+1743036266 source:d:\0.game\maze_pro\0_2_play_game.cpp
 	"0_2_play_game.h"
+
+1743039140 d:\0.game\maze_pro\maze_size.h
 

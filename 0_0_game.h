@@ -6,6 +6,7 @@
 #include "0_0_game_state.h"
 #include "0_1_menu.h"
 #include "0_2_play_game.h"
+#include "Maze_size.h"
 using namespace std;
 
 

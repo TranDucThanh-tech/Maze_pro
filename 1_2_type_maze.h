@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <SDL.h>
 #include "SDL_Color.h"
+#include "Maze_size.h"
 using namespace std;
 
 class maze;

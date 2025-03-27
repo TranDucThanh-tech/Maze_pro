@@ -5,6 +5,7 @@
 #include "2_1_maze_dfs.h"
 #include "2_2_maze_prim.h"
 #include "SDL_Color.h"
+#include "Maze_size.h"
 
 class maze{
 public:

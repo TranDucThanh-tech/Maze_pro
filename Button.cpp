@@ -1,4 +1,5 @@
 #include "Button.h"
+#include <iostream>
 Button :: Button(int x, int y, int w, int h, SDL_Renderer* renderer, SDL_Color yellow){
     rect.x = x;
     rect.y = y;
@@ -9,12 +10,7 @@ Button :: Button(int x, int y, int w, int h, SDL_Renderer* renderer, SDL_Color y
     is_hovered = false;
 }
 
-Button :: ~Button(){
-    if (font) {
-        TTF_CloseFont(font);
-        font = nullptr;
-    }
-}
+Button :: ~Button(){}
 
 
 bool Button :: is_hovered_(){
@@ -27,13 +23,13 @@ void Button :: check_button_hover(int mouse_x, int mouse_y){
 }
 
 
-void  Button :: render_button(const char* text){
-    // Vẽ nền nút
+void  Button :: render_button(const char* text, TTF_Font* font){
+
     if (is_hovered) {
         SDL_SetRenderDrawColor(renderer,
-                            color.r + 30,
-                            color.g + 30,
-                            color.b + 30,
+                            color.r,
+                            color.g + 50,
+                            color.b + 50,
                             color.a);
     } else {
         SDL_SetRenderDrawColor(renderer,
@@ -44,13 +40,12 @@ void  Button :: render_button(const char* text){
     }
     SDL_RenderFillRect(renderer, &rect);
 
-    // Vẽ viền nút
+
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderDrawRect(renderer, &rect);
 
-    // Vẽ chữ trên nút
     if (font && text) {
-        SDL_Color text_color = {255, 255, 255, 255};
+        SDL_Color text_color = {0, 0, 0, 0};
         SDL_Surface* surface = TTF_RenderText_Solid(font, text, text_color);
         SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 

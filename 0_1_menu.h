@@ -6,11 +6,12 @@
 #include "0_0_game_state.h"
 #include "Button.h"
 #include "SDL_Color.h"
-
+#include "Maze_size.h"
 class menu : public game_state{
 private:
     Button* Play;
     Button* Setting;
+    TTF_Font* font;
     SDL_Renderer* renderer;
     bool play_clicked;
 public:

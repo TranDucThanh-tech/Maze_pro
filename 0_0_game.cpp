@@ -10,7 +10,7 @@ game :: game()
         "Maze Generator",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        31*10, 31*10,
+        win_hight, win_width,
         SDL_WINDOW_SHOWN
     );
     if (!window) {
@@ -25,6 +25,7 @@ game :: game()
         SDL_Quit();
         exit(1);
     }
+
     running = true;
     Game_state = new menu(renderer);
     cout << "thanhcong" << endl;

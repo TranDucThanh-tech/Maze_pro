@@ -1,7 +1,7 @@
 #include "0_2_play_game.h"
 
 play_game :: play_game(SDL_Renderer* renderer){
-    Maze = new maze(31,31,10,renderer);
+    Maze = new maze(row_size ,col_size, cell_size ,renderer);
     Player = new player(0, 0, Maze,renderer);
 }
 

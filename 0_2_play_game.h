@@ -3,6 +3,7 @@
 #include "1_maze.h"
 #include "1_player.h"
 #include "0_0_game_state.h"
+#include "Maze_size.h"
 using namespace std;
 
 class play_game : public game_state{
