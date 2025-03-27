@@ -3,10 +3,9 @@
 
 #include "1_maze.h"
 #include "1_player.h"
-#include "2_1_maze_dfs.h"
-#include "2_2_maze_prim.h"
 #include "0_0_game_state.h"
-
+#include "0_1_menu.h"
+#include "0_2_play_game.h"
 using namespace std;
 
 

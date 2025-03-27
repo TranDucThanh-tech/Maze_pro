@@ -26,8 +26,7 @@ game :: game()
         exit(1);
     }
     running = true;
-    Maze = new maze(31,31,10,renderer);
-    Player = new player(0, 0, Maze,renderer);
+    Game_state = new menu(renderer);
     cout << "thanhcong" << endl;
 }
 
@@ -35,16 +34,28 @@ void game :: reset(){
     SDL_SetRenderDrawColor(renderer,0, 128, 128, 255);
     SDL_RenderClear(renderer);
     SDL_RenderPresent(renderer);
-    Player -> reset();
-    Maze -> reset();
 }
 
 game:: ~game(){
-    delete Player;
-    delete Maze;
+    delete Game_state;
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+}
+
+
+void game :: set_state(game_state* state){
+    if (Game_state != nullptr){
+        delete Game_state;
+    }
+    this->Game_state = state;
+}
+
+
+void game :: render(){
+    if (Game_state == nullptr)
+        return;
+    Game_state -> render();
 }
 
 void game::handle_event(SDL_Event& event) {
@@ -54,11 +65,22 @@ void game::handle_event(SDL_Event& event) {
                 running = false;
                 break;
 
-            case SDL_KEYDOWN:
-                Menu->handle_event(event);
-                Play_game->handle_event(event);
-                break;
         }
+        Game_state -> handle_event(event);
+        if (auto Maze = dynamic_cast<menu*>(Game_state)){
+            if ( Maze -> play_clicked_())
+                set_state(new play_game(renderer));
+                reset();
+        }
+        else if (auto Play = dynamic_cast<play_game*>(Game_state)){
+            if ( event.type == SDL_KEYDOWN &&
+                event.key.keysym.sym == SDLK_m)
+                set_state(new menu(renderer));
+                //reset();
+        }
+        Game_state -> render();
+        SDL_RenderPresent(renderer);
+        SDL_Delay(20);
     }
 }
 
@@ -71,12 +93,4 @@ void game :: run(){
         handle_event(event);
     }
 }
-
-void game :: set_state(game_state* Game_state){
-    if (Game_state == nullptr){
-        delete Game_state;
-    }
-    this->Game_state = Game_state;
-}
-
 

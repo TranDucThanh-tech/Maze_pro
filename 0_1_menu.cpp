@@ -1,29 +1,41 @@
 #include "0_1_menu.h"
 
-menu :: menu(bool player_hovered, bool setting_hovered,
-            bool player_clicked, bool setting_clicked,
-            SDL_Renderer* renderer) :
-                player_hovered(player_hovered),
-                setting_hovered(setting_hovered),
-                player_clicked(player_clicked),
-                setting_clicked(setting_clicked),
-                renderer(renderer)
-{
-        TTF_Font* font = TTF_OpenFont("arial.ttf",48);
-        if (!font) {
-            printf("Failed to load font: %s\n", TTF_GetError());
-            exit(1);
-        }
+menu::menu(SDL_Renderer* renderer) : play_clicked(false) {
+    this->renderer = renderer;
+    Play = new Button((310-200)/2, (310-50)/2, 200, 50, renderer, yellow);
 }
 
-
-bool menu :: is_mouse_in_rect(int x, int y, SDL_Rect rect){
-        return(x >= rect.x && x <= rect.x + rect.w &&
-               y >= rect.y && y <= rect.y + rect.h);
+menu::~menu() {
+    delete Play;
 }
 
-void menu :: handle_event(SDL_Event& event){
-
+bool menu::play_clicked_() {
+    return play_clicked;
 }
 
+void menu::render() {
+    if (Play) {
+        Play->render_button("Play");
+    }
+    SDL_RenderPresent(renderer);
+}
 
+void menu::handle_event(SDL_Event& event) {
+    switch (event.type) {
+        case SDL_MOUSEMOTION:
+            if (Play) {
+                bool was_hovered = Play->is_hovered_();
+                Play->check_button_hover(event.motion.x, event.motion.y);
+                if (was_hovered != Play->is_hovered_()) {
+                    Play->render_button("Play");
+                }
+            }
+            break;
+
+        case SDL_MOUSEBUTTONDOWN:
+            if (Play && Play->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
+                play_clicked = true;
+            }
+            break;
+    }
+}

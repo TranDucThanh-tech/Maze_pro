@@ -30,13 +30,6 @@ void maze :: break_wall(int row, int col,
 }
 
 
-void maze :: generate_maze_(){
-    if (Type_maze){
-        Type_maze -> generate_maze(*this, 0, 0);
-    }
-}
-
-
 bool maze :: check_new_index(int new_row, int new_col){
     if (new_row >= row_size || new_col >= col_size ||
         new_row < 0 || new_col < 0 ||
@@ -72,10 +65,9 @@ bool maze :: solve_maze(int row, int col){
             if(solve_maze(next_row, next_col)){
                 return true;
             }
-            SDL_Color black = { 0, 0, 0, 255};
+            draw_cell(renderer, next_row, next_col, black, cell_size);
             SDL_RenderPresent(renderer);
             SDL_Delay(5);
-            way[next_row][next_col] = 1;
         }
     }
     return false;
@@ -97,11 +89,19 @@ void maze :: reset(){
     }
 }
 
+
 void maze :: set_generate(type_maze* type) {
     if (Type_maze != nullptr) {
         delete Type_maze;
     }
     Type_maze = type;
+}
+
+
+void maze :: generate_maze_(){
+    if (Type_maze){
+        Type_maze -> generate_maze(*this, 0, 0);
+    }
 }
 
 
