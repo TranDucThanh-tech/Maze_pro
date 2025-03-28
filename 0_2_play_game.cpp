@@ -3,6 +3,7 @@
 play_game :: play_game(SDL_Renderer* renderer){
     Maze = new maze(row_size ,col_size, cell_size ,renderer);
     Player = new player(0, 0, Maze,renderer);
+
 }
 
 play_game :: ~play_game(){
@@ -10,13 +11,12 @@ play_game :: ~play_game(){
     delete Player;
 }
 void play_game :: handle_event(SDL_Event& event){
-     switch (event.type) {
-        case SDL_KEYDOWN:
-            Maze -> handle_event(event);
-            Player -> handle_event(event);
-    }
+    Maze -> handle_event(event);
+    Player -> handle_event(event);
 }
 
 void play_game :: render(){
     cout << "hello";
 }
+
+

@@ -61,31 +61,26 @@ void game :: render(){
 
 void game::handle_event(SDL_Event& event) {
     while (SDL_PollEvent(&event)) {
-        switch (event.type) {
-            case SDL_QUIT:
-                running = false;
-                break;
+        if (event.type == SDL_QUIT) {
+            running = false;
+            break;
 
         }
         Game_state -> handle_event(event);
         if (auto Maze = dynamic_cast<menu*>(Game_state)){
             if ( Maze -> play_clicked_())
                 set_state(new play_game(renderer));
-                reset();
         }
         else if (auto Play = dynamic_cast<play_game*>(Game_state)){
             if ( event.type == SDL_KEYDOWN &&
                 event.key.keysym.sym == SDLK_m)
                 set_state(new menu(renderer));
-                //reset();
         }
-        Game_state -> render();
+        render();
         SDL_RenderPresent(renderer);
-        SDL_Delay(20);
+        SDL_Delay(16);
     }
 }
-
-
 
 
 void game :: run(){
@@ -94,4 +89,7 @@ void game :: run(){
         handle_event(event);
     }
 }
+
+
+
 

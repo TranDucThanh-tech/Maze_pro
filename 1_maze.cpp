@@ -9,11 +9,24 @@ maze :: maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer){
     this->col = 0;
     this->renderer = renderer;
     this->Type_maze = nullptr;
+    now_playing = false;
     visited = vector<vector<bool>>(row_size, vector<bool>(col_size, false));
     way = vector<vector<int>>(row_size, vector<int>(col_size, 0));
     cout << "maze" << endl;
+    DFS = new Button((win_hight-200)/2, (win_width-50)/2 + 50, 200, 50, renderer, yellow);
+    PRIM = new Button((win_hight-200)/2, (win_width-50)/2 - 50, 200, 50, renderer, yellow);
+
+    if (TTF_Init() == -1)
+        std::cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
+    font = TTF_OpenFont("Arial.ttf", 24);
+
 
 }
+
+bool maze ::  now_playing_(){
+    return now_playing;
+}
+
 
 void maze :: draw_cell(SDL_Renderer* renderer, int row, int col, const SDL_Color& color, int cell_size){
     SDL_Rect cell = { col * cell_size, row * cell_size, cell_size, cell_size };
@@ -111,27 +124,37 @@ maze :: ~maze(){
     }
 }
 
-void maze :: handle_event(SDL_Event& event){
-    switch (event.key.keysym.sym){
-        case SDLK_1:
+void maze::handle_event(SDL_Event& event) {
+    if (!now_playing) {
+        DFS->render_button("DFS", font);
+        PRIM->render_button("PRIM", font);
+        SDL_RenderPresent(renderer);
+
+    }
+    if (event.type == SDL_MOUSEMOTION) {
+        if (!now_playing){
+            DFS->check_button_hover(event.motion.x, event.motion.y);
+            PRIM->check_button_hover(event.motion.x, event.motion.y);
+        }
+    }
+    if (event.type == SDL_MOUSEBUTTONDOWN) {
+        if (DFS && DFS->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
+            now_playing = true;
             reset();
             set_generate(new maze_dfs());
             generate_maze_();
-            return;
+        }
 
-       case SDLK_2:
+        if (PRIM && PRIM->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
+            now_playing = true;
             reset();
             set_generate(new maze_prim());
             generate_maze_();
-            return;
-
-        case SDLK_RETURN:
-            if (way[0][0] == 0) return;
-            solve_maze(0,0);
-            return;
-
-        default:
-            return;
+        }
+        DFS -> set_hovered_(false);
+        PRIM -> set_hovered_(false);
     }
 }
+
+
 

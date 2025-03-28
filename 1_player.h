@@ -9,12 +9,16 @@
 class player{
 private:
     int x, y;
+    bool now_playing;
+    bool solved;
     maze* Maze;
     SDL_Renderer* renderer;
 public:
     player() = default;
     player(int x, int y,maze* Maze, SDL_Renderer* renderer);
     ~player() = default;
+
+    bool is_end();
 
     void move_player(string direction);
 

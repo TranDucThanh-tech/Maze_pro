@@ -17,8 +17,12 @@ bool Button :: is_hovered_(){
      return is_hovered;
 }
 
+void Button :: set_hovered_(bool a){
+    is_hovered = a;
+}
+
 void Button :: check_button_hover(int mouse_x, int mouse_y){
-    is_hovered = is_hovered = (mouse_x >= rect.x && mouse_x < rect.x + rect.w &&
+    is_hovered = (mouse_x >= rect.x && mouse_x < rect.x + rect.w &&
               mouse_y >= rect.y && mouse_y < rect.y + rect.h);
 }
 

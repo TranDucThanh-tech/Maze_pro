@@ -6,6 +6,7 @@
 #include "2_2_maze_prim.h"
 #include "SDL_Color.h"
 #include "Maze_size.h"
+#include "Button.h"
 
 class maze{
 public:
@@ -15,10 +16,17 @@ public:
     vector<vector<bool>>visited;
     type_maze* Type_maze;
     SDL_Renderer* renderer;
+    Button* DFS;
+    Button* PRIM;
+    TTF_Font* font;
+    bool now_playing;
+
 public:
     maze() = default;
     maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer);
     ~maze();
+
+    bool now_playing_();
 
     void break_wall(int row, int col,
                     int new_row, int new_col);
