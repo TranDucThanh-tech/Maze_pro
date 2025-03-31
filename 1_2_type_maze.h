@@ -1,12 +1,12 @@
 #ifndef TYPE_MAZE_H
 #define TYPE_MAZE_H
 
-#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <SDL.h>
 #include "SDL_Color.h"
 #include "Maze_size.h"
+
 using namespace std;
 
 class maze;

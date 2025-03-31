@@ -16,8 +16,5 @@ void play_game :: handle_event(SDL_Event& event){
     Player -> handle_event(event);
 }
 
-void play_game :: render(){
-    cout << "hello";
-}
 
 

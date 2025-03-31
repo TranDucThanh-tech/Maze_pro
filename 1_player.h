@@ -2,9 +2,10 @@
 #define PLAYER_H
 
 #include "1_maze.h"
-#include <string>
+#include "Button.h"
 #include "SDL_Color.h"
 #include "Maze_size.h"
+#include <string>
 
 class player{
 private:
@@ -13,10 +14,13 @@ private:
     bool solved;
     maze* Maze;
     SDL_Renderer* renderer;
+    Button* Win;
+    Button* Lose;
+    TTF_Font* font;
 public:
     player() = default;
     player(int x, int y,maze* Maze, SDL_Renderer* renderer);
-    ~player() = default;
+    ~player();
 
     bool is_end();
 

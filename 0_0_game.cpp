@@ -33,11 +33,6 @@ game :: game()
     cout << "thanhcong" << endl;
 }
 
-void game :: reset(){
-    SDL_SetRenderDrawColor(renderer,0, 128, 128, 255);
-    SDL_RenderClear(renderer);
-    SDL_RenderPresent(renderer);
-}
 
 game:: ~game(){
     if (Game_state)
@@ -56,11 +51,6 @@ void game :: set_state(game_state* state){
 }
 
 
-void game :: render(){
-    if (Game_state == nullptr)
-        return;
-    Game_state -> render();
-}
 
 void game::handle_event(SDL_Event& event) {
     while (SDL_PollEvent(&event)) {
@@ -89,7 +79,6 @@ void game::handle_event(SDL_Event& event) {
                 event.key.keysym.sym == SDLK_m)
                 set_state(new menu(renderer));
         }
-        render();
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
     }
@@ -101,7 +90,6 @@ void game :: run(){
     while(running){
         handle_event(event);
     }
-    cout <<"hello" << endl;
 }
 
 

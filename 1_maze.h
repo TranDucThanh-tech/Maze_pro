@@ -1,13 +1,13 @@
 #ifndef MAZE_H
 #define MAZE_H
 
+#include <iostream>
 #include "1_2_type_maze.h"
 #include "2_1_maze_dfs.h"
 #include "2_2_maze_prim.h"
 #include "SDL_Color.h"
 #include "Maze_size.h"
 #include "Button.h"
-#include "0_1_menu.h"
 
 class maze{
 public:
@@ -19,9 +19,7 @@ public:
     SDL_Renderer* renderer;
     Button* DFS;
     Button* PRIM;
-
     Button* BACK;
-
     TTF_Font* font;
     bool now_playing;
 

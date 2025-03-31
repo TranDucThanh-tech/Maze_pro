@@ -1,12 +1,11 @@
 #include "Button.h"
 #include <iostream>
 Button :: Button(int x, int y, int w, int h,
-            SDL_Renderer* renderer, SDL_Color color) : renderer(renderer){
+            SDL_Renderer* renderer, SDL_Color color) : renderer(renderer), color(color) {
     rect.x = x;
     rect.y = y;
     rect.w = w;
     rect.h = h;
-    color = yellow;
     is_hovered = false;
 }
 
@@ -47,11 +46,11 @@ void  Button :: render_button(const char* text, TTF_Font* font){
     }
     SDL_RenderFillRect(renderer, &rect);
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderDrawRect(renderer, &rect);
 
     if (font && text) {
-        SDL_Color text_color = {0, 0, 0, 0};
+        SDL_Color text_color = {0, 0, 0, 255};
         SDL_Surface* surface = TTF_RenderText_Solid(font, text, text_color);
         SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 

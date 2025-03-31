@@ -2,10 +2,11 @@
 
 menu::menu(SDL_Renderer* renderer) :  renderer(renderer), play_clicked(false),setting_clicked(false) {
     if (TTF_Init() == -1)
-        std::cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
+       cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
     font = TTF_OpenFont("Arial.ttf", 24);
-    Play = new Button((win_hight-200)/2, (win_width-50)/2 - 50, 200, 50, renderer, yellow);
-    Setting = new Button((win_hight-200)/2, (win_width-50)/2 + 50, 200, 50, renderer, yellow);
+    Play = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50, renderer, green);
+    Setting = new Button((win_hight-200)/2, (win_width-50)/2 , 200, 50, renderer, green);
+    Quit = new Button ((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, green);
 }
 
 menu::~menu() {
@@ -15,6 +16,7 @@ menu::~menu() {
     }
     if(Play) delete Play;
     if(Setting) delete Setting;
+    if(Quit) delete Quit;
 }
 
 bool menu::play_clicked_() {
@@ -26,26 +28,19 @@ bool menu::setting_clicked_(){
 }
 
 
-void menu::render() {
-    if (Play) {
-        Play->render_button("Play", font);
-    }
-    SDL_RenderPresent(renderer);
-}
-
-
-
-
 void menu::handle_event(SDL_Event& event) {
 
     SDL_SetRenderDrawColor(renderer,0, 0, 0, 255);
     SDL_RenderClear(renderer);
-    Setting->render_button("Setting", font);
-    Play->render_button("Play", font);
+
+    Setting->render_button("SETTING", font);
+    Play->render_button("PLAY", font);
+    Quit->render_button("QUIT", font);
 
     if (event.type == SDL_MOUSEMOTION) {
-        Play->check_button_hover(event.motion.x, event.motion.y);
-        Setting->check_button_hover(event.motion.x, event.motion.y);
+        Play -> check_button_hover(event.motion.x, event.motion.y);
+        Setting -> check_button_hover(event.motion.x, event.motion.y);
+        Quit -> check_button_hover(event.motion.x, event.motion.y);
         return;
     }
 
@@ -63,6 +58,12 @@ void menu::handle_event(SDL_Event& event) {
             SDL_SetRenderDrawColor(renderer,0, 0, 0, 255);
             SDL_RenderClear(renderer);
             SDL_RenderPresent(renderer);
+            }
+        if (Quit && Quit -> is_hovered_()
+            && event.button.button == SDL_BUTTON_LEFT){
+            SDL_Event event;
+            event.type = SDL_QUIT;
+            SDL_PushEvent(&event);
             }
         return;
     }

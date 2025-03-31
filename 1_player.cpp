@@ -4,6 +4,22 @@ player::player(int x, int y, maze* Maze, SDL_Renderer* renderer)
     : x(x), y(y), Maze(Maze), renderer(renderer) {
     now_playing = false;
     solved = false;
+    Win = new Button((win_hight-300)/2, (win_width-70)/2 , 300, 70, renderer, orange);
+    Lose = new Button((win_hight-300)/2, (win_width-70)/2  , 300, 70, renderer, gray);
+
+    if (TTF_Init() == -1)
+        std::cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
+
+    font = TTF_OpenFont("Arial.ttf", 24);
+}
+
+player :: ~player(){
+    if (Win) delete Win;
+    if (Lose) delete Lose;
+    if (font) {
+        TTF_CloseFont(font);
+        font = nullptr;
+    }
 }
 
 void player :: move_player(string direction){
@@ -39,8 +55,10 @@ bool player :: is_end(){
 
 
 void player::handle_event(SDL_Event& event) {
-    if (!now_playing && Maze -> now_playing_())
+    if (!Maze -> now_playing_()) return;
+    if (!now_playing){
         Maze -> draw_cell(renderer, x, y, white, Maze -> cell_size);
+    }
     if (event.type == SDL_KEYDOWN){
         if(event.key.repeat != 0) return;
         if (solved) return;
@@ -49,18 +67,22 @@ void player::handle_event(SDL_Event& event) {
             case SDLK_LEFT: move_player("left");now_playing = true; return;
             case SDLK_DOWN: move_player("down");now_playing = true; return;
             case SDLK_UP: move_player("up");now_playing = true; return;
-            case SDLK_RETURN:
-                Maze -> draw_cell(renderer, x, y, black, Maze -> cell_size);
-                SDL_RenderPresent(renderer);
-                Maze -> solve_maze(0, 0);
-                solved = true;
-                return;
+
             case SDLK_HOME:
                 Maze -> draw_cell(renderer, x, y, black, Maze -> cell_size);
                 SDL_RenderPresent(renderer);
                 reset();
                 Maze -> draw_cell(renderer, x, y, white, Maze -> cell_size);
                 return;
+
+            case SDLK_RETURN:
+                Maze -> draw_cell(renderer, x, y, black, Maze -> cell_size);
+                SDL_RenderPresent(renderer);
+                Maze -> solve_maze(0, 0);
+                solved = true;
+                Lose -> render_button("YOU LOSE", font);
+                return;
+
             default:
                 return;
         }
@@ -68,5 +90,7 @@ void player::handle_event(SDL_Event& event) {
     if (is_end() && !solved){
         Maze -> solve_maze(0, 0);
         solved = true;
+        Win -> render_button("YOU WIN", font);
+        return;
     }
 }

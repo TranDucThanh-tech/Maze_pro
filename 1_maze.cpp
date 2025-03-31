@@ -12,10 +12,10 @@ maze :: maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer){
     now_playing = false;
     visited = vector<vector<bool>>(row_size, vector<bool>(col_size, false));
     way = vector<vector<int>>(row_size, vector<int>(col_size, 0));
-    cout << "maze" << endl;
-    DFS = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50,renderer, yellow);
-    PRIM = new Button((win_hight-200)/2, (win_width-50)/2, 200, 50,  renderer, yellow);
-    BACK = new Button((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, yellow);
+
+    DFS = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50,renderer, green);
+    PRIM = new Button((win_hight-200)/2, (win_width-50)/2, 200, 50,  renderer, green);
+    BACK = new Button((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, green);
 
     if (TTF_Init() == -1)
         std::cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
@@ -133,8 +133,6 @@ void maze::handle_event(SDL_Event& event) {
         DFS->render_button("DFS", font);
         PRIM->render_button("PRIM", font);
         BACK->render_button("BACK", font);
-        SDL_RenderPresent(renderer);
-
     }
     if (event.type == SDL_MOUSEMOTION) {
         if (!now_playing){
@@ -145,17 +143,25 @@ void maze::handle_event(SDL_Event& event) {
     }
     if (event.type == SDL_MOUSEBUTTONDOWN) {
         if (DFS && DFS->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
-            now_playing = true;
             reset();
             set_generate(new maze_dfs());
             generate_maze_();
+            now_playing = true;
         }
 
         if (PRIM && PRIM->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
-            now_playing = true;
             reset();
             set_generate(new maze_prim());
             generate_maze_();
+            now_playing = true;
+        }
+        if (BACK && BACK->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
+            SDL_Event event;
+            event.type = SDL_KEYDOWN;
+            event.key.keysym.sym = SDLK_m;
+            event.key.state = SDL_PRESSED;
+            event.key.repeat = 0;
+            SDL_PushEvent(&event);
         }
 
         DFS -> set_hovered_(false);
