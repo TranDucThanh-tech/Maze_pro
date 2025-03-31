@@ -9,13 +9,13 @@ using namespace std;
 class Button{
 private:
     SDL_Rect rect;
-    TTF_Font* font;
     bool is_hovered;
     SDL_Color color;
     SDL_Renderer* renderer;
 public:
     Button();
-    Button(int x, int y, int w, int h, SDL_Renderer* renderer, SDL_Color color);
+    Button(int x, int y, int w, int h,
+            SDL_Renderer* renderer, SDL_Color color);
     ~Button();
 
     bool is_hovered_();
@@ -26,5 +26,6 @@ public:
 
     void check_button_hover(int mouse_x, int mouse_y);
 };
+
 
 #endif // BUTTON_H

@@ -6,7 +6,6 @@ player::player(int x, int y, maze* Maze, SDL_Renderer* renderer)
     solved = false;
 }
 
-
 void player :: move_player(string direction){
     SDL_Color white = { 255, 255, 255, 255 };
     SDL_Color black = {0, 0, 0, 255 };
@@ -54,6 +53,7 @@ void player::handle_event(SDL_Event& event) {
                 Maze -> draw_cell(renderer, x, y, black, Maze -> cell_size);
                 SDL_RenderPresent(renderer);
                 Maze -> solve_maze(0, 0);
+                solved = true;
                 return;
             case SDLK_HOME:
                 Maze -> draw_cell(renderer, x, y, black, Maze -> cell_size);

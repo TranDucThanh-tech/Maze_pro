@@ -1,11 +1,11 @@
 #include "Button.h"
 #include <iostream>
-Button :: Button(int x, int y, int w, int h, SDL_Renderer* renderer, SDL_Color yellow){
+Button :: Button(int x, int y, int w, int h,
+            SDL_Renderer* renderer, SDL_Color color) : renderer(renderer){
     rect.x = x;
     rect.y = y;
     rect.w = w;
     rect.h = h;
-    this->renderer = renderer;
     color = yellow;
     is_hovered = false;
 }
@@ -21,6 +21,8 @@ void Button :: set_hovered_(bool a){
     is_hovered = a;
 }
 
+
+
 void Button :: check_button_hover(int mouse_x, int mouse_y){
     is_hovered = (mouse_x >= rect.x && mouse_x < rect.x + rect.w &&
               mouse_y >= rect.y && mouse_y < rect.y + rect.h);
@@ -35,7 +37,8 @@ void  Button :: render_button(const char* text, TTF_Font* font){
                             color.g + 50,
                             color.b + 50,
                             color.a);
-    } else {
+    }
+    else {
         SDL_SetRenderDrawColor(renderer,
                             color.r,
                             color.g,
@@ -44,8 +47,7 @@ void  Button :: render_button(const char* text, TTF_Font* font){
     }
     SDL_RenderFillRect(renderer, &rect);
 
-
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
     SDL_RenderDrawRect(renderer, &rect);
 
     if (font && text) {
@@ -66,6 +68,9 @@ void  Button :: render_button(const char* text, TTF_Font* font){
         SDL_DestroyTexture(texture);
     }
 }
+
+
+
 
 
 

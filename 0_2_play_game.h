@@ -11,8 +11,6 @@ private:
     maze* Maze;
     player* Player;
     SDL_Renderer* renderer;
-    Button* DFS;
-    Button* PRIM;
 public:
     play_game(SDL_Renderer* renderer);
     ~play_game();

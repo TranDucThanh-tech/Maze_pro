@@ -10,6 +10,7 @@ play_game :: ~play_game(){
     delete Maze;
     delete Player;
 }
+
 void play_game :: handle_event(SDL_Event& event){
     Maze -> handle_event(event);
     Player -> handle_event(event);

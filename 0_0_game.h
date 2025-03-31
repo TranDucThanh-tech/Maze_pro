@@ -6,7 +6,9 @@
 #include "0_0_game_state.h"
 #include "0_1_menu.h"
 #include "0_2_play_game.h"
+#include "0_3_setting.h"
 #include "Maze_size.h"
+
 using namespace std;
 
 
@@ -14,8 +16,9 @@ class game{
 private:
     SDL_Window* window;
     SDL_Renderer* renderer;
-    bool running;
     game_state* Game_state;
+    bool running;
+
 public:
     game();
     ~game();

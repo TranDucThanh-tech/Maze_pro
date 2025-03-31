@@ -39,6 +39,8 @@
 		<Unit filename="0_1_menu.h" />
 		<Unit filename="0_2_play_game.cpp" />
 		<Unit filename="0_2_play_game.h" />
+		<Unit filename="0_3_setting.cpp" />
+		<Unit filename="0_3_setting.h" />
 		<Unit filename="1_2_type_maze.h" />
 		<Unit filename="1_maze.cpp" />
 		<Unit filename="1_maze.h" />
@@ -51,6 +53,7 @@
 		<Unit filename="Button.cpp" />
 		<Unit filename="Button.h" />
 		<Unit filename="Maze_size.h" />
+		<Unit filename="Music.h" />
 		<Unit filename="SDL_Color.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />

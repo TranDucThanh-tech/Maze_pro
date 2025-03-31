@@ -18,7 +18,6 @@ void maze_prim :: generate_maze(maze& Maze, int row, int col)
         }
     }
 
-
     while (!edge.empty()){
         int rand_edge = rand() % edge.size();
         section now_edge = edge[rand_edge];
@@ -27,7 +26,6 @@ void maze_prim :: generate_maze(maze& Maze, int row, int col)
         int end_row = now_edge.end_row;
         int end_col = now_edge.end_col;
         edge.erase(edge.begin() + rand_edge);
-
 
         if (! Maze.visited[end_row][end_col]){
             Maze.visited[end_row][end_col] = true;
@@ -41,7 +39,6 @@ void maze_prim :: generate_maze(maze& Maze, int row, int col)
             SDL_Delay(5);
             Maze.draw_cell( Maze.renderer, end_row, end_col, black,  Maze.cell_size);
             SDL_RenderPresent( Maze.renderer);
-
 
             for (int i = 0; i < 4; i++){
                 int new_row = end_row + drow[i];

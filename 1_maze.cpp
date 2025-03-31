@@ -13,14 +13,24 @@ maze :: maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer){
     visited = vector<vector<bool>>(row_size, vector<bool>(col_size, false));
     way = vector<vector<int>>(row_size, vector<int>(col_size, 0));
     cout << "maze" << endl;
-    DFS = new Button((win_hight-200)/2, (win_width-50)/2 + 50, 200, 50, renderer, yellow);
-    PRIM = new Button((win_hight-200)/2, (win_width-50)/2 - 50, 200, 50, renderer, yellow);
+    DFS = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50,renderer, yellow);
+    PRIM = new Button((win_hight-200)/2, (win_width-50)/2, 200, 50,  renderer, yellow);
+    BACK = new Button((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, yellow);
 
     if (TTF_Init() == -1)
         std::cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
     font = TTF_OpenFont("Arial.ttf", 24);
+}
 
-
+maze :: ~maze(){
+    if (Type_maze != nullptr) delete Type_maze;
+    if (DFS != nullptr) delete DFS;
+    if (PRIM != nullptr) delete PRIM;
+    if (BACK != nullptr) delete BACK;
+    if (font) {
+        TTF_CloseFont(font);
+        font = nullptr;
+    }
 }
 
 bool maze ::  now_playing_(){
@@ -118,16 +128,11 @@ void maze :: generate_maze_(){
 }
 
 
-maze :: ~maze(){
-    if (Type_maze != nullptr) {
-        delete Type_maze;
-    }
-}
-
 void maze::handle_event(SDL_Event& event) {
     if (!now_playing) {
         DFS->render_button("DFS", font);
         PRIM->render_button("PRIM", font);
+        BACK->render_button("BACK", font);
         SDL_RenderPresent(renderer);
 
     }
@@ -135,6 +140,7 @@ void maze::handle_event(SDL_Event& event) {
         if (!now_playing){
             DFS->check_button_hover(event.motion.x, event.motion.y);
             PRIM->check_button_hover(event.motion.x, event.motion.y);
+            BACK->check_button_hover(event.motion.x, event.motion.y);
         }
     }
     if (event.type == SDL_MOUSEBUTTONDOWN) {
@@ -151,8 +157,10 @@ void maze::handle_event(SDL_Event& event) {
             set_generate(new maze_prim());
             generate_maze_();
         }
+
         DFS -> set_hovered_(false);
         PRIM -> set_hovered_(false);
+        BACK -> set_hovered_(false);
     }
 }
 

@@ -1,5 +1,5 @@
 #include "0_0_game.h"
-
+#include <iostream>
 game :: game()
 {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -10,7 +10,7 @@ game :: game()
         "Maze Generator",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        win_hight, win_width,
+        win_width, win_hight,
         SDL_WINDOW_SHOWN
     );
     if (!window) {
@@ -27,7 +27,9 @@ game :: game()
     }
 
     running = true;
+
     Game_state = new menu(renderer);
+
     cout << "thanhcong" << endl;
 }
 
@@ -38,7 +40,8 @@ void game :: reset(){
 }
 
 game:: ~game(){
-    delete Game_state;
+    if (Game_state)
+        delete Game_state;
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
@@ -67,11 +70,21 @@ void game::handle_event(SDL_Event& event) {
 
         }
         Game_state -> handle_event(event);
-        if (auto Maze = dynamic_cast<menu*>(Game_state)){
-            if ( Maze -> play_clicked_())
+
+        if (auto Menu = dynamic_cast<menu*>(Game_state)){
+            if ( Menu -> play_clicked_())
                 set_state(new play_game(renderer));
+            else if (Menu -> setting_clicked_())
+                set_state(new setting(renderer));
         }
-        else if (auto Play = dynamic_cast<play_game*>(Game_state)){
+
+        else if (dynamic_cast<setting*>(Game_state)){
+            if ( event.type == SDL_KEYDOWN &&
+                event.key.keysym.sym == SDLK_m)
+                set_state(new menu(renderer));
+        }
+
+        else if (dynamic_cast<play_game*>(Game_state)){
             if ( event.type == SDL_KEYDOWN &&
                 event.key.keysym.sym == SDLK_m)
                 set_state(new menu(renderer));
@@ -88,6 +101,7 @@ void game :: run(){
     while(running){
         handle_event(event);
     }
+    cout <<"hello" << endl;
 }
 
 

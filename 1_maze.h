@@ -7,6 +7,7 @@
 #include "SDL_Color.h"
 #include "Maze_size.h"
 #include "Button.h"
+#include "0_1_menu.h"
 
 class maze{
 public:
@@ -18,6 +19,9 @@ public:
     SDL_Renderer* renderer;
     Button* DFS;
     Button* PRIM;
+
+    Button* BACK;
+
     TTF_Font* font;
     bool now_playing;
 

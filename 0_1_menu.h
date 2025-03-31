@@ -14,11 +14,13 @@ private:
     TTF_Font* font;
     SDL_Renderer* renderer;
     bool play_clicked;
+    bool setting_clicked;
 public:
 
     menu(SDL_Renderer* renderer);
     ~menu();
     bool play_clicked_();
+    bool setting_clicked_();
     void check_button_hover(Button* btn, int mouse_x, int mouse_y);
     void render() override;
     void handle_event(SDL_Event& event) override;
