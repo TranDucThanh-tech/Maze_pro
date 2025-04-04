@@ -55,6 +55,7 @@
 		<Unit filename="Maze_size.h" />
 		<Unit filename="Music.h" />
 		<Unit filename="SDL_Color.h" />
+		<Unit filename="Section.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>

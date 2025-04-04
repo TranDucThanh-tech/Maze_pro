@@ -1,21 +1,18 @@
 #include "1_maze.h"
 
 
-maze :: maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer){
-    this->row_size = row_size;
-    this->col_size = col_size;
-    this->cell_size = cell_size;
+maze :: maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer):renderer(renderer),col_size(col_size),
+row_size(row_size),cell_size(cell_size){
     this->row = 0;
     this->col = 0;
-    this->renderer = renderer;
     this->Type_maze = nullptr;
     now_playing = false;
     visited = vector<vector<bool>>(row_size, vector<bool>(col_size, false));
     way = vector<vector<int>>(row_size, vector<int>(col_size, 0));
 
-    DFS = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50,renderer, green);
-    PRIM = new Button((win_hight-200)/2, (win_width-50)/2, 200, 50,  renderer, green);
-    BACK = new Button((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, green);
+    DFS = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50,renderer, purple);
+    PRIM = new Button((win_hight-200)/2, (win_width-50)/2, 200, 50,  renderer, purple);
+    BACK = new Button((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, purple);
 
     if (TTF_Init() == -1)
         std::cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
@@ -97,9 +94,8 @@ bool maze :: solve_maze(int row, int col){
 }
 
 void maze :: reset(){
-    SDL_SetRenderDrawColor(renderer,0, 128, 128, 255);
+    SDL_SetRenderDrawColor(renderer,purple.r, purple.g, purple.b, purple.a);
     SDL_RenderClear(renderer);
-    SDL_RenderPresent(renderer);
     for (int i = 0; i < row_size; i++){
         for (int j = 0; j < col_size; j++){
             visited[i][j] = false;

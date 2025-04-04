@@ -12,8 +12,7 @@ void maze_prim :: generate_maze(maze& Maze, int row, int col)
         int new_row = row + drow[i];
         int new_col = col + dcol[i];
         if ( Maze.check_new_index(new_row, new_col)){
-            section new_edge;
-            new_edge.assign(row, col, new_row, new_col);
+            section new_edge = section(row, col, new_row, new_col);
             edge.push_back(new_edge);
         }
     }
@@ -28,6 +27,7 @@ void maze_prim :: generate_maze(maze& Maze, int row, int col)
         edge.erase(edge.begin() + rand_edge);
 
         if (! Maze.visited[end_row][end_col]){
+
             Maze.visited[end_row][end_col] = true;
             Maze.way[end_row][end_col] = 1;
             Maze.break_wall(start_row, start_col, end_row, end_col);
@@ -44,8 +44,7 @@ void maze_prim :: generate_maze(maze& Maze, int row, int col)
                 int new_row = end_row + drow[i];
                 int new_col = end_col + dcol[i];
                 if( Maze.check_new_index(new_row, new_col)){
-                    section new_edge;
-                    new_edge.assign(end_row, end_col, new_row, new_col);
+                    section new_edge = section(end_row, end_col, new_row, new_col);
                     edge.push_back(new_edge);
                 }
             }

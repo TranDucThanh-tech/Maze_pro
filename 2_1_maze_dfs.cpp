@@ -1,5 +1,8 @@
 #include "2_1_maze_dfs.h"
 
+const vector<int>delta_row = {0,0,-2,2};
+const vector<int>delta_col = {-2,2,0,0};
+
 void maze_dfs :: generate_maze(maze& Maze, int row, int col)
 {
     Maze.visited[row][col] = true;
@@ -7,8 +10,6 @@ void maze_dfs :: generate_maze(maze& Maze, int row, int col)
 
     Maze.draw_cell(Maze.renderer, row, col, black, Maze.cell_size);
     SDL_RenderPresent( Maze.renderer);
-    vector<int>delta_row = {0,0,-2,2};
-    vector<int>delta_col = {-2,2,0,0};
     vector<int>random_index = {0,1,2,3};
     random_shuffle(random_index.begin(), random_index.end());
 

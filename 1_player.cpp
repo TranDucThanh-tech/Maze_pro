@@ -4,6 +4,7 @@ player::player(int x, int y, maze* Maze, SDL_Renderer* renderer)
     : x(x), y(y), Maze(Maze), renderer(renderer) {
     now_playing = false;
     solved = false;
+    is_win = 2;
     Win = new Button((win_hight-300)/2, (win_width-70)/2 , 300, 70, renderer, orange);
     Lose = new Button((win_hight-300)/2, (win_width-70)/2  , 300, 70, renderer, gray);
 
@@ -80,7 +81,9 @@ void player::handle_event(SDL_Event& event) {
                 SDL_RenderPresent(renderer);
                 Maze -> solve_maze(0, 0);
                 solved = true;
+                is_win = 0;
                 Lose -> render_button("YOU LOSE", font);
+
                 return;
 
             default:
@@ -90,7 +93,36 @@ void player::handle_event(SDL_Event& event) {
     if (is_end() && !solved){
         Maze -> solve_maze(0, 0);
         solved = true;
+        is_win = 1;
         Win -> render_button("YOU WIN", font);
         return;
+    }
+    if (event.type == SDL_MOUSEMOTION || event.type == SDL_MOUSEBUTTONDOWN){
+        if (is_win == 1){
+            Win -> check_button_hover(event.motion.x, event.motion.y);
+            Win -> render_button("YOU WIN", font);
+        }
+        else if (is_win == 0){
+            Lose -> check_button_hover(event.motion.x, event.motion.y);
+            Lose -> render_button("YOU LOSE", font);
+        }
+        if (Win && Win->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
+            SDL_Event event;
+            event.type = SDL_KEYDOWN;
+            event.key.keysym.sym = SDLK_m;
+            event.key.state = SDL_PRESSED;
+            event.key.repeat = 0;
+            SDL_PushEvent(&event);
+            return;
+        }
+        else if (Lose && Lose->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
+            SDL_Event event;
+            event.type = SDL_KEYDOWN;
+            event.key.keysym.sym = SDLK_m;
+            event.key.state = SDL_PRESSED;
+            event.key.repeat = 0;
+            SDL_PushEvent(&event);
+            return;
+        }
     }
 }

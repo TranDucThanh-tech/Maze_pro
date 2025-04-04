@@ -1,9 +1,9 @@
 #include "0_3_setting.h"
 
 setting :: setting(SDL_Renderer* renderer) : renderer(renderer) {
-    SOUNDS = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50, renderer, green);
-    MUSIC = new Button((win_hight-200)/2, (win_width-50)/2 , 200, 50, renderer, green);
-    BACK = new Button((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, green);
+    SOUNDS = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50, renderer, purple);
+    MUSIC = new Button((win_hight-200)/2, (win_width-50)/2 , 200, 50, renderer, purple);
+    BACK = new Button((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, purple);
 
     if (TTF_Init() == -1)
         std::cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
@@ -22,8 +22,7 @@ setting :: ~setting(){
 }
 
 void setting ::  handle_event(SDL_Event& event){
-    SDL_SetRenderDrawColor(renderer,0, 0, 0, 255);
-    SDL_RenderClear(renderer);
+
     SOUNDS->render_button("SOUNDS", font);
     MUSIC->render_button("MUSIC", font);
     BACK -> render_button("BACK", font);

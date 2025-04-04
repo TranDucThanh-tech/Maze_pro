@@ -32,9 +32,9 @@ void  Button :: render_button(const char* text, TTF_Font* font){
 
     if (is_hovered) {
         SDL_SetRenderDrawColor(renderer,
-                            color.r,
+                            color.r + 50,
                             color.g + 50,
-                            color.b + 50,
+                            color.b,
                             color.a);
     }
     else {

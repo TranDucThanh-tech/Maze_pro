@@ -17,6 +17,7 @@ private:
     Button* Win;
     Button* Lose;
     TTF_Font* font;
+    int is_win;
 public:
     player() = default;
     player(int x, int y,maze* Maze, SDL_Renderer* renderer);

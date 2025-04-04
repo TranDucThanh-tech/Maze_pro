@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1743424866 source:d:\0.game\maze_pro\main.cpp
+1743443489 source:d:\0.game\maze_pro\main.cpp
 	"0_0_game.h"
 	"1_maze.h"
 	"1_player.h"
@@ -22,7 +22,7 @@
 	"Maze_size.h"
 	"Button.h"
 
-1743440414 d:\0.game\maze_pro\1_player.h
+1743658642 d:\0.game\maze_pro\1_player.h
 	"1_maze.h"
 	"Button.h"
 	"SDL_Color.h"
@@ -32,23 +32,24 @@
 1742784345 d:\0.game\maze_pro\2_1_maze_dfs.h
 	"1_maze.h"
 
-1742784345 d:\0.game\maze_pro\2_2_maze_prim.h
+1743743411 d:\0.game\maze_pro\2_2_maze_prim.h
 	<SDL.h>
 	"1_maze.h"
+	"section.h"
 
-1743440589 source:d:\0.game\maze_pro\1_maze.cpp
+1743657277 source:d:\0.game\maze_pro\1_maze.cpp
 	"1_maze.h"
 
-1743441315 source:d:\0.game\maze_pro\1_player.cpp
+1743659414 source:d:\0.game\maze_pro\1_player.cpp
 	"1_player.h"
 
-1742744891 source:d:\0.game\maze_pro\2_1_maze_dfs.cpp
+1743745290 source:d:\0.game\maze_pro\2_1_maze_dfs.cpp
 	"2_1_maze_dfs.h"
 
-1743136967 source:d:\0.game\maze_pro\2_2_maze_prim.cpp
+1743745290 source:d:\0.game\maze_pro\2_2_maze_prim.cpp
 	"2_2_maze_prim.h"
 
-1743442521 d:\0.game\maze_pro\sdl_color.h
+1743735274 d:\0.game\maze_pro\sdl_color.h
 	<SDL.h>
 
 1743437529 d:\0.game\maze_pro\1_2_type_maze.h
@@ -66,7 +67,7 @@
 1743437529 d:\0.game\maze_pro\0_0_game_state.h
 	<SDL.h>
 
-1743438643 source:d:\0.game\maze_pro\0_1_menu.cpp
+1743733435 source:d:\0.game\maze_pro\0_1_menu.cpp
 	"0_1_menu.h"
 
 1743437651 d:\0.game\maze_pro\0_1_menu.h
@@ -78,7 +79,7 @@
 	"SDL_Color.h"
 	"Maze_size.h"
 
-1743436683 source:d:\0.game\maze_pro\0_0_game.cpp
+1743731737 source:d:\0.game\maze_pro\0_0_game.cpp
 	"0_0_game.h"
 	<iostream>
 
@@ -91,7 +92,7 @@
 	"1_player.h"
 	"Maze_size.h"
 
-1743426440 source:d:\0.game\maze_pro\button.cpp
+1743443815 source:d:\0.game\maze_pro\button.cpp
 	"Button.h"
 	<iostream>
 
@@ -106,12 +107,12 @@
 	"1_player.h"
 	"Maze_size.h"
 
-1743436652 source:d:\0.game\maze_pro\0_2_play_game.cpp
+1743734292 source:d:\0.game\maze_pro\0_2_play_game.cpp
 	"0_2_play_game.h"
 
 1743039140 d:\0.game\maze_pro\maze_size.h
 
-1743438516 source:d:\0.game\maze_pro\0_3_setting.cpp
+1743734329 source:d:\0.game\maze_pro\0_3_setting.cpp
 	"0_3_setting.h"
 
 1743437890 d:\0.game\maze_pro\0_3_setting.h
@@ -119,4 +120,6 @@
 	"0_0_game_state.h"
 	"Button.h"
 	"Maze_size.h"
+
+1743743411 d:\0.game\maze_pro\section.h
 

@@ -4,9 +4,9 @@ menu::menu(SDL_Renderer* renderer) :  renderer(renderer), play_clicked(false),se
     if (TTF_Init() == -1)
        cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
     font = TTF_OpenFont("Arial.ttf", 24);
-    Play = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50, renderer, green);
-    Setting = new Button((win_hight-200)/2, (win_width-50)/2 , 200, 50, renderer, green);
-    Quit = new Button ((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, green);
+    Play = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50, renderer, purple);
+    Setting = new Button((win_hight-200)/2, (win_width-50)/2 , 200, 50, renderer, purple);
+    Quit = new Button ((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, purple);
 }
 
 menu::~menu() {
@@ -48,24 +48,20 @@ void menu::handle_event(SDL_Event& event) {
         if (Play && Play -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT) {
             play_clicked = true;
-            SDL_SetRenderDrawColor(renderer,0, 0, 0, 255);
-            SDL_RenderClear(renderer);
-            SDL_RenderPresent(renderer);
+            return;
             }
         if (Setting && Setting -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT){
             setting_clicked = true;
-            SDL_SetRenderDrawColor(renderer,0, 0, 0, 255);
-            SDL_RenderClear(renderer);
-            SDL_RenderPresent(renderer);
+            return;
             }
         if (Quit && Quit -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT){
             SDL_Event event;
             event.type = SDL_QUIT;
             SDL_PushEvent(&event);
+            return;
             }
-        return;
     }
 }
 

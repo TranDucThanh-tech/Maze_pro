@@ -7,11 +7,12 @@ play_game :: play_game(SDL_Renderer* renderer){
 }
 
 play_game :: ~play_game(){
-    delete Maze;
-    delete Player;
+    if (Maze) delete Maze;
+    if (Player) delete Player;
 }
 
 void play_game :: handle_event(SDL_Event& event){
+
     Maze -> handle_event(event);
     Player -> handle_event(event);
 }
