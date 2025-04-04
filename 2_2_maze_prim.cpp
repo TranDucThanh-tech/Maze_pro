@@ -36,7 +36,7 @@ void maze_prim :: generate_maze(maze& Maze, int row, int col)
             Maze.draw_cell( Maze.renderer, (start_row+end_row)/2, (start_col+end_col)/2, black,  Maze.cell_size);
             Maze.draw_cell( Maze.renderer, end_row, end_col, red,  Maze.cell_size);
             SDL_RenderPresent( Maze.renderer);
-            SDL_Delay(5);
+            SDL_Delay(10);
             Maze.draw_cell( Maze.renderer, end_row, end_col, black,  Maze.cell_size);
             SDL_RenderPresent( Maze.renderer);
 
