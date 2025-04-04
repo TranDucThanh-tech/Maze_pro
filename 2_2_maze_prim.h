@@ -1,6 +1,6 @@
 #ifndef MAZE_PRIM_H
 #define MAZE_PRIM_H
-#include <SDL.h>
+
 #include "1_maze.h"
 #include "section.h"
 

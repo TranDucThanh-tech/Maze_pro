@@ -50,6 +50,8 @@
 		<Unit filename="2_1_maze_dfs.h" />
 		<Unit filename="2_2_maze_prim.cpp" />
 		<Unit filename="2_2_maze_prim.h" />
+		<Unit filename="2_3_maze_kruskal.cpp" />
+		<Unit filename="2_3_maze_kruskal.h" />
 		<Unit filename="Button.cpp" />
 		<Unit filename="Button.h" />
 		<Unit filename="Maze_size.h" />

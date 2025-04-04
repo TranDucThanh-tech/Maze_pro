@@ -48,11 +48,15 @@ void menu::handle_event(SDL_Event& event) {
         if (Play && Play -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT) {
             play_clicked = true;
+            SDL_SetRenderDrawColor(renderer,0, 0, 0, 255);
+            SDL_RenderClear(renderer);
             return;
             }
         if (Setting && Setting -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT){
             setting_clicked = true;
+            SDL_SetRenderDrawColor(renderer,0, 0, 0, 255);
+            SDL_RenderClear(renderer);
             return;
             }
         if (Quit && Quit -> is_hovered_()

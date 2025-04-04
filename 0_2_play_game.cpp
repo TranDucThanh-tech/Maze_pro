@@ -12,7 +12,6 @@ play_game :: ~play_game(){
 }
 
 void play_game :: handle_event(SDL_Event& event){
-
     Maze -> handle_event(event);
     Player -> handle_event(event);
 }

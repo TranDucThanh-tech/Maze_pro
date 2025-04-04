@@ -5,6 +5,7 @@
 #include "1_2_type_maze.h"
 #include "2_1_maze_dfs.h"
 #include "2_2_maze_prim.h"
+#include "2_3_maze_kruskal.h"
 #include "SDL_Color.h"
 #include "Maze_size.h"
 #include "Button.h"
@@ -19,6 +20,7 @@ public:
     SDL_Renderer* renderer;
     Button* DFS;
     Button* PRIM;
+    Button* KRUSKAL;
     Button* BACK;
     TTF_Font* font;
     bool now_playing;

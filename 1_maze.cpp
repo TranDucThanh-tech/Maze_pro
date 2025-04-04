@@ -10,12 +10,16 @@ row_size(row_size),cell_size(cell_size){
     visited = vector<vector<bool>>(row_size, vector<bool>(col_size, false));
     way = vector<vector<int>>(row_size, vector<int>(col_size, 0));
 
-    DFS = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50,renderer, purple);
-    PRIM = new Button((win_hight-200)/2, (win_width-50)/2, 200, 50,  renderer, purple);
-    BACK = new Button((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, purple);
+    int y_offset = (win_hight - 200) / 2 - 65;
+    DFS = new Button((win_width - 200) / 2, y_offset + 55 , 200, 50, renderer, purple);
+    PRIM = new Button((win_width - 200) / 2, y_offset +  2*55, 200, 50, renderer, purple);
+    KRUSKAL = new Button((win_width - 200) / 2, y_offset + 3*  55, 200, 50, renderer, purple);
+    BACK = new Button((win_width - 200) / 2, y_offset + 4 * 55, 200, 50, renderer, purple);
+
+
 
     if (TTF_Init() == -1)
-        std::cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
+        cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
     font = TTF_OpenFont("Arial.ttf", 24);
 }
 
@@ -23,6 +27,7 @@ maze :: ~maze(){
     if (Type_maze != nullptr) delete Type_maze;
     if (DFS != nullptr) delete DFS;
     if (PRIM != nullptr) delete PRIM;
+    if (KRUSKAL != nullptr) delete KRUSKAL;
     if (BACK != nullptr) delete BACK;
     if (font) {
         TTF_CloseFont(font);
@@ -128,12 +133,14 @@ void maze::handle_event(SDL_Event& event) {
     if (!now_playing) {
         DFS->render_button("DFS", font);
         PRIM->render_button("PRIM", font);
+        KRUSKAL -> render_button("KRUSKAL", font);
         BACK->render_button("BACK", font);
     }
     if (event.type == SDL_MOUSEMOTION) {
         if (!now_playing){
             DFS->check_button_hover(event.motion.x, event.motion.y);
             PRIM->check_button_hover(event.motion.x, event.motion.y);
+            KRUSKAL ->check_button_hover(event.motion.x, event.motion.y);
             BACK->check_button_hover(event.motion.x, event.motion.y);
         }
     }
@@ -145,13 +152,21 @@ void maze::handle_event(SDL_Event& event) {
             now_playing = true;
         }
 
-        if (PRIM && PRIM->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
+        else if (PRIM && PRIM->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
             reset();
             set_generate(new maze_prim());
             generate_maze_();
             now_playing = true;
         }
-        if (BACK && BACK->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
+
+        else if (KRUSKAL && KRUSKAL->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
+            reset();
+            set_generate(new kruskal_maze());
+            generate_maze_();
+            now_playing = true;
+        }
+
+        else if (BACK && BACK->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
             SDL_Event event;
             event.type = SDL_KEYDOWN;
             event.key.keysym.sym = SDLK_m;
@@ -160,8 +175,10 @@ void maze::handle_event(SDL_Event& event) {
             SDL_PushEvent(&event);
         }
 
+
         DFS -> set_hovered_(false);
         PRIM -> set_hovered_(false);
+        KRUSKAL ->set_hovered_(false);
         BACK -> set_hovered_(false);
     }
 }
