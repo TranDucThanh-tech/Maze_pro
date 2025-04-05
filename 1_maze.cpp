@@ -3,8 +3,8 @@
 
 maze :: maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer):renderer(renderer),col_size(col_size),
 row_size(row_size),cell_size(cell_size){
-    this->row = 0;
-    this->col = 0;
+    this->row = 20;
+    this->col = 20;
     this->Type_maze = nullptr;
     now_playing = false;
     visited = vector<vector<bool>>(row_size, vector<bool>(col_size, false));
@@ -117,6 +117,7 @@ void maze :: reset(){
 void maze :: set_generate(type_maze* type) {
     if (Type_maze != nullptr) {
         delete Type_maze;
+        Type_maze = nullptr;
     }
     Type_maze = type;
 }
@@ -124,7 +125,7 @@ void maze :: set_generate(type_maze* type) {
 
 void maze :: generate_maze_(){
     if (Type_maze){
-        Type_maze -> generate_maze(*this, 0, 0);
+        Type_maze -> generate_maze(*this, row, col);
     }
 }
 

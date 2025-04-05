@@ -8,6 +8,7 @@
 #include "Button.h"
 #include "SDL_Color.h"
 #include "Maze_size.h"
+#include "Music.h"
 
 class menu : public game_state{
 private:

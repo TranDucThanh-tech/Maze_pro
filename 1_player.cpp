@@ -15,8 +15,14 @@ player::player(int x, int y, maze* Maze, SDL_Renderer* renderer)
 }
 
 player :: ~player(){
-    if (Win) delete Win;
-    if (Lose) delete Lose;
+    if (Win) {
+        delete Win;
+        Win = nullptr;
+    }
+    if (Lose) {
+        delete Lose;
+        Lose = nullptr;
+    }
     if (font) {
         TTF_CloseFont(font);
         font = nullptr;
@@ -57,6 +63,9 @@ bool player :: is_end(){
 
 void player::handle_event(SDL_Event& event) {
     if (!Maze -> now_playing_()) return;
+
+    Maze -> draw_cell(renderer, row_size - 1, col_size -1, red, Maze -> cell_size);
+
     if (!now_playing){
         Maze -> draw_cell(renderer, x, y, white, Maze -> cell_size);
     }
@@ -83,7 +92,6 @@ void player::handle_event(SDL_Event& event) {
                 solved = true;
                 is_win = 0;
                 Lose -> render_button("YOU LOSE", font);
-
                 return;
 
             default:
@@ -113,7 +121,6 @@ void player::handle_event(SDL_Event& event) {
             event.key.state = SDL_PRESSED;
             event.key.repeat = 0;
             SDL_PushEvent(&event);
-            return;
         }
         else if (Lose && Lose->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
             SDL_Event event;
@@ -122,7 +129,6 @@ void player::handle_event(SDL_Event& event) {
             event.key.state = SDL_PRESSED;
             event.key.repeat = 0;
             SDL_PushEvent(&event);
-            return;
         }
     }
 }

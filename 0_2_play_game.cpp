@@ -7,8 +7,14 @@ play_game :: play_game(SDL_Renderer* renderer){
 }
 
 play_game :: ~play_game(){
-    if (Maze) delete Maze;
-    if (Player) delete Player;
+    if (Maze) {
+        delete Maze;
+        Maze = nullptr;
+    }
+    if (Player) {
+        delete Player;
+        Player = nullptr;
+    }
 }
 
 void play_game :: handle_event(SDL_Event& event){

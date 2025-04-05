@@ -1,6 +1,6 @@
 #include "0_1_menu.h"
 
-menu::menu(SDL_Renderer* renderer) :  renderer(renderer), play_clicked(false),setting_clicked(false) {
+menu::menu(SDL_Renderer* renderer) :  renderer(renderer),  play_clicked(false),setting_clicked(false) {
     if (TTF_Init() == -1)
        cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
     font = TTF_OpenFont("Arial.ttf", 24);
@@ -14,9 +14,18 @@ menu::~menu() {
         TTF_CloseFont(font);
         font = nullptr;
     }
-    if(Play) delete Play;
-    if(Setting) delete Setting;
-    if(Quit) delete Quit;
+    if(Play){
+        delete Play;
+        Play = nullptr;
+    }
+    if(Setting){
+        delete Setting;
+        Setting = nullptr;
+    }
+    if(Quit) {
+        delete Quit;
+        Quit = nullptr;
+    }
 }
 
 bool menu::play_clicked_() {
