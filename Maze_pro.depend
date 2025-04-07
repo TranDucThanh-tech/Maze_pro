@@ -1,8 +1,6 @@
 # depslib dependency file v1.0
-1744040610 source:d:\0.game\maze_pro\main.cpp
+1744047315 source:d:\0.game\maze_pro\main.cpp
 	"0_0_game.h"
-	<cstdlib>
-	<crtdbg.h>
 
 1742780853 source:d:\0.game\maze_pro\0_game.cpp
 	"0_game.h"
@@ -38,16 +36,16 @@
 	"1_maze.h"
 	"section.h"
 
-1744038526 source:d:\0.game\maze_pro\1_maze.cpp
+1744044683 source:d:\0.game\maze_pro\1_maze.cpp
 	"1_maze.h"
 
-1744026957 source:d:\0.game\maze_pro\1_player.cpp
+1744042204 source:d:\0.game\maze_pro\1_player.cpp
 	"1_player.h"
 
 1743767485 source:d:\0.game\maze_pro\2_1_maze_dfs.cpp
 	"2_1_maze_dfs.h"
 
-1743757020 source:d:\0.game\maze_pro\2_2_maze_prim.cpp
+1744044942 source:d:\0.game\maze_pro\2_2_maze_prim.cpp
 	"2_2_maze_prim.h"
 
 1744028143 d:\0.game\maze_pro\sdl_color.h
@@ -145,7 +143,7 @@
 	<SDL_mixer.h>
 	<iostream>
 
-1744028592 source:d:\0.game\maze_pro\sound.cpp
+1744045257 source:d:\0.game\maze_pro\sound.cpp
 	"Sound.h"
 	<iostream>
 

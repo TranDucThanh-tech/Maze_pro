@@ -4,6 +4,7 @@
 SoundEffect::SoundEffect() : sound(nullptr),  is_off(false) {}
 
 SoundEffect::~SoundEffect() {
+    stop();
     if (sound) {
         Mix_FreeChunk(sound);
         sound = nullptr;
