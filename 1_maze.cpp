@@ -18,11 +18,11 @@ maze :: maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer, 
 }
 
 maze :: ~maze(){
-    if (Type_maze != nullptr) delete Type_maze;
-    if (DFS != nullptr) delete DFS;
-    if (PRIM != nullptr) delete PRIM;
-    if (KRUSKAL != nullptr) delete KRUSKAL;
-    if (BACK != nullptr) delete BACK;
+    if (Type_maze) delete Type_maze;
+    if (DFS) delete DFS;
+    if (PRIM) delete PRIM;
+    if (KRUSKAL) delete KRUSKAL;
+    if (BACK) delete BACK;
 }
 
 bool maze ::  now_playing_(){

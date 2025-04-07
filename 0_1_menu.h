@@ -13,12 +13,12 @@
 
 class menu : public game_state{
 private:
-    Button* Play;
-    Button* Setting;
-    Button* Quit;
     SDL_Renderer* renderer;
     TTF_Font* font;
     SoundEffect* Sound;
+    Button* Play;
+    Button* Setting;
+    Button* Quit;
     bool play_clicked;
     bool setting_clicked;
 public:
@@ -27,7 +27,6 @@ public:
     ~menu();
     bool play_clicked_();
     bool setting_clicked_();
-    void check_button_hover(Button* btn, int mouse_x, int mouse_y);
     void handle_event(SDL_Event& event) override;
 };
 #endif // MENU_H

@@ -10,13 +10,14 @@
 
 class setting : public game_state{
 private:
-    Button* SOUNDS;
-    Button* MUSIC;
-    Button* BACK;
     SDL_Renderer* renderer;
     TTF_Font* font;
     MusicTheme* Music;
     SoundEffect* Sound;
+    Button* SOUNDS;
+    Button* MUSIC;
+    Button* BACK;
+
 public:
     setting(SDL_Renderer* renderer,TTF_Font* font, MusicTheme* Music, SoundEffect* Sound);
     ~setting();

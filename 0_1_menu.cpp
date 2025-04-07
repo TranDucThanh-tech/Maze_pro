@@ -75,7 +75,7 @@ void menu::handle_event(SDL_Event& event) {
             && event.button.button == SDL_BUTTON_LEFT){
 
             Sound -> play();
-            SDL_Delay(1000);
+            SDL_Delay(500);
 
             SDL_Event event;
             event.type = SDL_QUIT;

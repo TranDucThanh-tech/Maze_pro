@@ -55,7 +55,7 @@ bool player :: is_end(){
 void player::handle_event(SDL_Event& event) {
     if (!Maze -> now_playing_()) return;
 
-    Maze -> draw_cell(renderer, row_size - 1, col_size -1, red, Maze -> cell_size);
+    if (!solved) Maze -> draw_cell(renderer, row_size - 1, col_size -1, red, Maze -> cell_size);
 
     if (!now_playing){
         Maze -> draw_cell(renderer, x, y, white, Maze -> cell_size);

@@ -63,6 +63,8 @@ game::~game() {
         delete Sound;
         Sound = nullptr;
     }
+    if (Game_state)
+        delete Game_state;
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
