@@ -17,18 +17,16 @@ private:
     Button* Win;
     Button* Lose;
     TTF_Font* font;
+    SoundEffect* Sound;
     int is_win;
 public:
     player() = default;
-    player(int x, int y,maze* Maze, SDL_Renderer* renderer);
+    player(int x, int y,maze* Maze, SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound);
     ~player();
 
     bool is_end();
-
     void move_player(string direction);
-
     void reset();
-
     void handle_event(SDL_Event& event);
 };
 

@@ -1,8 +1,8 @@
 #include "1_maze.h"
 
 
-maze :: maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer):renderer(renderer),col_size(col_size),
-row_size(row_size),cell_size(cell_size){
+maze :: maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound):
+    renderer(renderer),font(font), Sound(Sound), col_size(col_size), row_size(row_size),cell_size(cell_size){
     this->row = 20;
     this->col = 20;
     this->Type_maze = nullptr;
@@ -15,12 +15,6 @@ row_size(row_size),cell_size(cell_size){
     PRIM = new Button((win_width - 200) / 2, y_offset +  2*55, 200, 50, renderer, purple);
     KRUSKAL = new Button((win_width - 200) / 2, y_offset + 3*  55, 200, 50, renderer, purple);
     BACK = new Button((win_width - 200) / 2, y_offset + 4 * 55, 200, 50, renderer, purple);
-
-
-
-    if (TTF_Init() == -1)
-        cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
-    font = TTF_OpenFont("Arial.ttf", 24);
 }
 
 maze :: ~maze(){
@@ -29,10 +23,6 @@ maze :: ~maze(){
     if (PRIM != nullptr) delete PRIM;
     if (KRUSKAL != nullptr) delete KRUSKAL;
     if (BACK != nullptr) delete BACK;
-    if (font) {
-        TTF_CloseFont(font);
-        font = nullptr;
-    }
 }
 
 bool maze ::  now_playing_(){
@@ -147,6 +137,11 @@ void maze::handle_event(SDL_Event& event) {
     }
     if (event.type == SDL_MOUSEBUTTONDOWN) {
         if (DFS && DFS->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
+
+            Sound -> loadFromFile("click.wav");
+            Sound -> play();
+            SDL_Delay(100);
+
             reset();
             set_generate(new maze_dfs());
             generate_maze_();
@@ -154,6 +149,11 @@ void maze::handle_event(SDL_Event& event) {
         }
 
         else if (PRIM && PRIM->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
+
+            Sound -> loadFromFile("click.wav");
+            Sound -> play();
+            SDL_Delay(100);
+
             reset();
             set_generate(new maze_prim());
             generate_maze_();
@@ -161,6 +161,11 @@ void maze::handle_event(SDL_Event& event) {
         }
 
         else if (KRUSKAL && KRUSKAL->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
+
+            Sound -> loadFromFile("click.wav");
+            Sound -> play();
+            SDL_Delay(100);
+
             reset();
             set_generate(new kruskal_maze());
             generate_maze_();
@@ -168,6 +173,11 @@ void maze::handle_event(SDL_Event& event) {
         }
 
         else if (BACK && BACK->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
+
+            Sound -> loadFromFile("click.wav");
+            Sound -> play();
+            SDL_Delay(100);
+
             SDL_Event event;
             event.type = SDL_KEYDOWN;
             event.key.keysym.sym = SDLK_m;

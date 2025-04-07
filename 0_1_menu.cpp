@@ -1,19 +1,13 @@
 #include "0_1_menu.h"
 
-menu::menu(SDL_Renderer* renderer) :  renderer(renderer),  play_clicked(false),setting_clicked(false) {
-    if (TTF_Init() == -1)
-       cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
-    font = TTF_OpenFont("Arial.ttf", 24);
+menu::menu(SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound) :
+    renderer(renderer),  font(font), Sound(Sound), play_clicked(false),setting_clicked(false) {
     Play = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50, renderer, purple);
     Setting = new Button((win_hight-200)/2, (win_width-50)/2 , 200, 50, renderer, purple);
     Quit = new Button ((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, purple);
 }
 
 menu::~menu() {
-    if (font) {
-        TTF_CloseFont(font);
-        font = nullptr;
-    }
     if(Play){
         delete Play;
         Play = nullptr;
@@ -56,6 +50,11 @@ void menu::handle_event(SDL_Event& event) {
     if (event.type == SDL_MOUSEBUTTONDOWN){
         if (Play && Play -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT) {
+
+            Sound -> loadFromFile("click.wav");
+            Sound -> play();
+            SDL_Delay(100);
+
             play_clicked = true;
             SDL_SetRenderDrawColor(renderer,0, 0, 0, 255);
             SDL_RenderClear(renderer);
@@ -63,6 +62,11 @@ void menu::handle_event(SDL_Event& event) {
             }
         if (Setting && Setting -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT){
+
+            Sound -> loadFromFile("click.wav");
+            Sound -> play();
+            SDL_Delay(100);
+
             setting_clicked = true;
             SDL_SetRenderDrawColor(renderer,0, 0, 0, 255);
             SDL_RenderClear(renderer);
@@ -70,6 +74,11 @@ void menu::handle_event(SDL_Event& event) {
             }
         if (Quit && Quit -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT){
+
+            Sound -> loadFromFile("click.wav");
+            Sound -> play();
+            SDL_Delay(1000);
+
             SDL_Event event;
             event.type = SDL_QUIT;
             SDL_PushEvent(&event);

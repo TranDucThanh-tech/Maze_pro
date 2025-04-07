@@ -11,15 +11,15 @@ MusicTheme::~MusicTheme() {
 }
 
 
-void MusicTheme::play(const std::string& file) {
+void MusicTheme::play(const string& file) {
     stop();
     music = Mix_LoadMUS(file.c_str());
     if (music) {
         if (Mix_PlayMusic(music, -1) == -1)
-            std::cerr << "Error playing music: " << Mix_GetError() << std::endl;
+            cout << "Error playing music: " << Mix_GetError() << endl;
     }
     else{
-        std::cerr << "Error loading music file: " << file << " SDL_mixer Error: " << Mix_GetError() << std::endl;
+        cout << "Error loading music file: " << file << " SDL_mixer Error: " << Mix_GetError() << endl;
         return;
     }
 }
@@ -27,13 +27,6 @@ void MusicTheme::play(const std::string& file) {
 void MusicTheme::stop() {
     if (Mix_PlayingMusic())
         Mix_HaltMusic();
-}
-
-void MusicTheme::toggle(const std::string& file) {
-    if (Mix_PlayingMusic())
-        stop();
-    else
-        play(file);
 }
 
 void MusicTheme::pause_resume() {

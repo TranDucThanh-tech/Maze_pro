@@ -13,8 +13,10 @@ private:
     maze* Maze;
     player* Player;
     SDL_Renderer* renderer;
+    SoundEffect* Sound;
+    TTF_Font* font;
 public:
-    play_game(SDL_Renderer* renderer);
+    play_game(SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound);
     ~play_game();
     void handle_event(SDL_Event& event) override;
 };

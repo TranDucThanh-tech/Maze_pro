@@ -9,7 +9,7 @@
 #include "SDL_Color.h"
 #include "Maze_size.h"
 #include "Button.h"
-
+#include "Sound.h"
 class maze{
 public:
     int row_size, col_size, cell_size;
@@ -23,11 +23,12 @@ public:
     Button* KRUSKAL;
     Button* BACK;
     TTF_Font* font;
+    SoundEffect* Sound;
     bool now_playing;
 
 public:
     maze() = default;
-    maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer);
+    maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound);
     ~maze();
 
     bool now_playing_();

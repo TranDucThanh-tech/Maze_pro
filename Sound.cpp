@@ -1,47 +1,52 @@
 #include "Sound.h"
 #include <iostream>
 
-Sound::Sound() : sound(nullptr){}
+SoundEffect::SoundEffect() : sound(nullptr),  is_off(false) {}
 
-Sound::~Sound() {
-    stop();
+SoundEffect::~SoundEffect() {
     if (sound) {
         Mix_FreeChunk(sound);
         sound = nullptr;
     }
 }
 
-void Sound::play(const std::string& file) {
-    stop();
-    sound = Mix_LoadWAV(file.c_str());
-    if (sound ) {
-        if (Mix_PlayChannel(-1, sound, 0) == -1)
-          cerr << "Failed to play sound: " << Mix_GetError() << endl;
+bool SoundEffect::loadFromFile(const string& path) {
+    if(is_off) return false;
+    if (sound) {
+        Mix_FreeChunk(sound);
+        sound = nullptr;
     }
-    else{
-        cerr << "Failed to load sound effect: " << file << " Error: " << Mix_GetError() << endl;
-        return;
+
+    sound = Mix_LoadWAV(path.c_str());
+    if (!sound) {
+        cout << "Failed to load sound: " << Mix_GetError() << "\n";
+        return false;
+    }
+    return true;
+}
+
+void SoundEffect::play(int loops) {
+    if (is_off || !sound) return;
+    int channel = Mix_PlayChannel(-1, sound, loops);
+    if (channel == -1) {
+        cout << "Failed to play sound: " << Mix_GetError() << "\n";
     }
 }
 
-void Sound::stop() {
-    if (sound != nullptr) {
-        Mix_HaltChannel(-1);
-    }
+void SoundEffect::stop() {
+    Mix_HaltChannel(-1);
+    is_off = true;
 }
 
-void Sound::toggle(const std::string& file) {
-    if (Mix_Playing(-1)) {
-        stop();
-    } else {
-        play(file);
+void SoundEffect::pause_resume() {
+    if (is_off) {
+        int channel = Mix_PlayChannel(-1, sound, 0);
+        if (channel == -1)
+            cout << "Failed to resume sound: " << Mix_GetError() << "\n";
     }
-}
-
-void Sound::pause_resume() {
-    if (Mix_Paused(-1)) {
-        Mix_Resume(-1);
-    } else {
+    else
         Mix_Pause(-1);
-    }
+    is_off = !is_off;
 }
+
+

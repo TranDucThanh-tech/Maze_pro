@@ -8,6 +8,7 @@
 #include "1_maze.h"
 #include "1_player.h"
 #include "Music.h"
+#include "Sound.h"
 #include "Maze_size.h"
 
 using namespace std;
@@ -19,6 +20,8 @@ private:
     SDL_Renderer* renderer;
     game_state* Game_state;
     MusicTheme* Music;
+    SoundEffect* Sound;
+    TTF_Font* font;
     bool running;
 
 public:

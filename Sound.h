@@ -1,19 +1,22 @@
-#ifndef SOUND_H
-#define SOUND_H
+#ifndef SOUND_EFFECT_H
+#define SOUND_EFFECT_H
 
+#include <SDL.h>
 #include <SDL_mixer.h>
 #include <string>
 using namespace std;
 
-class Sound {
+class SoundEffect {
 private:
     Mix_Chunk* sound;
+    bool is_off;
 public:
-    Sound();
-    ~Sound();
-    void play(const std::string& file);
+    SoundEffect();
+    ~SoundEffect();
+
+    bool loadFromFile(const string& path);
+    void play(int loops = 0);
     void stop();
-    void toggle(const std::string& file);
     void pause_resume();
 };
 

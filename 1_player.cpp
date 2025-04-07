@@ -1,17 +1,12 @@
 #include "1_player.h"
 
-player::player(int x, int y, maze* Maze, SDL_Renderer* renderer)
-    : x(x), y(y), Maze(Maze), renderer(renderer) {
+player::player(int x, int y, maze* Maze, SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound)
+    : x(x), y(y), Maze(Maze), renderer(renderer), font(font), Sound(Sound) {
     now_playing = false;
     solved = false;
     is_win = 2;
     Win = new Button((win_hight-300)/2, (win_width-70)/2 , 300, 70, renderer, orange);
     Lose = new Button((win_hight-300)/2, (win_width-70)/2  , 300, 70, renderer, gray);
-
-    if (TTF_Init() == -1)
-        std::cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
-
-    font = TTF_OpenFont("Arial.ttf", 24);
 }
 
 player :: ~player(){
@@ -22,10 +17,6 @@ player :: ~player(){
     if (Lose) {
         delete Lose;
         Lose = nullptr;
-    }
-    if (font) {
-        TTF_CloseFont(font);
-        font = nullptr;
     }
 }
 
@@ -73,12 +64,44 @@ void player::handle_event(SDL_Event& event) {
         if(event.key.repeat != 0) return;
         if (solved) return;
         switch (event.key.keysym.sym) {
-            case SDLK_RIGHT: move_player("right"); now_playing = true; return;
-            case SDLK_LEFT: move_player("left");now_playing = true; return;
-            case SDLK_DOWN: move_player("down");now_playing = true; return;
-            case SDLK_UP: move_player("up");now_playing = true; return;
+            case SDLK_RIGHT:
+                Sound -> loadFromFile("move.wav");
+                Sound -> play();
+                SDL_Delay(50);
+
+                move_player("right");
+                now_playing = true;
+                return;
+            case SDLK_LEFT:
+                Sound -> loadFromFile("move.wav");
+                Sound -> play();
+                SDL_Delay(50);
+
+                move_player("left");
+                now_playing = true;
+                return;
+            case SDLK_DOWN:
+                Sound -> loadFromFile("move.wav");
+                Sound -> play();
+                SDL_Delay(50);
+
+                move_player("down");
+                now_playing = true;
+                return;
+            case SDLK_UP:
+                Sound -> loadFromFile("move.wav");
+                Sound -> play();
+                SDL_Delay(50);
+
+                move_player("up");
+                now_playing = true;
+                return;
 
             case SDLK_HOME:
+                Sound -> loadFromFile("move.wav");
+                Sound -> play();
+                SDL_Delay(50);
+
                 Maze -> draw_cell(renderer, x, y, black, Maze -> cell_size);
                 SDL_RenderPresent(renderer);
                 reset();
@@ -86,12 +109,17 @@ void player::handle_event(SDL_Event& event) {
                 return;
 
             case SDLK_RETURN:
+
                 Maze -> draw_cell(renderer, x, y, black, Maze -> cell_size);
                 SDL_RenderPresent(renderer);
                 Maze -> solve_maze(0, 0);
                 solved = true;
                 is_win = 0;
                 Lose -> render_button("YOU LOSE", font);
+
+                Sound -> loadFromFile("lose.wav");
+                Sound -> play();
+                SDL_Delay(100);
                 return;
 
             default:
@@ -103,6 +131,10 @@ void player::handle_event(SDL_Event& event) {
         solved = true;
         is_win = 1;
         Win -> render_button("YOU WIN", font);
+
+        Sound -> loadFromFile("win.wav");
+        Sound -> play();
+        SDL_Delay(100);
         return;
     }
     if (event.type == SDL_MOUSEMOTION || event.type == SDL_MOUSEBUTTONDOWN){
@@ -115,6 +147,10 @@ void player::handle_event(SDL_Event& event) {
             Lose -> render_button("YOU LOSE", font);
         }
         if (Win && Win->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
+            Sound -> loadFromFile("click.wav");
+            Sound -> play();
+            SDL_Delay(100);
+
             SDL_Event event;
             event.type = SDL_KEYDOWN;
             event.key.keysym.sym = SDLK_m;
@@ -123,6 +159,10 @@ void player::handle_event(SDL_Event& event) {
             SDL_PushEvent(&event);
         }
         else if (Lose && Lose->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
+            Sound -> loadFromFile("click.wav");
+            Sound -> play();
+            SDL_Delay(100);
+
             SDL_Event event;
             event.type = SDL_KEYDOWN;
             event.key.keysym.sym = SDLK_m;

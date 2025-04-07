@@ -1,21 +1,13 @@
 #include "0_3_setting.h"
 
-setting :: setting(SDL_Renderer* renderer, MusicTheme* Music) : renderer(renderer), Music(Music) {
+setting :: setting(SDL_Renderer* renderer,TTF_Font* font, MusicTheme* Music, SoundEffect* Sound) :
+    renderer(renderer),font(font), Music(Music), Sound(Sound) {
     SOUNDS = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50, renderer, purple);
     MUSIC = new Button((win_hight-200)/2, (win_width-50)/2 , 200, 50, renderer, purple);
     BACK = new Button((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, purple);
-
-    if (TTF_Init() == -1)
-        std::cerr << "SDL_ttf can not init " << TTF_GetError() << endl;
-
-    font = TTF_OpenFont("Arial.ttf", 24);
 }
 
 setting :: ~setting(){
-    if (font) {
-        TTF_CloseFont(font);
-        font = nullptr;
-    }
     if(SOUNDS){
         delete SOUNDS;
         SOUNDS = nullptr;
@@ -47,13 +39,27 @@ void setting ::  handle_event(SDL_Event& event){
     if (event.type == SDL_MOUSEBUTTONDOWN){
         if (MUSIC && MUSIC -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT){
+
+                Sound -> loadFromFile("click.wav");
+                Sound -> play();
+                SDL_Delay(100);
+
                 Music -> pause_resume();
             }
-        /*else if (SOUNDS && SOUNDS -> is_hovered_()
+        else if (SOUNDS && SOUNDS -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT) {
+                Sound -> loadFromFile("click.wav");
+                Sound -> play();
+                SDL_Delay(100);
 
-            }*/
+                Sound -> pause_resume();
+            }
         else if (BACK && BACK -> is_hovered_()){
+
+            Sound -> loadFromFile("click.wav");
+            Sound -> play();
+            SDL_Delay(100);
+
             SDL_Event event;
             event.type = SDL_KEYDOWN;
             event.key.keysym.sym = SDLK_m;

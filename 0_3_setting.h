@@ -6,18 +6,19 @@
 #include "Button.h"
 #include "Maze_size.h"
 #include "Music.h"
+#include "Sound.h"
 
 class setting : public game_state{
 private:
     Button* SOUNDS;
     Button* MUSIC;
     Button* BACK;
-    MusicTheme* Music;
     SDL_Renderer* renderer;
-
     TTF_Font* font;
+    MusicTheme* Music;
+    SoundEffect* Sound;
 public:
-    setting(SDL_Renderer* renderer, MusicTheme* Music);
+    setting(SDL_Renderer* renderer,TTF_Font* font, MusicTheme* Music, SoundEffect* Sound);
     ~setting();
     void handle_event(SDL_Event& event) override;
 };

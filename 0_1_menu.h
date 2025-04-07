@@ -9,19 +9,21 @@
 #include "SDL_Color.h"
 #include "Maze_size.h"
 #include "Music.h"
+#include "Sound.h"
 
 class menu : public game_state{
 private:
     Button* Play;
     Button* Setting;
     Button* Quit;
-    TTF_Font* font;
     SDL_Renderer* renderer;
+    TTF_Font* font;
+    SoundEffect* Sound;
     bool play_clicked;
     bool setting_clicked;
 public:
 
-    menu(SDL_Renderer* renderer);
+    menu(SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound);
     ~menu();
     bool play_clicked_();
     bool setting_clicked_();

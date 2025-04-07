@@ -12,9 +12,9 @@ private:
 public:
     MusicTheme();
     ~MusicTheme();
+
     void play(const std::string& file);
     void stop();
-    void toggle(const string& file);
     void pause_resume();
 };
 

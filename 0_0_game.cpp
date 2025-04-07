@@ -2,9 +2,18 @@
 
 game::game() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        cerr << "SDL Initialization Error: " << SDL_GetError() << endl;
+        cout << "SDL Initialization Error: " << SDL_GetError() << endl;
         return;
     }
+    if (TTF_Init() < 0){
+       cout << "SDL_ttf can not init " << TTF_GetError() << endl;
+       return;
+    }
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+        cout << "SDL_mixer could not initialize! SDL_mixer Error: " << Mix_GetError() << std::endl;
+        return;
+    }
+
     window = SDL_CreateWindow(
         "Maze Generator",
         SDL_WINDOWPOS_CENTERED,
@@ -13,26 +22,30 @@ game::game() {
         SDL_WINDOW_SHOWN
     );
     if (!window) {
-        cerr << "Window Creation Error:" << SDL_GetError() << endl;
+        cout << "Window Creation Error:" << SDL_GetError() << endl;
         SDL_Quit();
         return ;
     }
+
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    if (renderer == nullptr) {
-        cerr << "Renderer Creation Error: " << SDL_GetError() << endl;
+    if (!renderer) {
+        cout << "Renderer Creation Error: " << SDL_GetError() << endl;
         SDL_DestroyWindow(window);
         SDL_Quit();
         return ;
     }
 
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1) {
-        std::cerr << "SDL_mixer could not initialize! SDL_mixer Error: " << Mix_GetError() << std::endl;
-        return;
+    font = TTF_OpenFont("Arial.ttf", 24);
+    if (!font){
+     cout << "Font Creation Error:" << TTF_GetError() << endl;
+     SDL_Quit();
+     return ;
     }
 
     running = true;
     Music = new MusicTheme();
-    Game_state = new menu(renderer);
+    Sound = new SoundEffect();
+    Game_state = new menu(renderer,font, Sound);
 }
 
 game::~game() {
@@ -45,10 +58,20 @@ game::~game() {
         delete Music;
         Music = nullptr;
     }
+    if (Sound){
+        Sound -> stop();
+        delete Sound;
+        Sound = nullptr;
+    }
+
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     Mix_CloseAudio();
+    Mix_Quit();
+    TTF_CloseFont(font);
+    TTF_Quit();
     SDL_Quit();
+
 }
 
 void game::set_state(game_state* state) {
@@ -69,30 +92,31 @@ void game::handle_event(SDL_Event& event) {
 
         if (auto Menu = dynamic_cast<menu*>(Game_state)) {
             if (Menu->play_clicked_()) {
-                set_state(new play_game(renderer));
+                set_state(new play_game(renderer, font, Sound));
             } else if (Menu->setting_clicked_()) {
-                set_state(new setting(renderer, Music));
+                set_state(new setting(renderer, font, Music, Sound));
             }
         }
         else if (dynamic_cast<setting*>(Game_state)) {
             if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_m) {
-                set_state(new menu(renderer));
+                set_state(new menu(renderer, font, Sound));
             }
         }
         else if (dynamic_cast<play_game*>(Game_state)) {
             if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_m) {
-                set_state(new menu(renderer));
+                set_state(new menu(renderer, font, Sound));
             }
         }
-        SDL_RenderPresent(renderer);
-        SDL_Delay(16);
     }
 }
 
 void game::run() {
+    Mix_VolumeMusic(10);
     Music->play("Theme.mp3");
     SDL_Event event;
     while (running) {
         handle_event(event);
+        SDL_RenderPresent(renderer);
+        SDL_Delay(16);
     }
 }
