@@ -2,54 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="Button.h" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="1_player.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="573" topLine="0" />
+			<Cursor1 position="538" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="0_0_game_state.h" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="1_maze.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="44" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="2_2_maze_prim.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="44" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="2_2_maze_prim.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="649" topLine="24" />
-		</Cursor>
-	</File>
-	<File name="0_1_menu.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="461" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Sound.h" open="1" top="0" tabpos="28" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="276" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="2_1_maze_dfs.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="554" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Music.h" open="1" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="261" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="0_2_play_game.cpp" open="1" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="435" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="1_maze.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="269" topLine="1" />
+			<Cursor1 position="3043" topLine="72" />
 		</Cursor>
 	</File>
 	<File name="1_player.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
@@ -57,44 +17,34 @@
 			<Cursor1 position="504" topLine="7" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="0_1_menu.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="21" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="0_0_game.h" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="404" topLine="3" />
-		</Cursor>
-	</File>
-	<File name="Maze_size.h" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="171" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Button.cpp" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3208" topLine="82" />
-		</Cursor>
-	</File>
-	<File name="2_3_maze_kruskal.h" open="1" top="0" tabpos="25" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="475" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="2_3_maze_kruskal.cpp" open="1" top="0" tabpos="26" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="344" topLine="46" />
+			<Cursor1 position="461" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Music.cpp" open="1" top="0" tabpos="27" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="266" topLine="0" />
+			<Cursor1 position="841" topLine="17" />
 		</Cursor>
 	</File>
-	<File name="1_player.cpp" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+	<File name="Music.h" open="1" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="538" topLine="0" />
+			<Cursor1 position="346" topLine="5" />
+		</Cursor>
+	</File>
+	<File name="2_2_maze_prim.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1476" topLine="25" />
+		</Cursor>
+	</File>
+	<File name="Sound.h" open="1" top="0" tabpos="28" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="395" topLine="7" />
+		</Cursor>
+	</File>
+	<File name="0_1_menu.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2437" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Section.h" open="1" top="0" tabpos="29" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -102,24 +52,34 @@
 			<Cursor1 position="356" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="2_3_maze_kruskal.h" open="1" top="0" tabpos="25" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="475" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="62" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="0_0_game.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3269" topLine="98" />
+			<Cursor1 position="3080" topLine="65" />
 		</Cursor>
 	</File>
-	<File name="2_1_maze_dfs.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="0_2_play_game.cpp" open="1" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="63" topLine="0" />
+			<Cursor1 position="435" topLine="8" />
 		</Cursor>
 	</File>
-	<File name="SDL_Color.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+	<File name="Button.h" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="326" topLine="0" />
+			<Cursor1 position="573" topLine="10" />
 		</Cursor>
 	</File>
-	<File name="1_maze.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="2_3_maze_kruskal.cpp" open="1" top="0" tabpos="26" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1159" topLine="19" />
+			<Cursor1 position="344" topLine="57" />
 		</Cursor>
 	</File>
 	<File name="1_2_type_maze.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
@@ -127,9 +87,54 @@
 			<Cursor1 position="151" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="0_3_setting.h" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="361" topLine="1" />
+		</Cursor>
+	</File>
 	<File name="0_3_setting.cpp" open="1" top="0" tabpos="24" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1546" topLine="6" />
+			<Cursor1 position="1546" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="0_0_game_state.h" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="44" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="2_1_maze_dfs.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="286" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="2_1_maze_dfs.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="63" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Maze_size.h" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="171" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="SDL_Color.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="97" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Button.cpp" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3062" topLine="88" />
+		</Cursor>
+	</File>
+	<File name="Sound.cpp" open="1" top="0" tabpos="30" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1265" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="1_maze.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="269" topLine="1" />
 		</Cursor>
 	</File>
 	<File name="0_2_play_game.h" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
@@ -137,22 +142,17 @@
 			<Cursor1 position="326" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Sound.cpp" open="1" top="0" tabpos="30" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="2_2_maze_prim.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1162" topLine="32" />
+			<Cursor1 position="44" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="0_1_menu.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+	<File name="0_0_game.h" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2437" topLine="49" />
+			<Cursor1 position="404" topLine="3" />
 		</Cursor>
 	</File>
-	<File name="0_3_setting.h" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="361" topLine="1" />
-		</Cursor>
-	</File>
-	<Target name="Debug" top="1_player.cpp">
+	<Target name="Debug" top="main.cpp">
 		<File name="main.cpp" />
 		<File name="1_player.h" />
 		<File name="2_1_maze_dfs.h" />
