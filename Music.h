@@ -9,10 +9,11 @@ using namespace std;
 class MusicTheme {
 private:
     Mix_Music* music;
+    bool is_off;
 public:
     MusicTheme();
     ~MusicTheme();
-
+    bool is_off_();
     void play(const std::string& file);
     void stop();
     void pause_resume();

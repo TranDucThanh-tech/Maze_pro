@@ -68,6 +68,51 @@ void  Button :: render_button(const char* text, TTF_Font* font){
     }
 }
 
+void Button :: render_button_music(const char* text,  TTF_Font*font, bool is_off){
+    if (is_off)
+        color = earthy_orange;
+    else
+        color = purple;
+    if (is_hovered) {
+        SDL_SetRenderDrawColor(renderer,
+                            color.r + 50,
+                            color.g + 50,
+                            color.b,
+                            color.a);
+    }
+    else {
+        SDL_SetRenderDrawColor(renderer,
+                            color.r,
+                            color.g,
+                            color.b,
+                            color.a);
+    }
+    SDL_RenderFillRect(renderer, &rect);
+
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderDrawRect(renderer, &rect);
+
+    if (font && text) {
+        SDL_Color text_color = {0, 0, 0, 255};
+        SDL_Surface* surface = TTF_RenderText_Solid(font, text, text_color);
+        SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+        SDL_Rect text_rect = {
+            rect.x + (rect.w - surface->w) / 2,
+            rect.y + (rect.h - surface->h) / 2,
+            surface->w,
+            surface->h
+        };
+
+        SDL_RenderCopy(renderer, texture, NULL, &text_rect);
+
+        SDL_FreeSurface(surface);
+        SDL_DestroyTexture(texture);
+    }
+}
+
+
+
 
 
 

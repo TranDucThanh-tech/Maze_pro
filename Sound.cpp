@@ -10,6 +10,10 @@ SoundEffect::~SoundEffect() {
     }
 }
 
+bool SoundEffect :: is_off_(){
+    return is_off;
+}
+
 bool SoundEffect::loadFromFile(const string& path) {
     if(is_off) return false;
     if (sound) {
@@ -44,8 +48,10 @@ void SoundEffect::pause_resume() {
         if (channel == -1)
             cout << "Failed to resume sound: " << Mix_GetError() << "\n";
     }
-    else
+    else{
+        SDL_Delay(120);
         Mix_Pause(-1);
+    }
     is_off = !is_off;
 }
 

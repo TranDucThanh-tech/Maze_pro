@@ -48,10 +48,10 @@ void menu::handle_event(SDL_Event& event) {
     }
 
     if (event.type == SDL_MOUSEBUTTONDOWN){
+        Sound -> loadFromFile("click.wav");
         if (Play && Play -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT) {
 
-            Sound -> loadFromFile("click.wav");
             Sound -> play();
             SDL_Delay(100);
 
@@ -63,7 +63,6 @@ void menu::handle_event(SDL_Event& event) {
         if (Setting && Setting -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT){
 
-            Sound -> loadFromFile("click.wav");
             Sound -> play();
             SDL_Delay(100);
 
@@ -75,7 +74,6 @@ void menu::handle_event(SDL_Event& event) {
         if (Quit && Quit -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT){
 
-            Sound -> loadFromFile("click.wav");
             Sound -> play();
             SDL_Delay(1000);
 

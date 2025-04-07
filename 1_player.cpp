@@ -63,9 +63,10 @@ void player::handle_event(SDL_Event& event) {
     if (event.type == SDL_KEYDOWN){
         if(event.key.repeat != 0) return;
         if (solved) return;
+
+        Sound -> loadFromFile("move.wav");
         switch (event.key.keysym.sym) {
             case SDLK_RIGHT:
-                Sound -> loadFromFile("move.wav");
                 Sound -> play();
                 SDL_Delay(50);
 
@@ -73,7 +74,6 @@ void player::handle_event(SDL_Event& event) {
                 now_playing = true;
                 return;
             case SDLK_LEFT:
-                Sound -> loadFromFile("move.wav");
                 Sound -> play();
                 SDL_Delay(50);
 
@@ -81,7 +81,6 @@ void player::handle_event(SDL_Event& event) {
                 now_playing = true;
                 return;
             case SDLK_DOWN:
-                Sound -> loadFromFile("move.wav");
                 Sound -> play();
                 SDL_Delay(50);
 
@@ -89,7 +88,6 @@ void player::handle_event(SDL_Event& event) {
                 now_playing = true;
                 return;
             case SDLK_UP:
-                Sound -> loadFromFile("move.wav");
                 Sound -> play();
                 SDL_Delay(50);
 
@@ -98,7 +96,6 @@ void player::handle_event(SDL_Event& event) {
                 return;
 
             case SDLK_HOME:
-                Sound -> loadFromFile("move.wav");
                 Sound -> play();
                 SDL_Delay(50);
 

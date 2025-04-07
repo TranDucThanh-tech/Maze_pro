@@ -111,7 +111,7 @@ void game::handle_event(SDL_Event& event) {
 }
 
 void game::run() {
-    Mix_VolumeMusic(10);
+    Mix_VolumeMusic(30);
     Music->play("Theme.mp3");
     SDL_Event event;
     while (running) {

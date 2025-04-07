@@ -1,6 +1,6 @@
 #include "Music.h"
 
-MusicTheme::MusicTheme() : music(nullptr) {}
+MusicTheme::MusicTheme() : music(nullptr), is_off(false) {}
 
 MusicTheme::~MusicTheme() {
     stop();
@@ -10,6 +10,9 @@ MusicTheme::~MusicTheme() {
     }
 }
 
+bool MusicTheme::is_off_(){
+    return is_off;
+}
 
 void MusicTheme::play(const string& file) {
     stop();
@@ -36,4 +39,5 @@ void MusicTheme::pause_resume() {
         Mix_ResumeMusic();
     else
         Mix_PauseMusic();
+    is_off = !is_off;
 }

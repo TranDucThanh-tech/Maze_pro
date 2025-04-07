@@ -11,5 +11,6 @@ const SDL_Color black_red = {0, 111, 0, 255};
 const SDL_Color gray = {128, 128, 128, 255};
 const SDL_Color orange = {205, 165, 0, 255};
 const SDL_Color purple = {127, 0, 255, 180};
+const SDL_Color earthy_orange = {200, 113, 23, 255};
 
 #endif // COLORS_H

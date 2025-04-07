@@ -136,9 +136,9 @@ void maze::handle_event(SDL_Event& event) {
         }
     }
     if (event.type == SDL_MOUSEBUTTONDOWN) {
+        Sound -> loadFromFile("click.wav");
         if (DFS && DFS->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
 
-            Sound -> loadFromFile("click.wav");
             Sound -> play();
             SDL_Delay(100);
 
@@ -150,7 +150,6 @@ void maze::handle_event(SDL_Event& event) {
 
         else if (PRIM && PRIM->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
 
-            Sound -> loadFromFile("click.wav");
             Sound -> play();
             SDL_Delay(100);
 
@@ -162,7 +161,6 @@ void maze::handle_event(SDL_Event& event) {
 
         else if (KRUSKAL && KRUSKAL->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
 
-            Sound -> loadFromFile("click.wav");
             Sound -> play();
             SDL_Delay(100);
 
@@ -174,7 +172,6 @@ void maze::handle_event(SDL_Event& event) {
 
         else if (BACK && BACK->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
 
-            Sound -> loadFromFile("click.wav");
             Sound -> play();
             SDL_Delay(100);
 

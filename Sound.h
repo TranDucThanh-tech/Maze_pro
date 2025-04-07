@@ -13,7 +13,7 @@ private:
 public:
     SoundEffect();
     ~SoundEffect();
-
+    bool is_off_();
     bool loadFromFile(const string& path);
     void play(int loops = 0);
     void stop();

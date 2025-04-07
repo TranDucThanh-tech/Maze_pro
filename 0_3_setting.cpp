@@ -24,8 +24,8 @@ setting :: ~setting(){
 
 void setting ::  handle_event(SDL_Event& event){
 
-    SOUNDS->render_button("SOUNDS", font);
-    MUSIC->render_button("MUSIC", font);
+    SOUNDS->render_button_music("SOUNDS", font, Sound -> is_off_());
+    MUSIC->render_button_music("MUSIC", font, Music -> is_off_());
     BACK -> render_button("BACK", font);
 
     if (event.type == SDL_MOUSEMOTION) {
@@ -37,26 +37,23 @@ void setting ::  handle_event(SDL_Event& event){
 
 
     if (event.type == SDL_MOUSEBUTTONDOWN){
+        Sound -> loadFromFile("click.wav");
         if (MUSIC && MUSIC -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT){
 
-                Sound -> loadFromFile("click.wav");
                 Sound -> play();
                 SDL_Delay(100);
-
                 Music -> pause_resume();
             }
         else if (SOUNDS && SOUNDS -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT) {
-                Sound -> loadFromFile("click.wav");
+
                 Sound -> play();
                 SDL_Delay(100);
-
                 Sound -> pause_resume();
             }
         else if (BACK && BACK -> is_hovered_()){
 
-            Sound -> loadFromFile("click.wav");
             Sound -> play();
             SDL_Delay(100);
 
