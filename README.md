@@ -9,7 +9,7 @@
 - Hình ảnh: Không
 - Nhạc nền:  [Pikotaro PPAP Pen Pineapple Apple Pen (Long Version) karaoke.](https://youtu.be/pVBMmMBWoI8?si=q3VEzjSo8BCsSYST)
 - Hiệu ứng âm thanh: https://mixkit.co/free-sound-effects/game/
-- Sound code tham khảo: https://github.com/tdlinh2712/path-vi... (không chép)
+- source code tham khảo: https://github.com/tdlinh2712/path-vi... (không chép)
 - Các lần hỏi đáp với AI.
 - Demo: https://youtu.be/cTZ8KyC9eek?si=MXRqsZYR_4EebkAV
 
