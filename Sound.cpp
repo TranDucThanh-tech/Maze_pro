@@ -33,7 +33,7 @@ bool SoundEffect::loadFromFile(const string& path) {
 void SoundEffect::play(int loops) {
     if (is_off || !sound) return;
     int channel = Mix_PlayChannel(-1, sound, loops);
-    if (channel == -1) {
+    if (channel < 0) {
         cout << "Failed to play sound: " << Mix_GetError() << "\n";
     }
 }
@@ -46,7 +46,7 @@ void SoundEffect::stop() {
 void SoundEffect::pause_resume() {
     if (is_off) {
         int channel = Mix_PlayChannel(-1, sound, 0);
-        if (channel == -1)
+        if (channel < 0)
             cout << "Failed to resume sound: " << Mix_GetError() << "\n";
     }
     else{

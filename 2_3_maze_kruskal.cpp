@@ -48,7 +48,9 @@ void kruskal_maze :: unite(int id1, int id2) {
 
 
 void kruskal_maze :: generate_maze(maze& Maze, int row, int col) {
-    random_shuffle(edges.begin(), edges.end());
+    random_device rd;
+    mt19937 g(rd());
+    shuffle(edges.begin(), edges.end(), g);
     for (auto edge : edges) {
         int id1 = edge.start_row * col_size + edge.start_col;
         int id2 = edge.end_row * col_size + edge.end_col;
@@ -62,14 +64,14 @@ void kruskal_maze :: generate_maze(maze& Maze, int row, int col) {
         Maze.way[edge.end_row][edge.end_col] = 1;
         Maze.way[mid_row][mid_col] = 1;
 
-        Maze.draw_cell( Maze.renderer, edge.start_row, edge.start_col, red,  Maze.cell_size);
-        Maze.draw_cell( Maze.renderer, edge.end_row, edge.end_col, red,  Maze.cell_size);
-        Maze.draw_cell( Maze.renderer, mid_row, mid_col , red,  Maze.cell_size);
+        Maze.draw_cell( Maze.renderer, edge.start_row, edge.start_col, red,  cell_size);
+        Maze.draw_cell( Maze.renderer, edge.end_row, edge.end_col, red,  cell_size);
+        Maze.draw_cell( Maze.renderer, mid_row, mid_col , red,  cell_size);
         SDL_RenderPresent( Maze.renderer);
         SDL_Delay(10);
-        Maze.draw_cell( Maze.renderer, edge.start_row, edge.start_col, black,  Maze.cell_size);
-        Maze.draw_cell( Maze.renderer, edge.end_row, edge.end_col, black,  Maze.cell_size);
-        Maze.draw_cell( Maze.renderer, mid_row, mid_col , black,  Maze.cell_size);
+        Maze.draw_cell( Maze.renderer, edge.start_row, edge.start_col, black, cell_size);
+        Maze.draw_cell( Maze.renderer, edge.end_row, edge.end_col, black, cell_size);
+        Maze.draw_cell( Maze.renderer, mid_row, mid_col , black, cell_size);
     }
 }
 

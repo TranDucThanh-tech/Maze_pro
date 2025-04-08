@@ -1,6 +1,7 @@
 #ifndef MAZE_PRIM_H
 #define MAZE_PRIM_H
 
+#include <random>
 #include "1_maze.h"
 #include "section.h"
 

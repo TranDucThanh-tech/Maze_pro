@@ -18,6 +18,7 @@ private:
     SoundEffect* Sound;
     Button* Play;
     Button* Setting;
+    Button* Help;
     Button* Quit;
     bool play_clicked;
     bool setting_clicked;

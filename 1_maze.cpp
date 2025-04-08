@@ -2,19 +2,19 @@
 
 
 maze :: maze(int row_size, int col_size, int cell_size, SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound):
-    renderer(renderer),font(font), Sound(Sound), col_size(col_size), row_size(row_size),cell_size(cell_size){
+    renderer(renderer),font(font), Sound(Sound){
     this->row = 20;
     this->col = 20;
     this->Type_maze = nullptr;
-    now_playing = false;
+    is_finish = false;
     visited = vector<vector<bool>>(row_size, vector<bool>(col_size, false));
     way = vector<vector<int>>(row_size, vector<int>(col_size, 0));
 
-    int y_offset = (win_hight - 200) / 2 - 65;
-    DFS = new Button((win_width - 200) / 2, y_offset + 55 , 200, 50, renderer, purple);
-    PRIM = new Button((win_width - 200) / 2, y_offset +  2*55, 200, 50, renderer, purple);
-    KRUSKAL = new Button((win_width - 200) / 2, y_offset + 3*  55, 200, 50, renderer, purple);
-    BACK = new Button((win_width - 200) / 2, y_offset + 4 * 55, 200, 50, renderer, purple);
+    int y_offset = win_hight / 2;
+    DFS = new Button((win_width - 200) / 2, y_offset - 110 , 200, 50, renderer, purple);
+    PRIM = new Button((win_width - 200) / 2, y_offset - 55, 200, 50, renderer, purple);
+    KRUSKAL = new Button((win_width - 200) / 2, y_offset , 200, 50, renderer, purple);
+    BACK = new Button((win_width - 200) / 2, y_offset + 55 , 200, 50, renderer, purple);
 }
 
 maze :: ~maze(){
@@ -25,8 +25,8 @@ maze :: ~maze(){
     if (BACK) delete BACK;
 }
 
-bool maze ::  now_playing_(){
-    return now_playing;
+bool maze ::  is_finish_(){
+    return is_finish;
 }
 
 
@@ -121,60 +121,50 @@ void maze :: generate_maze_(){
 
 
 void maze::handle_event(SDL_Event& event) {
-    if (!now_playing) {
-        DFS->render_button("DFS", font);
-        PRIM->render_button("PRIM", font);
-        KRUSKAL -> render_button("KRUSKAL", font);
-        BACK->render_button("BACK", font);
-    }
+    if (is_finish) return;
+    DFS->render_button("DFS", font);
+    PRIM->render_button("PRIM", font);
+    KRUSKAL -> render_button("KRUSKAL", font);
+    BACK->render_button("BACK", font);
     if (event.type == SDL_MOUSEMOTION) {
-        if (!now_playing){
-            DFS->check_button_hover(event.motion.x, event.motion.y);
-            PRIM->check_button_hover(event.motion.x, event.motion.y);
-            KRUSKAL ->check_button_hover(event.motion.x, event.motion.y);
-            BACK->check_button_hover(event.motion.x, event.motion.y);
-        }
+        DFS->check_button_hover(event.motion.x, event.motion.y);
+        PRIM->check_button_hover(event.motion.x, event.motion.y);
+        KRUSKAL ->check_button_hover(event.motion.x, event.motion.y);
+        BACK->check_button_hover(event.motion.x, event.motion.y);
+        return;
     }
     if (event.type == SDL_MOUSEBUTTONDOWN) {
         Sound -> loadFromFile("click.wav");
         if (DFS && DFS->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
-
             Sound -> play();
             SDL_Delay(100);
-
             reset();
             set_generate(new maze_dfs());
             generate_maze_();
-            now_playing = true;
+            is_finish = true;
         }
 
         else if (PRIM && PRIM->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
-
             Sound -> play();
             SDL_Delay(100);
-
             reset();
             set_generate(new maze_prim());
             generate_maze_();
-            now_playing = true;
+            is_finish = true;
         }
 
         else if (KRUSKAL && KRUSKAL->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
-
             Sound -> play();
             SDL_Delay(100);
-
             reset();
             set_generate(new kruskal_maze());
             generate_maze_();
-            now_playing = true;
+            is_finish = true;
         }
 
         else if (BACK && BACK->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
-
             Sound -> play();
             SDL_Delay(100);
-
             SDL_Event event;
             event.type = SDL_KEYDOWN;
             event.key.keysym.sym = SDLK_m;
@@ -182,13 +172,10 @@ void maze::handle_event(SDL_Event& event) {
             event.key.repeat = 0;
             SDL_PushEvent(&event);
         }
+        return;
 
-
-        DFS -> set_hovered_(false);
-        PRIM -> set_hovered_(false);
-        KRUSKAL ->set_hovered_(false);
-        BACK -> set_hovered_(false);
     }
+
 }
 
 

@@ -93,18 +93,16 @@ void game::handle_event(SDL_Event& event) {
         Game_state->handle_event(event);
 
         if (auto Menu = dynamic_cast<menu*>(Game_state)) {
-            if (Menu->play_clicked_()) {
+            if (Menu->play_clicked_())
                 set_state(new play_game(renderer, font, Sound));
-            } else if (Menu->setting_clicked_()) {
+            else if (Menu->setting_clicked_())
                 set_state(new setting(renderer, font, Music, Sound));
-            }
         }
-        else if (dynamic_cast<setting*>(Game_state)) {
-            if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_m) {
+        if (dynamic_cast<setting*>(Game_state)) {
+            if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_m)
                 set_state(new menu(renderer, font, Sound));
-            }
         }
-        else if (dynamic_cast<play_game*>(Game_state)) {
+        if (dynamic_cast<play_game*>(Game_state)) {
             if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_m) {
                 set_state(new menu(renderer, font, Sound));
             }

@@ -11,7 +11,7 @@
 	"2_1_maze_dfs.h"
 	"2_2_maze_prim.h"
 
-1743998899 d:\0.game\maze_pro\1_maze.h
+1744085829 d:\0.game\maze_pro\1_maze.h
 	<iostream>
 	"1_2_type_maze.h"
 	"2_1_maze_dfs.h"
@@ -32,20 +32,21 @@
 1742784345 d:\0.game\maze_pro\2_1_maze_dfs.h
 	"1_maze.h"
 
-1743751619 d:\0.game\maze_pro\2_2_maze_prim.h
+1744086168 d:\0.game\maze_pro\2_2_maze_prim.h
+	<random>
 	"1_maze.h"
 	"section.h"
 
-1744044683 source:d:\0.game\maze_pro\1_maze.cpp
+1744104145 source:d:\0.game\maze_pro\1_maze.cpp
 	"1_maze.h"
 
-1744042204 source:d:\0.game\maze_pro\1_player.cpp
+1744085884 source:d:\0.game\maze_pro\1_player.cpp
 	"1_player.h"
 
-1743767485 source:d:\0.game\maze_pro\2_1_maze_dfs.cpp
+1744086267 source:d:\0.game\maze_pro\2_1_maze_dfs.cpp
 	"2_1_maze_dfs.h"
 
-1744044942 source:d:\0.game\maze_pro\2_2_maze_prim.cpp
+1744085939 source:d:\0.game\maze_pro\2_2_maze_prim.cpp
 	"2_2_maze_prim.h"
 
 1744028143 d:\0.game\maze_pro\sdl_color.h
@@ -66,10 +67,10 @@
 1743437529 d:\0.game\maze_pro\0_0_game_state.h
 	<SDL.h>
 
-1744028710 source:d:\0.game\maze_pro\0_1_menu.cpp
+1744103568 source:d:\0.game\maze_pro\0_1_menu.cpp
 	"0_1_menu.h"
 
-1744039442 d:\0.game\maze_pro\0_1_menu.h
+1744087846 d:\0.game\maze_pro\0_1_menu.h
 	<iostream>
 	<SDL.h>
 	<SDL_ttf.h>
@@ -80,7 +81,7 @@
 	"Music.h"
 	"Sound.h"
 
-1744039133 source:d:\0.game\maze_pro\0_0_game.cpp
+1744103526 source:d:\0.game\maze_pro\0_0_game.cpp
 	"0_0_game.h"
 
 1743998437 d:\0.game\maze_pro\0_0_game.h
@@ -94,11 +95,11 @@
 	"Sound.h"
 	"Maze_size.h"
 
-1744027690 source:d:\0.game\maze_pro\button.cpp
+1744083882 source:d:\0.game\maze_pro\button.cpp
 	"Button.h"
 	<iostream>
 
-1744027690 d:\0.game\maze_pro\button.h
+1744083882 d:\0.game\maze_pro\button.h
 	<SDL.h>
 	<SDL_ttf.h>
 	"SDL_Color.h"
@@ -114,7 +115,7 @@
 
 1743039140 d:\0.game\maze_pro\maze_size.h
 
-1744027956 source:d:\0.game\maze_pro\0_3_setting.cpp
+1744104145 source:d:\0.game\maze_pro\0_3_setting.cpp
 	"0_3_setting.h"
 
 1744038207 d:\0.game\maze_pro\0_3_setting.h
@@ -127,10 +128,11 @@
 
 1743743411 d:\0.game\maze_pro\section.h
 
-1743757553 source:d:\0.game\maze_pro\2_3_maze_kruskal.cpp
+1744086168 source:d:\0.game\maze_pro\2_3_maze_kruskal.cpp
 	"2_3_maze_kruskal.h"
 
-1743751984 d:\0.game\maze_pro\2_3_maze_kruskal.h
+1744086168 d:\0.game\maze_pro\2_3_maze_kruskal.h
+	<random>
 	"1_maze.h"
 	"Section.h"
 	"Maze_size.h"
@@ -143,7 +145,7 @@
 	<SDL_mixer.h>
 	<iostream>
 
-1744045257 source:d:\0.game\maze_pro\sound.cpp
+1744104219 source:d:\0.game\maze_pro\sound.cpp
 	"Sound.h"
 	<iostream>
 

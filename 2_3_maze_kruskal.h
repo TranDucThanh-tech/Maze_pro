@@ -1,9 +1,11 @@
 #ifndef MAZE_KRUSKAL_H
 #define MAZE_KRUSKAL_H
 
+#include <random>
 #include "1_maze.h"
 #include "Section.h"
 #include "Maze_size.h"
+
 
 class kruskal_maze : public type_maze{
 private:

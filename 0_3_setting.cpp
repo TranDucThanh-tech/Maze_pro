@@ -40,14 +40,12 @@ void setting ::  handle_event(SDL_Event& event){
         Sound -> loadFromFile("click.wav");
         if (MUSIC && MUSIC -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT){
-
                 Sound -> play();
                 SDL_Delay(100);
                 Music -> pause_resume();
             }
         else if (SOUNDS && SOUNDS -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT) {
-
                 Sound -> play();
                 SDL_Delay(100);
                 Sound -> pause_resume();

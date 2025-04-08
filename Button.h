@@ -19,7 +19,6 @@ public:
     ~Button();
 
     bool is_hovered_();
-    void set_hovered_(bool a);
     void render_button(const char* text,  TTF_Font*font);
     void render_button_music(const char* text,  TTF_Font*font, bool is_off);
     void check_button_hover(int mouse_x, int mouse_y);

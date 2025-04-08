@@ -8,11 +8,13 @@ void maze_dfs :: generate_maze(maze& Maze, int row, int col)
     Maze.visited[row][col] = true;
     Maze.way[row][col] = 1;
 
-    Maze.draw_cell(Maze.renderer, row, col, black, Maze.cell_size);
+    Maze.draw_cell(Maze.renderer, row, col, black, cell_size);
     SDL_RenderPresent( Maze.renderer);
 
     vector<int>random_index = {0,1,2,3};
-    random_shuffle(random_index.begin(), random_index.end());
+    random_device rd;
+    mt19937 g(rd());
+    shuffle(random_index.begin(), random_index.end(), g);
 
     for (int i = 0; i < 4; i++){
         int new_row = row + delta_row[random_index[i]];
@@ -20,8 +22,8 @@ void maze_dfs :: generate_maze(maze& Maze, int row, int col)
         if (Maze.check_new_index(new_row, new_col)){
             Maze.break_wall(row, col, new_row, new_col);
 
-            Maze.draw_cell( Maze.renderer, (row+new_row)/2, (col + new_col)/2, black,  Maze.cell_size);
-            Maze.draw_cell( Maze.renderer, new_row, new_col, red,  Maze.cell_size);
+            Maze.draw_cell( Maze.renderer, (row+new_row)/2, (col + new_col)/2, black, cell_size);
+            Maze.draw_cell( Maze.renderer, new_row, new_col, red,  cell_size);
             SDL_RenderPresent( Maze.renderer);
             SDL_Delay(10);
             generate_maze(Maze,new_row, new_col);

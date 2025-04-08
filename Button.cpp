@@ -16,9 +16,6 @@ bool Button :: is_hovered_(){
      return is_hovered;
 }
 
-void Button :: set_hovered_(bool a){
-    is_hovered = a;
-}
 
 
 
