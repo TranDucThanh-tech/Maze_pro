@@ -4,9 +4,8 @@ const vector<int> drow = {0, 0, 2, -2};
 const vector<int> dcol = {-2, 2, 0, 0};
 void maze_prim :: generate_maze(maze& Maze, int row, int col)
 {
-    Maze.visited[row][col] = true;
     Maze.way[row][col] = 1;
-    Maze.draw_cell(Maze.renderer, row, col, red, cell_size);
+    Maze.draw_cell(Maze.renderer, row, col, red);
     SDL_RenderPresent(Maze.renderer);
 
     for (int i = 0; i < 4 ;i++){
@@ -14,39 +13,36 @@ void maze_prim :: generate_maze(maze& Maze, int row, int col)
         int new_col = col + dcol[i];
         if ( Maze.check_new_index(new_row, new_col)){
             section new_edge = section(row, col, new_row, new_col);
-            edge.push_back(new_edge);
+            Edge.push_back(new_edge);
         }
     }
 
-    while (!edge.empty()){
-        int rand_edge = rand() % edge.size();
-        section now_edge = edge[rand_edge];
-        int start_row = now_edge.start_row;
-        int start_col = now_edge.start_col;
-        int end_row = now_edge.end_row;
-        int end_col = now_edge.end_col;
-        edge.erase(edge.begin() + rand_edge);
+    while (!Edge.empty()){
+        int rand_edge = rand() % Edge.size();
+        section edge = Edge[rand_edge];
+        Edge.erase(Edge.begin() + rand_edge);
 
-        if ( Maze.visited[end_row][end_col]) continue;
+        if ( Maze.way[edge.end_row][edge.end_col] == 1) continue;
 
-        Maze.visited[end_row][end_col] = true;
-        Maze.way[end_row][end_col] = 1;
-        Maze.break_wall(start_row, start_col, end_row, end_col);
+        int mid_row = (edge.start_row + edge.end_row)/2;
+        int mid_col = (edge.start_col + edge.end_col)/2;
+        Maze.way[edge.end_row][edge.end_col] = 1;
+        Maze.way[mid_row][mid_col] = 1;
 
-        Maze.draw_cell(Maze.renderer, start_row, start_col, black,  cell_size);
-        Maze.draw_cell( Maze.renderer, (start_row+end_row)/2, (start_col+end_col)/2, black,  cell_size);
-        Maze.draw_cell( Maze.renderer, end_row, end_col, red,  cell_size);
+        Maze.draw_cell(Maze.renderer, edge.start_row, edge.start_col, black);
+        Maze.draw_cell( Maze.renderer, mid_row, mid_col, black);
+        Maze.draw_cell( Maze.renderer, edge.end_row, edge.end_col, red);
         SDL_RenderPresent( Maze.renderer);
         SDL_Delay(10);
-        Maze.draw_cell( Maze.renderer, end_row, end_col, black, cell_size);
+        Maze.draw_cell( Maze.renderer, edge.end_row, edge.end_col, black);
         SDL_RenderPresent( Maze.renderer);
 
         for (int i = 0; i < 4; i++){
-            int new_row = end_row + drow[i];
-            int new_col = end_col + dcol[i];
+            int new_row = edge.end_row + drow[i];
+            int new_col = edge.end_col + dcol[i];
             if( Maze.check_new_index(new_row, new_col)){
-                section new_edge = section(end_row, end_col, new_row, new_col);
-                edge.push_back(new_edge);
+                section new_edge = section(edge.end_row, edge.end_col, new_row, new_col);
+                Edge.push_back(new_edge);
             }
         }
     }

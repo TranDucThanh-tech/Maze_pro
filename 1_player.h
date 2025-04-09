@@ -21,7 +21,7 @@ private:
     int is_win;
 public:
     player() = default;
-    player(int x, int y,maze* Maze, SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound);
+    player(maze* Maze, SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound);
     ~player();
 
     bool is_end();

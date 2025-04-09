@@ -3,8 +3,9 @@ const int win = 1;
 const int lose = 0;
 const int undetermined = 2;
 
-player::player(int x, int y, maze* Maze, SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound)
-    : x(x), y(y), Maze(Maze), renderer(renderer), font(font), Sound(Sound) {
+player::player(maze* Maze, SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound)
+    : Maze(Maze), renderer(renderer), font(font), Sound(Sound) {
+    x = y = 0;
     now_playing = false;
     solved = false;
     is_win = undetermined;
@@ -26,7 +27,7 @@ player :: ~player(){
 void player :: move_player(string direction){
     SDL_Color white = { 255, 255, 255, 255 };
     SDL_Color black = {0, 0, 0, 255 };
-    Maze -> draw_cell(renderer, x, y, black, cell_size);
+    Maze -> draw_cell(renderer, x, y, black);
     int new_row = x, new_col = y;
     if(direction == "right") new_col +=2;
     else if(direction == "left") new_col -=2;
@@ -41,7 +42,7 @@ void player :: move_player(string direction){
         x = new_row;
         y = new_col;
     }
-    Maze -> draw_cell(renderer, x, y, white, cell_size);
+    Maze -> draw_cell(renderer, x, y, white);
     SDL_RenderPresent(renderer);
 }
 
@@ -58,8 +59,8 @@ bool player :: is_end(){
 void player::handle_event(SDL_Event& event) {
     if (!Maze -> is_finish_()) return;
     if (!solved){
-        if (!now_playing) Maze -> draw_cell(renderer, x, y, white, cell_size);
-        Maze -> draw_cell(renderer, row_size - 1, col_size -1, red,  cell_size);
+        if (!now_playing) Maze -> draw_cell(renderer, x, y, white);
+        Maze -> draw_cell(renderer, row_size - 1, col_size -1, red);
         if (event.type == SDL_KEYDOWN){
             if(event.key.repeat != 0) return;
             Sound -> loadFromFile("move.wav");
@@ -92,14 +93,14 @@ void player::handle_event(SDL_Event& event) {
                 case SDLK_HOME:
                     Sound -> play();
                     SDL_Delay(50);
-                    Maze -> draw_cell(renderer, x, y, black, cell_size);
+                    Maze -> draw_cell(renderer, x, y, black);
                     SDL_RenderPresent(renderer);
                     reset();
-                    Maze -> draw_cell(renderer, x, y, white,  cell_size);
+                    Maze -> draw_cell(renderer, x, y, white);
                     return;
 
                 case SDLK_RETURN:
-                    Maze -> draw_cell(renderer, x, y, black, cell_size);
+                    Maze -> draw_cell(renderer, x, y, black);
                     SDL_RenderPresent(renderer);
                     Maze -> solve_maze(0, 0);
                     solved = true;

@@ -13,7 +13,6 @@ game::game() {
         cout << "SDL_mixer could not initialize! SDL_mixer Error: " << Mix_GetError() << std::endl;
         return;
     }
-
     window = SDL_CreateWindow(
         "Maze Generator",
         SDL_WINDOWPOS_CENTERED,
@@ -26,7 +25,6 @@ game::game() {
         SDL_Quit();
         return ;
     }
-
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (!renderer) {
         cout << "Renderer Creation Error: " << SDL_GetError() << endl;
@@ -34,7 +32,6 @@ game::game() {
         SDL_Quit();
         return ;
     }
-
     font = TTF_OpenFont("Arial.ttf", 24);
     if (!font){
      cout << "Font Creation Error:" << TTF_GetError() << endl;
@@ -63,8 +60,10 @@ game::~game() {
         delete Sound;
         Sound = nullptr;
     }
-    if (Game_state)
+    if (Game_state){
         delete Game_state;
+        Game_state = nullptr;
+    }
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

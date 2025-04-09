@@ -8,7 +8,7 @@
 
 class maze_prim : public type_maze{
 private:
-    vector<section>edge;
+    vector<section>Edge;
 public:
     void generate_maze(maze& Maze, int row, int col) override;
 };
