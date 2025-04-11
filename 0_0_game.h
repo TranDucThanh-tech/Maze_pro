@@ -7,9 +7,9 @@
 #include "0_3_setting.h"
 #include "1_maze.h"
 #include "1_player.h"
-#include "Music.h"
-#include "Sound.h"
-#include "Maze_size.h"
+#include "3_Music.h"
+#include "3_Sound.h"
+#include "4_Const_Maze_size.h"
 
 using namespace std;
 

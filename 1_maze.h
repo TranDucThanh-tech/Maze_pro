@@ -6,10 +6,11 @@
 #include "2_1_maze_dfs.h"
 #include "2_2_maze_prim.h"
 #include "2_3_maze_kruskal.h"
-#include "SDL_Color.h"
-#include "Maze_size.h"
-#include "Button.h"
-#include "Sound.h"
+#include "4_Const_SDL_Color.h"
+#include "4_Const_Maze_size.h"
+#include "4_Const_Maze_step.h"
+#include "3_Button.h"
+#include "3_Sound.h"
 class maze{
 public:
     SDL_Renderer* renderer;

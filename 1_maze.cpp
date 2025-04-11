@@ -68,8 +68,7 @@ bool maze :: check_next_index(int next_row, int next_col){
     return false;
 }
 
-const vector<int>delta_row = {0,1,0,-1};
-const vector<int>delta_col = {1,0,-1,0};
+
 bool maze :: solve_maze(int row, int col){
     way[row][col] = 2;
     if(row == row_size-1 && col == col_size-1){

@@ -1,4 +1,4 @@
-#include "Sound.h"
+#include "3_Sound.h"
 #include <iostream>
 
 SoundEffect::SoundEffect() : sound(nullptr),  is_off(false) {}

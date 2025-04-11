@@ -4,7 +4,7 @@
 #include "0_0_game_state.h"
 #include "1_maze.h"
 #include "1_player.h"
-#include "Maze_size.h"
+#include "4_Const_Maze_size.h"
 
 using namespace std;
 

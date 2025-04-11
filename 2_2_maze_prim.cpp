@@ -1,7 +1,5 @@
 #include "2_2_maze_prim.h"
 
-const vector<int> drow = {0, 0, 2, -2};
-const vector<int> dcol = {-2, 2, 0, 0};
 void maze_prim :: generate_maze(maze& Maze, int row, int col)
 {
     Maze.way[row][col] = 1;

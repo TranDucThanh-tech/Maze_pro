@@ -2,9 +2,10 @@
 #define PLAYER_H
 
 #include "1_maze.h"
-#include "Button.h"
-#include "SDL_Color.h"
-#include "Maze_size.h"
+#include "3_Button.h"
+#include "4_Const_SDL_Color.h"
+#include "4_Const_Maze_size.h"
+#include "4_Const_Player_status.h"
 #include <string>
 
 class player{

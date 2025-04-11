@@ -1,7 +1,5 @@
 #include "2_1_maze_dfs.h"
 
-const vector<int>drow = {0,0,-2,2};
-const vector<int>dcol = {-2,2,0,0};
 
 void maze_dfs :: generate_maze(maze& Maze, int row, int col)
 {

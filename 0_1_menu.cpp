@@ -5,6 +5,7 @@ menu::menu(SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound) :
     Play = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50, renderer, purple);
     Setting = new Button((win_hight-200)/2, (win_width-50)/2 , 200, 50, renderer, purple);
     Quit = new Button((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, purple);
+    Sound -> loadFromFile("click.wav");
 }
 
 menu::~menu() {
@@ -48,7 +49,6 @@ void menu::handle_event(SDL_Event& event) {
     }
 
     if (event.type == SDL_MOUSEBUTTONDOWN){
-        Sound -> loadFromFile("click.wav");
         if (Play && Play -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT) {
             Sound -> play();

@@ -52,15 +52,17 @@
 		<Unit filename="2_2_maze_prim.h" />
 		<Unit filename="2_3_maze_kruskal.cpp" />
 		<Unit filename="2_3_maze_kruskal.h" />
-		<Unit filename="Button.cpp" />
-		<Unit filename="Button.h" />
-		<Unit filename="Maze_size.h" />
-		<Unit filename="Music.cpp" />
-		<Unit filename="Music.h" />
+		<Unit filename="3_Button.cpp" />
+		<Unit filename="3_Button.h" />
+		<Unit filename="3_Music.cpp" />
+		<Unit filename="3_Music.h" />
+		<Unit filename="3_Sound.cpp" />
+		<Unit filename="3_Sound.h" />
+		<Unit filename="4_Const_Maze_size.h" />
+		<Unit filename="4_Const_Maze_step.h" />
+		<Unit filename="4_Const_Player_status.h" />
 		<Unit filename="SDL_Color.h" />
 		<Unit filename="Section.h" />
-		<Unit filename="Sound.cpp" />
-		<Unit filename="Sound.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>

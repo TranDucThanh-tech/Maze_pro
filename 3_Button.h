@@ -3,15 +3,16 @@
 
 #include <SDL.h>
 #include <SDL_ttf.h>
-#include "SDL_Color.h"
+#include "4_Const_SDL_Color.h"
 using namespace std;
 
 class Button{
 private:
-    SDL_Rect rect;
-    bool is_hovered;
-    SDL_Color color;
     SDL_Renderer* renderer;
+    SDL_Rect rect;
+    SDL_Color color;
+    bool is_hovered;
+
 public:
     Button();
     Button(int x, int y, int w, int h,

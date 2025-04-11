@@ -4,8 +4,8 @@
 #include <vector>
 #include <algorithm>
 #include <SDL.h>
-#include "SDL_Color.h"
-#include "Maze_size.h"
+#include "4_Const_SDL_Color.h"
+#include "4_Const_Maze_size.h"
 
 using namespace std;
 

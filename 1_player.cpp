@@ -1,7 +1,4 @@
 #include "1_player.h"
-const int win = 1;
-const int lose = 0;
-const int undetermined = 2;
 
 player::player(maze* Maze, SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound)
     : Maze(Maze), renderer(renderer), font(font), Sound(Sound) {

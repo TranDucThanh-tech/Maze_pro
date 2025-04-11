@@ -1,4 +1,4 @@
-#include "Button.h"
+#include "3_Button.h"
 #include <iostream>
 Button :: Button(int x, int y, int w, int h,
             SDL_Renderer* renderer, SDL_Color color) : renderer(renderer), color(color) {
@@ -15,8 +15,6 @@ Button :: ~Button(){}
 bool Button :: is_hovered_(){
      return is_hovered;
 }
-
-
 
 
 void Button :: check_button_hover(int mouse_x, int mouse_y){
