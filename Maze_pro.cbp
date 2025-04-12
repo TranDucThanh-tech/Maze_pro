@@ -60,6 +60,7 @@
 		<Unit filename="3_Sound.h" />
 		<Unit filename="4_Const_Maze_size.h" />
 		<Unit filename="4_Const_Maze_step.h" />
+		<Unit filename="4_Const_Maze_tick.h" />
 		<Unit filename="4_Const_Player_status.h" />
 		<Unit filename="4_Const_SDL_Color.h" />
 		<Unit filename="Section.h" />

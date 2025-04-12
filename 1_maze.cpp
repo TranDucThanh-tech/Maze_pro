@@ -7,7 +7,7 @@ maze :: maze(SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound):
     this->col = col_size/2;
     this->Type_maze = nullptr;
     is_finish = false;
-    way = vector<vector<int>>(row_size, vector<int>(col_size, 0));
+    way = vector<vector<int>>(row_size, vector<int>(col_size, wall));
 
     int y_offset = win_hight / 2;
     DFS = new Button((win_width - 200) / 2, y_offset - 110 , 200, 50, renderer, purple);
@@ -45,14 +45,14 @@ bool maze ::  is_finish_(){
 }
 
 
-void maze :: draw_cell(SDL_Renderer* renderer, int row, int col, const SDL_Color& color){
+void maze :: draw_cell(SDL_Renderer* renderer, const int row, const int col, const SDL_Color& color){
     SDL_Rect cell = { col * cell_size, row * cell_size, cell_size, cell_size };
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b,color.a);
     SDL_RenderFillRect(renderer, &cell);
 }
 
 
-bool maze :: check_new_index(int new_row, int new_col){
+bool maze :: check_new_index(const int new_row, const int new_col){
     if (new_row >= row_size || new_col >= col_size ||
         new_row < 0 || new_col < 0 ||
         way[new_row][new_col] == 1){
@@ -61,7 +61,7 @@ bool maze :: check_new_index(int new_row, int new_col){
     return true;
 }
 
-bool maze :: check_next_index(int next_row, int next_col, int mid_row, int mid_col){
+bool maze :: check_next_index(int const next_row, int const next_col, int const mid_row, int const mid_col){
     if (next_row >= row_size || next_col >= col_size || next_row < 0 || next_col < 0) return false;
     if (way[next_row][next_col] == 1 && way[mid_row][mid_col] == 1){
         return true;
@@ -71,7 +71,7 @@ bool maze :: check_next_index(int next_row, int next_col, int mid_row, int mid_c
 
 
 bool maze :: solve_maze(int row, int col, int mid_row, int mid_col){
-    way[row][col] = 2;
+    way[row][col] = visited;
     if(row == row_size-1 && col == col_size-1){
         draw_cell(renderer, row, col, yellow);
         draw_cell(renderer, mid_row, mid_col, yellow);
@@ -105,7 +105,7 @@ void maze :: clear_(){
 }
 
 
-void maze :: set_generate(type_maze* type) {
+void maze :: set_generate( type_maze* type) {
     if (Type_maze != nullptr) {
         delete Type_maze;
         Type_maze = nullptr;

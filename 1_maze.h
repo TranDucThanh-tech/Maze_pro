@@ -6,11 +6,12 @@
 #include "2_1_maze_dfs.h"
 #include "2_2_maze_prim.h"
 #include "2_3_maze_kruskal.h"
+#include "3_Button.h"
+#include "3_Sound.h"
 #include "4_Const_SDL_Color.h"
 #include "4_Const_Maze_size.h"
 #include "4_Const_Maze_step.h"
-#include "3_Button.h"
-#include "3_Sound.h"
+#include "4_Const_Maze_tick.h"
 class maze{
 public:
     SDL_Renderer* renderer;
@@ -34,11 +35,11 @@ public:
     void draw_cell(SDL_Renderer* renderer, int row, int col,
                    const SDL_Color& color);
 
-    bool check_next_index(int next_row, int next_col,  int mid_row, int mid_col);
+    bool check_next_index(int const next_row, int const next_col,  int const mid_row, int const mid_col);
 
-    bool check_new_index(int new_row, int new_col);
+    bool check_new_index(int const new_row, int const new_col);
 
-    void set_generate(type_maze* type);
+    void set_generate( type_maze* type);
 
     void generate_maze_();
 

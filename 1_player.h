@@ -26,7 +26,7 @@ public:
     ~player();
 
     bool is_end();
-    void move_player(string direction);
+    void move_player(const string& direction);
     void reset();
     void handle_event(SDL_Event& event);
 };

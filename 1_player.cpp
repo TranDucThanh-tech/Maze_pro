@@ -21,7 +21,7 @@ player :: ~player(){
     }
 }
 
-void player :: move_player(const string direction){
+void player :: move_player(const string& direction){
     Maze -> draw_cell(renderer, x, y, black);
     int new_row = x, new_col = y;
     if(direction == "right") new_col +=2;
