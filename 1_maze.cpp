@@ -3,8 +3,8 @@
 
 maze :: maze(SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound):
     renderer(renderer),font(font), Sound(Sound){
-    this->row = 20;
-    this->col = 20;
+    this->row = row_size/2;
+    this->col = col_size/2;
     this->Type_maze = nullptr;
     is_finish = false;
     way = vector<vector<int>>(row_size, vector<int>(col_size, 0));
@@ -14,6 +14,7 @@ maze :: maze(SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound):
     PRIM = new Button((win_width - 200) / 2, y_offset - 55, 200, 50, renderer, purple);
     KRUSKAL = new Button((win_width - 200) / 2, y_offset , 200, 50, renderer, purple);
     BACK = new Button((win_width - 200) / 2, y_offset + 55 , 200, 50, renderer, purple);
+    Sound -> loadFromFile("click.wav");
 }
 
 maze :: ~maze(){
@@ -60,32 +61,37 @@ bool maze :: check_new_index(int new_row, int new_col){
     return true;
 }
 
-bool maze :: check_next_index(int next_row, int next_col){
+bool maze :: check_next_index(int next_row, int next_col, int mid_row, int mid_col){
     if (next_row >= row_size || next_col >= col_size || next_row < 0 || next_col < 0) return false;
-    if (way[next_row][next_col] == 1){
+    if (way[next_row][next_col] == 1 && way[mid_row][mid_col] == 1){
         return true;
     }
     return false;
 }
 
 
-bool maze :: solve_maze(int row, int col){
+bool maze :: solve_maze(int row, int col, int mid_row, int mid_col){
     way[row][col] = 2;
     if(row == row_size-1 && col == col_size-1){
         draw_cell(renderer, row, col, yellow);
+        draw_cell(renderer, mid_row, mid_col, yellow);
         SDL_RenderPresent(renderer);
         return true;
     }
     draw_cell(renderer, row, col, yellow);
+    draw_cell(renderer, mid_row, mid_col, yellow);
     SDL_RenderPresent(renderer);
     for (int i =0; i < 4; i++){
-        int next_row = row + delta_row[i];
-        int next_col = col + delta_col[i];
-        if (check_next_index(next_row, next_col)){
-            if(solve_maze(next_row, next_col)){
+        int next_row = row + drow[i];
+        int next_col = col + dcol[i];
+        int new_mid_row = (next_row+row) >> 1;
+        int new_mid_col = (next_col+col) >> 1;
+        if (check_next_index(next_row, next_col, new_mid_row, new_mid_col)){
+            if(solve_maze(next_row, next_col, new_mid_row, new_mid_col)){
                 return true;
             }
             draw_cell(renderer, next_row, next_col, black);
+            draw_cell(renderer, new_mid_row, new_mid_col, black);
             SDL_RenderPresent(renderer);
             SDL_Delay(5);
         }
@@ -129,10 +135,9 @@ void maze::handle_event(SDL_Event& event) {
         return;
     }
     if (event.type == SDL_MOUSEBUTTONDOWN) {
-        Sound -> loadFromFile("click.wav");
         if (DFS && DFS->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
             Sound -> play();
-            SDL_Delay(100);
+            SDL_Delay(200);
             clear_();
             set_generate(new maze_dfs());
             generate_maze_();
@@ -141,7 +146,7 @@ void maze::handle_event(SDL_Event& event) {
 
         else if (PRIM && PRIM->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
             Sound -> play();
-            SDL_Delay(100);
+            SDL_Delay(200);
             clear_();
             set_generate(new maze_prim());
             generate_maze_();
@@ -150,7 +155,7 @@ void maze::handle_event(SDL_Event& event) {
 
         else if (KRUSKAL && KRUSKAL->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
             Sound -> play();
-            SDL_Delay(100);
+            SDL_Delay(200);
             clear_();
             set_generate(new kruskal_maze());
             generate_maze_();
@@ -159,7 +164,7 @@ void maze::handle_event(SDL_Event& event) {
 
         else if (BACK && BACK->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
             Sound -> play();
-            SDL_Delay(100);
+            SDL_Delay(200);
             SDL_Event event;
             event.type = SDL_KEYDOWN;
             event.key.keysym.sym = SDLK_m;

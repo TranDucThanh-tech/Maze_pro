@@ -61,7 +61,7 @@
 		<Unit filename="4_Const_Maze_size.h" />
 		<Unit filename="4_Const_Maze_step.h" />
 		<Unit filename="4_Const_Player_status.h" />
-		<Unit filename="SDL_Color.h" />
+		<Unit filename="4_Const_SDL_Color.h" />
 		<Unit filename="Section.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />

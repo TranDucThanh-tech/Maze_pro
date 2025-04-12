@@ -6,8 +6,8 @@ player::player(maze* Maze, SDL_Renderer* renderer, TTF_Font* font, SoundEffect* 
     now_playing = false;
     solved = false;
     is_win = undetermined;
-    Win = new Button((win_hight-300)/2, (win_width-70)/2 , 300, 70, renderer, orange);
-    Lose = new Button((win_hight-300)/2, (win_width-70)/2  , 300, 70, renderer, gray);
+    Win = new Button((win_hight-300) >> 1, (win_width-70) >> 1 , 300, 70, renderer, orange);
+    Lose = new Button((win_hight-300) >> 1, (win_width-70) >> 1  , 300, 70, renderer, gray);
 }
 
 player :: ~player(){
@@ -21,9 +21,7 @@ player :: ~player(){
     }
 }
 
-void player :: move_player(string direction){
-    SDL_Color white = { 255, 255, 255, 255 };
-    SDL_Color black = {0, 0, 0, 255 };
+void player :: move_player(const string direction){
     Maze -> draw_cell(renderer, x, y, black);
     int new_row = x, new_col = y;
     if(direction == "right") new_col +=2;
@@ -34,7 +32,7 @@ void player :: move_player(string direction){
     if (new_row >= 0 && new_row < row_size &&
         new_col >= 0 && new_col < col_size &&
         Maze -> way[new_row][new_col] == 1 &&
-        Maze -> way[(new_row+x)/2][(new_col+y)/2] != 0){
+        Maze -> way[(new_row+x) >> 1][(new_col+y) >> 1] != 0){
 
         x = new_row;
         y = new_col;
@@ -99,13 +97,13 @@ void player::handle_event(SDL_Event& event) {
                 case SDLK_RETURN:
                     Maze -> draw_cell(renderer, x, y, black);
                     SDL_RenderPresent(renderer);
-                    Maze -> solve_maze(0, 0);
+                    Maze -> solve_maze(0, 0, 0, 0);
                     solved = true;
                     is_win = lose;
                     Lose -> render_button("YOU LOSE", font);
                     Sound -> loadFromFile("lose.wav");
                     Sound -> play();
-                    SDL_Delay(100);
+                    SDL_Delay(200);
                     return;
 
                 default:
@@ -113,13 +111,13 @@ void player::handle_event(SDL_Event& event) {
             }
         }
         if(is_end()){
-            Maze -> solve_maze(0, 0);
+            Maze -> solve_maze(0, 0, 0, 0);
             solved = true;
             is_win = win;
             Win -> render_button("YOU WIN", font);
             Sound -> loadFromFile("win.wav");
             Sound -> play();
-            SDL_Delay(100);
+            SDL_Delay(200);
             return;
         }
     }
@@ -132,7 +130,7 @@ void player::handle_event(SDL_Event& event) {
                 if (Win && Win->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
                     Sound -> loadFromFile("click.wav");
                     Sound -> play();
-                    SDL_Delay(100);
+                    SDL_Delay(200);
 
                     SDL_Event event;
                     event.type = SDL_KEYDOWN;
@@ -148,7 +146,7 @@ void player::handle_event(SDL_Event& event) {
                 if (Lose && Lose->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
                     Sound -> loadFromFile("click.wav");
                     Sound -> play();
-                    SDL_Delay(100);
+                    SDL_Delay(200);
 
                     SDL_Event event;
                     event.type = SDL_KEYDOWN;

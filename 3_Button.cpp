@@ -50,8 +50,8 @@ void  Button :: render_button(const char* text, TTF_Font* font){
         SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 
         SDL_Rect text_rect = {
-            rect.x + (rect.w - surface->w) / 2,
-            rect.y + (rect.h - surface->h) / 2,
+            rect.x + ((rect.w - surface->w) >> 1),
+            rect.y + ((rect.h - surface->h) >> 1),
             surface->w,
             surface->h
         };
@@ -64,23 +64,20 @@ void  Button :: render_button(const char* text, TTF_Font* font){
 }
 
 void Button :: render_button_music(const char* text,  TTF_Font*font, bool is_off){
-    if (is_off)
-        color = earthy_orange;
-    else
-        color = purple;
+    SDL_Color current_color = is_off ? earthy_orange : purple;
     if (is_hovered) {
         SDL_SetRenderDrawColor(renderer,
-                            color.r + 50,
-                            color.g + 50,
-                            color.b,
-                            color.a);
+                            current_color.r + 50,
+                            current_color.g + 50,
+                            current_color.b,
+                            current_color.a);
     }
     else {
         SDL_SetRenderDrawColor(renderer,
-                            color.r,
-                            color.g,
-                            color.b,
-                            color.a);
+                            current_color.r,
+                            current_color.g,
+                            current_color.b,
+                            current_color.a);
     }
     SDL_RenderFillRect(renderer, &rect);
 
@@ -93,8 +90,8 @@ void Button :: render_button_music(const char* text,  TTF_Font*font, bool is_off
         SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 
         SDL_Rect text_rect = {
-            rect.x + (rect.w - surface->w) / 2,
-            rect.y + (rect.h - surface->h) / 2,
+            rect.x + ((rect.w - surface->w) >> 1),
+            rect.y + ((rect.h - surface->h) >> 1),
             surface->w,
             surface->h
         };

@@ -58,8 +58,8 @@ void kruskal_maze :: generate_maze(maze& Maze, int row, int col) {
         if (find(id1) == find(id2)) continue;
         unite(id1, id2);
 
-        int mid_row = (edge.start_row + edge.end_row)/2;
-        int mid_col = (edge.start_col + edge.end_col)/2;
+        int mid_row = (edge.start_row + edge.end_row) >> 1;
+        int mid_col = (edge.start_col + edge.end_col) >> 1;
         Maze.way[edge.start_row][edge.start_col] = 1;
         Maze.way[edge.end_row][edge.end_col] = 1;
         Maze.way[mid_row][mid_col] = 1;

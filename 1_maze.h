@@ -34,7 +34,7 @@ public:
     void draw_cell(SDL_Renderer* renderer, int row, int col,
                    const SDL_Color& color);
 
-    bool check_next_index(int next_row, int next_col);
+    bool check_next_index(int next_row, int next_col,  int mid_row, int mid_col);
 
     bool check_new_index(int new_row, int new_col);
 
@@ -42,7 +42,7 @@ public:
 
     void generate_maze_();
 
-    bool solve_maze(int row, int col);
+    bool solve_maze(int row, int col, int mid_row, int mid_col);
 
     void clear_();
 

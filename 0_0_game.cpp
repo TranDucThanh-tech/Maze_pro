@@ -60,10 +60,6 @@ game::~game() {
         delete Sound;
         Sound = nullptr;
     }
-    if (Game_state){
-        delete Game_state;
-        Game_state = nullptr;
-    }
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
@@ -116,6 +112,5 @@ void game::run() {
     while (running) {
         handle_event(event);
         SDL_RenderPresent(renderer);
-        SDL_Delay(16);
     }
 }

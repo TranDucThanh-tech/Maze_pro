@@ -41,19 +41,19 @@ void setting ::  handle_event(SDL_Event& event){
         if (MUSIC && MUSIC -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT){
                 Sound -> play();
-                SDL_Delay(100);
+                SDL_Delay(200);
                 Music -> pause_resume();
             }
         else if (SOUNDS && SOUNDS -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT) {
                 Sound -> play();
-                SDL_Delay(100);
+                SDL_Delay(200);
                 Sound -> pause_resume();
             }
         else if (BACK && BACK -> is_hovered_()){
 
             Sound -> play();
-            SDL_Delay(100);
+            SDL_Delay(200);
 
             SDL_Event event;
             event.type = SDL_KEYDOWN;
