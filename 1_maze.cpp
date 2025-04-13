@@ -7,7 +7,7 @@ maze :: maze(SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound):
     this->col = col_size/2;
     this->Type_maze = nullptr;
     is_finish = false;
-    way = vector<vector<int>>(row_size, vector<int>(col_size, wall));
+    way = vector<vector<int>>(row_size, vector<int>(col_size, WALL));
 
     int y_offset = win_hight / 2;
     DFS = new Button((win_width - 200) / 2, y_offset - 110 , 200, 50, renderer, purple);
@@ -71,7 +71,7 @@ bool maze :: check_next_index(int const next_row, int const next_col, int const 
 
 
 bool maze :: solve_maze(int row, int col, int mid_row, int mid_col){
-    way[row][col] = visited;
+    way[row][col] = VISITED;
     if(row == row_size-1 && col == col_size-1){
         draw_cell(renderer, row, col, yellow);
         draw_cell(renderer, mid_row, mid_col, yellow);

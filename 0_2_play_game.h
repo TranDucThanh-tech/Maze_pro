@@ -10,9 +10,6 @@ using namespace std;
 
 class play_game : public game_state{
 private:
-    SDL_Renderer* renderer;
-    SoundEffect* Sound;
-    TTF_Font* font;
     maze* Maze;
     player* Player;
 

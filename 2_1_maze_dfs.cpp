@@ -3,7 +3,7 @@
 
 void maze_dfs :: generate_maze(maze& Maze, int row, int col)
 {
-    Maze.way[row][col] = way;
+    Maze.way[row][col] = WAY;
     Maze.draw_cell(Maze.renderer, row, col, black);
 
     vector<int>random_index = {0,1,2,3};
@@ -17,7 +17,7 @@ void maze_dfs :: generate_maze(maze& Maze, int row, int col)
         if (Maze.check_new_index(new_row, new_col)){
             int mid_row = (row + new_row) >> 1;
             int mid_col = (col +new_col) >> 1;
-            Maze.way[mid_row][mid_col] = way;
+            Maze.way[mid_row][mid_col] = WAY;
             Maze.draw_cell( Maze.renderer, mid_row, mid_col, black);
             Maze.draw_cell( Maze.renderer, new_row, new_col, red);
             SDL_RenderPresent( Maze.renderer);

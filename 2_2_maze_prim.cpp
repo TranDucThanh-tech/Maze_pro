@@ -2,7 +2,7 @@
 
 void maze_prim :: generate_maze(maze& Maze, int row, int col)
 {
-    Maze.way[row][col] = way;
+    Maze.way[row][col] = WAY;
     Maze.draw_cell(Maze.renderer, row, col, red);
     SDL_RenderPresent(Maze.renderer);
 
@@ -20,12 +20,12 @@ void maze_prim :: generate_maze(maze& Maze, int row, int col)
         section edge = Edge[rand_edge];
         Edge.erase(Edge.begin() + rand_edge);
 
-        if ( Maze.way[edge.end_row][edge.end_col] == way) continue;
+        if ( Maze.way[edge.end_row][edge.end_col] == WAY) continue;
 
         int mid_row = (edge.start_row + edge.end_row) >> 1;
         int mid_col = (edge.start_col + edge.end_col) >> 1;
-        Maze.way[edge.end_row][edge.end_col] = way;
-        Maze.way[mid_row][mid_col] = way;
+        Maze.way[edge.end_row][edge.end_col] = WAY;
+        Maze.way[mid_row][mid_col] = WAY;
 
         Maze.draw_cell(Maze.renderer, edge.start_row, edge.start_col, black);
         Maze.draw_cell( Maze.renderer, mid_row, mid_col, black);

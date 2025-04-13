@@ -60,9 +60,9 @@ void kruskal_maze :: generate_maze(maze& Maze, int row, int col) {
 
         int mid_row = (edge.start_row + edge.end_row) >> 1;
         int mid_col = (edge.start_col + edge.end_col) >> 1;
-        Maze.way[edge.start_row][edge.start_col] = way;
-        Maze.way[edge.end_row][edge.end_col] = way;
-        Maze.way[mid_row][mid_col] = way;
+        Maze.way[edge.start_row][edge.start_col] = WAY;
+        Maze.way[edge.end_row][edge.end_col] = WAY;
+        Maze.way[mid_row][mid_col] = WAY;
 
         Maze.draw_cell( Maze.renderer, edge.start_row, edge.start_col, red);
         Maze.draw_cell( Maze.renderer, edge.end_row, edge.end_col, red);
