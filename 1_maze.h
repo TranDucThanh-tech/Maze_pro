@@ -30,14 +30,15 @@ public:
     maze(SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound);
     ~maze();
 
-    bool is_finish_();
+    bool is_finish_() const;
 
     void draw_cell(SDL_Renderer* renderer, int row, int col,
-                   const SDL_Color& color);
+                   const SDL_Color& color) const;
 
-    bool check_next_index(int const next_row, int const next_col,  int const mid_row, int const mid_col);
+    bool check_next_index(int const next_row, int const next_col,
+                          int const mid_row, int const mid_col) const;
 
-    bool check_new_index(int const new_row, int const new_col);
+    bool check_new_index(int const new_row, int const new_col) const;
 
     void set_generate( type_maze* type);
 

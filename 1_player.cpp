@@ -1,13 +1,14 @@
 #include "1_player.h"
 
-player::player(maze* Maze, SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound)
-    : Maze(Maze), renderer(renderer), font(font), Sound(Sound) {
-    x = y = 0;
-    now_playing = false;
+player::player(maze* Maze, SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound, Time* time, bool* is_playing)
+    : Maze(Maze), renderer(renderer), font(font), Sound(Sound), time(time), is_playing(is_playing){
+    x = START_ROW;
+    y = START_COL;
     solved = false;
-    is_win = undetermined;
-    Win = new Button((win_hight-300) >> 1, (win_width-70) >> 1 , 300, 70, renderer, orange);
-    Lose = new Button((win_hight-300) >> 1, (win_width-70) >> 1  , 300, 70, renderer, gray);
+    result = UNDETERMINED;
+    Win = new Button((win_width-300) >> 1, (win_hight-70) >> 1 , 300, 90, renderer, orange);
+    Lose = new Button((win_width-300) >> 1, (win_hight-70) >> 1 , 300, 90, renderer, gray);
+    Record = new Button((win_width-400) >> 1, (win_hight-120) >> 1 , 400, 120, renderer, orange);
 }
 
 player :: ~player(){
@@ -19,7 +20,12 @@ player :: ~player(){
         delete Lose;
         Lose = nullptr;
     }
+    if(Record){
+        delete Record;
+        Record = nullptr;
+    }
 }
+
 
 void player :: move_player(const string& direction){
     Maze -> draw_cell(renderer, x, y, black);
@@ -42,119 +48,111 @@ void player :: move_player(const string& direction){
 }
 
 void player :: reset(){
-    x = 0;
-    y = 0;
+    Maze->draw_cell(renderer, x, y, black);
+    x = START_ROW;
+    y = START_COL;
+    Maze->draw_cell(renderer, x, y, white);
 }
 
-bool player :: is_end(){
-    return (x == row_size-1 && y == col_size-1);
+bool player :: is_end() const{
+    return (x == row_size-2 && y == col_size-2);
 }
 
 
 void player::handle_event(SDL_Event& event) {
-    if (!Maze -> is_finish_()) return;
-    if (!solved){
-        if (!now_playing) Maze -> draw_cell(renderer, x, y, white);
-        Maze -> draw_cell(renderer, row_size - 1, col_size -1, red);
-        if (event.type == SDL_KEYDOWN){
-            if(event.key.repeat != 0) return;
-            Sound -> loadFromFile("move.wav");
-            switch (event.key.keysym.sym) {
-                case SDLK_RIGHT:
-                    Sound -> play();
-                    SDL_Delay(50);
-                    move_player("right");
-                    now_playing = true;
-                    return;
-                case SDLK_LEFT:
-                    Sound -> play();
-                    SDL_Delay(50);
-                    move_player("left");
-                    now_playing = true;
-                    return;
-                case SDLK_DOWN:
-                    Sound -> play();
-                    SDL_Delay(50);
-                    move_player("down");
-                    now_playing = true;
-                    return;
-                case SDLK_UP:
-                    Sound -> play();
-                    SDL_Delay(50);
-                    move_player("up");
-                    now_playing = true;
-                    return;
+    if (!Maze->is_finish_()) return;
+    if (!solved) {
+        bool playing = *is_playing;
+        if (!playing)
+            Maze->draw_cell(renderer, x, y, white);
+        Maze->draw_cell(renderer, row_size - 2, col_size - 2, red);
 
-                case SDLK_HOME:
-                    Sound -> play();
-                    SDL_Delay(50);
-                    Maze -> draw_cell(renderer, x, y, black);
-                    SDL_RenderPresent(renderer);
-                    reset();
-                    Maze -> draw_cell(renderer, x, y, white);
-                    return;
-
-                case SDLK_RETURN:
-                    Maze -> draw_cell(renderer, x, y, black);
-                    SDL_RenderPresent(renderer);
-                    Maze -> solve_maze(0, 0, 0, 0);
-                    solved = true;
-                    is_win = lose;
-                    Lose -> render_button("YOU LOSE", font);
-                    Sound -> loadFromFile("lose.wav");
-                    Sound -> play();
-                    SDL_Delay(200);
-                    return;
-
-                default:
-                    return;
+        if (event.type == SDL_KEYDOWN) {
+            if (event.key.repeat != 0) return;
+            if (!playing) {
+                time->start();
+                *is_playing = true;
             }
+            Sound->loadFromFile("move.wav");
+            Sound->play();
+            switch (event.key.keysym.sym) {
+                case SDLK_RIGHT: move_player("right"); break;
+                case SDLK_LEFT:  move_player("left");  break;
+                case SDLK_DOWN:  move_player("down");  break;
+                case SDLK_UP:    move_player("up");    break;
+                case SDLK_HOME:  reset(); break;
+                case SDLK_RETURN:
+                    *is_playing = false;
+                    solved = true;
+                    result = LOSE;
+                    time->stop();
+
+                    Maze->draw_cell(renderer, x, y, black);
+                    Maze->solve_maze(START_ROW, START_COL, START_ROW, START_COL);
+
+                    Lose->render_button("YOU LOSE", font);
+                    Sound->loadFromFile("lose.wav");
+                    Sound->play();
+                    break;
+
+                default: break;
+            }
+            return;
         }
-        if(is_end()){
-            Maze -> solve_maze(0, 0, 0, 0);
+
+        if (is_end()) {
+            time->stop();
+            Maze->solve_maze(START_ROW, START_COL, START_ROW, START_COL);
             solved = true;
-            is_win = win;
-            Win -> render_button("YOU WIN", font);
-            Sound -> loadFromFile("win.wav");
-            Sound -> play();
-            SDL_Delay(200);
+            *is_playing = false;
+            Sound->loadFromFile("win.wav");
+            Sound->play();
+
+            if(time -> update_best_time()){
+                result = RECORD;
+                Record -> render_button("NEW RECORD", font);
+            }
+            else{
+                result = WIN;
+                Win->render_button("YOU WIN", font);
+            }
             return;
         }
     }
-
-    else{
-        if (event.type == SDL_MOUSEMOTION || event.type == SDL_MOUSEBUTTONDOWN){
-            if (is_win == win){
-                Win -> check_button_hover(event.motion.x, event.motion.y);
-                Win -> render_button("YOU WIN", font);
-                if (Win && Win->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
-                    Sound -> loadFromFile("click.wav");
-                    Sound -> play();
-                    SDL_Delay(200);
-
-                    SDL_Event event;
-                    event.type = SDL_KEYDOWN;
-                    event.key.keysym.sym = SDLK_m;
-                    event.key.state = SDL_PRESSED;
-                    event.key.repeat = 0;
-                    SDL_PushEvent(&event);
-                }
+    else {
+        if (event.type == SDL_MOUSEMOTION || event.type == SDL_MOUSEBUTTONDOWN) {
+            Button* current = nullptr;
+            const char* text = "";
+            switch (result) {
+                case WIN:
+                    current = Win;
+                    text = "YOU WIN";
+                    break;
+                case LOSE:
+                    current = Lose;
+                    text = "YOU LOSE";
+                    break;
+                case RECORD:
+                    current = Record;
+                    text = "NEW RECORD";
+                    break;
+                default:
+                    break;
             }
-            else if (is_win == lose){
-                Lose -> check_button_hover(event.motion.x, event.motion.y);
-                Lose -> render_button("YOU LOSE", font);
-                if (Lose && Lose->is_hovered_() && event.button.button == SDL_BUTTON_LEFT){
-                    Sound -> loadFromFile("click.wav");
-                    Sound -> play();
-                    SDL_Delay(200);
-
-                    SDL_Event event;
-                    event.type = SDL_KEYDOWN;
-                    event.key.keysym.sym = SDLK_m;
-                    event.key.state = SDL_PRESSED;
-                    event.key.repeat = 0;
-                    SDL_PushEvent(&event);
+            current->check_button_hover(event.motion.x, event.motion.y);
+            current->render_button(text, font);
+            if (current->is_hovered_() && event.button.button == SDL_BUTTON_LEFT) {
+                Sound->loadFromFile("click.wav");
+                Sound->play();
+                while (Mix_Playing(-1)) {
+                    SDL_Delay(10);
                 }
+                SDL_Event new_event;
+                new_event.type = SDL_KEYDOWN;
+                new_event.key.keysym.sym = SDLK_m;
+                new_event.key.state = SDL_PRESSED;
+                new_event.key.repeat = 0;
+                SDL_PushEvent(&new_event);
             }
         }
     }

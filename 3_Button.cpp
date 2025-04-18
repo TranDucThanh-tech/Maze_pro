@@ -12,7 +12,7 @@ Button :: Button(int x, int y, int w, int h,
 Button :: ~Button(){}
 
 
-bool Button :: is_hovered_(){
+bool Button :: is_hovered_() const{
      return is_hovered;
 }
 
@@ -23,7 +23,7 @@ void Button :: check_button_hover(int mouse_x, int mouse_y){
 }
 
 
-void  Button :: render_button(const char* text, TTF_Font* font){
+void  Button :: render_button(const char* text, TTF_Font* font) const{
 
     if (is_hovered) {
         SDL_SetRenderDrawColor(renderer,
@@ -63,8 +63,8 @@ void  Button :: render_button(const char* text, TTF_Font* font){
     }
 }
 
-void Button :: render_button_music(const char* text,  TTF_Font*font, bool is_off){
-    SDL_Color current_color = is_off ? earthy_orange : purple;
+void Button :: render_button_music(const char* text,  TTF_Font*font, bool is_off) const{
+    SDL_Color current_color = is_off ? earthy_orange : color;
     if (is_hovered) {
         SDL_SetRenderDrawColor(renderer,
                             current_color.r + 50,

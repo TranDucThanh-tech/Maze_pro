@@ -9,6 +9,7 @@
 #include "1_player.h"
 #include "3_Music.h"
 #include "3_Sound.h"
+#include "3_Time.h"
 #include "4_Const_Maze_size.h"
 
 using namespace std;
@@ -22,7 +23,9 @@ private:
     MusicTheme* Music;
     SoundEffect* Sound;
     TTF_Font* font;
+    Time* time;
     bool running;
+    bool* is_playing;
 
 public:
     game();

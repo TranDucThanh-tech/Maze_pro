@@ -13,9 +13,9 @@ private:
 public:
     SoundEffect();
     ~SoundEffect();
-    bool is_off_();
+    bool is_off_() const;
     bool loadFromFile(const string& path);
-    void play(int loops = 0);
+    void play(int loops = 0) const;
     void stop();
     void pause_resume();
 };

@@ -26,7 +26,7 @@ public:
 
     menu(SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound);
     ~menu();
-    bool play_clicked_();
+    bool play_clicked_() const;
     bool setting_clicked_();
     void handle_event(SDL_Event& event) override;
 };

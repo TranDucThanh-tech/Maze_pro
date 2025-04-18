@@ -1,5 +1,5 @@
 #include"0_0_game.h"
-
+#include"3_Time.h"
 game::game() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         cout << "SDL Initialization Error: " << SDL_GetError() << endl;
@@ -38,11 +38,13 @@ game::game() {
      SDL_Quit();
      return ;
     }
-
+    is_playing = new bool;
+    *is_playing = false;
     running = true;
     Music = new MusicTheme();
     Sound = new SoundEffect();
     Game_state = new menu(renderer,font, Sound);
+    time = new Time(renderer, font);
 }
 
 game::~game() {
@@ -59,6 +61,14 @@ game::~game() {
         Sound -> stop();
         delete Sound;
         Sound = nullptr;
+    }
+    if (time){
+        delete time;
+        time = nullptr;
+    }
+    if(is_playing){
+        delete is_playing;
+        is_playing = nullptr;
     }
 
     SDL_DestroyRenderer(renderer);
@@ -89,7 +99,7 @@ void game::handle_event(SDL_Event& event) {
 
         if (auto Menu = dynamic_cast<menu*>(Game_state)) {
             if (Menu->play_clicked_())
-                set_state(new play_game(renderer, font, Sound));
+                set_state(new play_game(renderer, font, Sound, time, is_playing));
             else if (Menu->setting_clicked_())
                 set_state(new setting(renderer, font, Music, Sound));
         }
@@ -109,8 +119,12 @@ void game::run() {
     Mix_VolumeMusic(30);
     Music->play("Theme.mp3");
     SDL_Event event;
-    while (running) {
+    while (running){
         handle_event(event);
         SDL_RenderPresent(renderer);
+        if(!(*is_playing)) continue;
+        time -> update_current_time();
+        time -> render_current_time(30, win_hight - 50);
+        time -> render_best_time(win_width - 250, win_hight - 50);
     }
 }

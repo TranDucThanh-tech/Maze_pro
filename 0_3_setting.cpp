@@ -2,9 +2,9 @@
 
 setting :: setting(SDL_Renderer* renderer,TTF_Font* font, MusicTheme* Music, SoundEffect* Sound) :
     renderer(renderer),font(font), Music(Music), Sound(Sound) {
-    SOUNDS = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50, renderer, purple);
-    MUSIC = new Button((win_hight-200)/2, (win_width-50)/2 , 200, 50, renderer, purple);
-    BACK = new Button((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, purple);
+    SOUNDS = new Button((win_width-200)/2, (win_hight-50)/2 - 55, 200, 50, renderer, purple);
+    MUSIC = new Button((win_width-200)/2, (win_hight-50)/2 , 200, 50, renderer, purple);
+    BACK = new Button((win_width-200)/2, (win_hight-50)/2 + 55, 200, 50, renderer, purple);
     Sound -> loadFromFile("click.wav");
 }
 
@@ -40,21 +40,26 @@ void setting ::  handle_event(SDL_Event& event){
     if (event.type == SDL_MOUSEBUTTONDOWN){
         if (MUSIC && MUSIC -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT){
-                Sound -> play();
-                SDL_Delay(200);
-                Music -> pause_resume();
+            Sound -> play();
+            while (Mix_Playing(-1)) {
+                SDL_Delay(10);
             }
+            Music -> pause_resume();
+        }
         else if (SOUNDS && SOUNDS -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT) {
-                Sound -> play();
-                SDL_Delay(200);
-                Sound -> pause_resume();
+            Sound -> play();
+            while (Mix_Playing(-1)) {
+                SDL_Delay(10);
             }
+            Sound -> pause_resume();
+        }
         else if (BACK && BACK -> is_hovered_()){
 
-            Sound -> play();
-            SDL_Delay(200);
-
+            Sound->play();
+            while (Mix_Playing(-1)) {
+                SDL_Delay(10);
+            }
             SDL_Event event;
             event.type = SDL_KEYDOWN;
             event.key.keysym.sym = SDLK_m;

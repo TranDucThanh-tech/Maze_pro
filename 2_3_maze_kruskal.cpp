@@ -15,8 +15,8 @@ void kruskal_maze :: init_sets() {
 }
 
 void kruskal_maze :: init_edges() {
-    for(int i = 0; i < row_size; i += 2) {
-        for (int j = 0; j < col_size; j += 2) {
+    for(int i = 1; i < row_size-1; i += 2) {
+        for (int j = 1; j < col_size-1; j += 2) {
             if (i + 2 < row_size) edges.push_back(section(i, j, i + 2, j));
             if (j + 2 < col_size) edges.push_back(section(i, j, i, j + 2));
         }

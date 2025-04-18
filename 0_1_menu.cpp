@@ -2,9 +2,9 @@
 
 menu::menu(SDL_Renderer* renderer, TTF_Font* font, SoundEffect* Sound) :
     renderer(renderer),  font(font), Sound(Sound), play_clicked(false),setting_clicked(false) {
-    Play = new Button((win_hight-200)/2, (win_width-50)/2 - 55, 200, 50, renderer, purple);
-    Setting = new Button((win_hight-200)/2, (win_width-50)/2 , 200, 50, renderer, purple);
-    Quit = new Button((win_hight-200)/2, (win_width-50)/2 + 55, 200, 50, renderer, purple);
+    Play = new Button((win_width-200)/2, (win_hight-50)/2 - 55, 200, 50, renderer, purple);
+    Setting = new Button((win_width-200)/2, (win_hight-50)/2 , 200, 50, renderer, purple);
+    Quit = new Button((win_width-200)/2, (win_hight-50)/2 + 55, 200, 50, renderer, purple);
     Sound -> loadFromFile("click.wav");
 }
 
@@ -23,7 +23,7 @@ menu::~menu() {
     }
 }
 
-bool menu::play_clicked_() {
+bool menu::play_clicked_() const {
     return play_clicked;
 }
 
@@ -52,7 +52,9 @@ void menu::handle_event(SDL_Event& event) {
         if (Play && Play -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT) {
             Sound -> play();
-            SDL_Delay(200);
+            while (Mix_Playing(-1)) {
+                SDL_Delay(10);
+            }
             play_clicked = true;
             SDL_SetRenderDrawColor(renderer,0, 0, 0, 255);
             SDL_RenderClear(renderer);
@@ -60,7 +62,9 @@ void menu::handle_event(SDL_Event& event) {
         else if (Setting && Setting -> is_hovered_()
             && event.button.button == SDL_BUTTON_LEFT){
             Sound -> play();
-            SDL_Delay(200);
+            while (Mix_Playing(-1)) {
+                SDL_Delay(10);
+            }
             setting_clicked = true;
             SDL_SetRenderDrawColor(renderer,0, 0, 0, 255);
             SDL_RenderClear(renderer);

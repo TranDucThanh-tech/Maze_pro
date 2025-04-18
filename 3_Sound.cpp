@@ -11,7 +11,7 @@ SoundEffect::~SoundEffect() {
     }
 }
 
-bool SoundEffect :: is_off_(){
+bool SoundEffect :: is_off_() const{
     return is_off;
 }
 
@@ -30,7 +30,7 @@ bool SoundEffect::loadFromFile(const string& path) {
     return true;
 }
 
-void SoundEffect::play(int loops) {
+void SoundEffect::play(int loops) const{
     if (is_off || !sound) return;
     int channel = Mix_PlayChannel(-1, sound, loops);
     if (channel < 0) {

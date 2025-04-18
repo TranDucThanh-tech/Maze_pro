@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1744210118 source:d:\0.game\maze_pro\main.cpp
+1744625425 source:d:\0.game\maze_pro\main.cpp
 	"0_0_game.h"
 
 1742780853 source:d:\0.game\maze_pro\0_game.cpp
@@ -11,7 +11,7 @@
 	"2_1_maze_dfs.h"
 	"2_2_maze_prim.h"
 
-1744482598 d:\0.game\maze_pro\1_maze.h
+1744789848 d:\0.game\maze_pro\1_maze.h
 	<iostream>
 	"1_2_type_maze.h"
 	"2_1_maze_dfs.h"
@@ -24,13 +24,13 @@
 	"4_Const_Maze_step.h"
 	"4_Const_Maze_tick.h"
 
-1744482431 d:\0.game\maze_pro\1_player.h
+1744946835 d:\0.game\maze_pro\1_player.h
 	"1_maze.h"
 	"3_Button.h"
+	"3_Time.h"
 	"4_Const_SDL_Color.h"
 	"4_Const_Maze_size.h"
 	"4_Const_Player_status.h"
-	<string>
 
 1744481649 d:\0.game\maze_pro\2_1_maze_dfs.h
 	"1_maze.h"
@@ -40,16 +40,16 @@
 	"1_maze.h"
 	"section.h"
 
-1744515655 source:d:\0.game\maze_pro\1_maze.cpp
+1744945084 source:d:\0.game\maze_pro\1_maze.cpp
 	"1_maze.h"
 
-1744516272 source:d:\0.game\maze_pro\1_player.cpp
+1744944892 source:d:\0.game\maze_pro\1_player.cpp
 	"1_player.h"
 
-1744515701 source:d:\0.game\maze_pro\2_1_maze_dfs.cpp
+1744620940 source:d:\0.game\maze_pro\2_1_maze_dfs.cpp
 	"2_1_maze_dfs.h"
 
-1744515639 source:d:\0.game\maze_pro\2_2_maze_prim.cpp
+1744885193 source:d:\0.game\maze_pro\2_2_maze_prim.cpp
 	"2_2_maze_prim.h"
 
 1744028143 d:\0.game\maze_pro\sdl_color.h
@@ -70,10 +70,10 @@
 1743437529 d:\0.game\maze_pro\0_0_game_state.h
 	<SDL.h>
 
-1744479187 source:d:\0.game\maze_pro\0_1_menu.cpp
+1744791801 source:d:\0.game\maze_pro\0_1_menu.cpp
 	"0_1_menu.h"
 
-1744369988 d:\0.game\maze_pro\0_1_menu.h
+1744789488 d:\0.game\maze_pro\0_1_menu.h
 	<iostream>
 	<SDL.h>
 	<SDL_ttf.h>
@@ -84,10 +84,11 @@
 	"4_Const_SDL_Color.h"
 	"4_Const_Maze_size.h"
 
-1744480478 source:d:\0.game\maze_pro\0_0_game.cpp
+1744886276 source:d:\0.game\maze_pro\0_0_game.cpp
 	"0_0_game.h"
+	"3_Time.h"
 
-1744369988 d:\0.game\maze_pro\0_0_game.h
+1744797270 d:\0.game\maze_pro\0_0_game.h
 	"0_0_game_state.h"
 	"0_1_menu.h"
 	"0_2_play_game.h"
@@ -96,6 +97,7 @@
 	"1_player.h"
 	"3_Music.h"
 	"3_Sound.h"
+	"3_Time.h"
 	"4_Const_Maze_size.h"
 
 1744260972 source:d:\0.game\maze_pro\button.cpp
@@ -107,18 +109,20 @@
 	<SDL_ttf.h>
 	"SDL_Color.h"
 
-1744517203 d:\0.game\maze_pro\0_2_play_game.h
+1744794541 d:\0.game\maze_pro\0_2_play_game.h
 	"0_0_game_state.h"
 	"1_maze.h"
 	"1_player.h"
+	"1_ghost.h"
+	"3_Time.h"
 	"4_Const_Maze_size.h"
 
-1744517175 source:d:\0.game\maze_pro\0_2_play_game.cpp
+1744794596 source:d:\0.game\maze_pro\0_2_play_game.cpp
 	"0_2_play_game.h"
 
 1743039140 d:\0.game\maze_pro\maze_size.h
 
-1744475964 source:d:\0.game\maze_pro\0_3_setting.cpp
+1744791801 source:d:\0.game\maze_pro\0_3_setting.cpp
 	"0_3_setting.h"
 
 1744369988 d:\0.game\maze_pro\0_3_setting.h
@@ -131,7 +135,7 @@
 
 1743743411 d:\0.game\maze_pro\section.h
 
-1744515632 source:d:\0.game\maze_pro\2_3_maze_kruskal.cpp
+1744785373 source:d:\0.game\maze_pro\2_3_maze_kruskal.cpp
 	"2_3_maze_kruskal.h"
 
 1744370029 d:\0.game\maze_pro\2_3_maze_kruskal.h
@@ -161,11 +165,11 @@
 
 1744369323 d:\0.game\maze_pro\const_player_status.h
 
-1744480034 source:d:\0.game\maze_pro\3_button.cpp
+1744943298 source:d:\0.game\maze_pro\3_button.cpp
 	"3_Button.h"
 	<iostream>
 
-1744370059 d:\0.game\maze_pro\3_button.h
+1744943297 d:\0.game\maze_pro\3_button.h
 	<SDL.h>
 	<SDL_ttf.h>
 	"4_Const_SDL_Color.h"
@@ -178,11 +182,11 @@
 	<SDL_mixer.h>
 	<iostream>
 
-1744369645 source:d:\0.game\maze_pro\3_sound.cpp
+1744943297 source:d:\0.game\maze_pro\3_sound.cpp
 	"3_Sound.h"
 	<iostream>
 
-1744027956 d:\0.game\maze_pro\3_sound.h
+1744943297 d:\0.game\maze_pro\3_sound.h
 	<SDL.h>
 	<SDL_mixer.h>
 	<string>
@@ -190,11 +194,26 @@
 1744028143 d:\0.game\maze_pro\4_const_sdl_color.h
 	<SDL.h>
 
-1743039140 d:\0.game\maze_pro\4_const_maze_size.h
+1744791383 d:\0.game\maze_pro\4_const_maze_size.h
 
 1744475713 d:\0.game\maze_pro\4_const_maze_step.h
 
-1744369323 d:\0.game\maze_pro\4_const_player_status.h
+1744946835 d:\0.game\maze_pro\4_const_player_status.h
 
 1744515632 d:\0.game\maze_pro\4_const_maze_tick.h
+
+1744681082 d:\0.game\maze_pro\1_ghost.h
+
+1744681087 source:d:\0.game\maze_pro\1_ghost.cpp
+
+1744946835 source:d:\0.game\maze_pro\3_time.cpp
+	"3_Time.h"
+
+1744946835 d:\0.game\maze_pro\3_time.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<iostream>
+	<fstream>
+	<string>
+	"4_Const_SDL_Color.h"
 
